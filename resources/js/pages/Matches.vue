@@ -113,6 +113,23 @@
       </div>
     </div>
   </div>
+  <!-- Match Time Range -->
+<div class="md:col-span-2">
+  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Match Time Range (24h)</label>
+  <div class="flex space-x-4 items-center">
+    <div class="flex-1">
+      <input type="range" min="0" max="23" v-model.number="filters.startHour"
+        class="w-full accent-indigo-600 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg cursor-pointer" />
+      <p class="text-xs mt-1 text-gray-600 dark:text-gray-400">Start Hour: {{ filters.startHour }}:00</p>
+    </div>
+    <div class="flex-1">
+      <input type="range" min="0" max="23" v-model.number="filters.endHour"
+        class="w-full accent-indigo-600 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg cursor-pointer" />
+      <p class="text-xs mt-1 text-gray-600 dark:text-gray-400">End Hour: {{ filters.endHour }}:00</p>
+    </div>
+  </div>
+</div>
+
 
   <!-- Advanced Toggle -->
   <div class="text-right">
@@ -126,34 +143,32 @@
   <transition name="fade">
     <div v-if="showAdvancedFilters"
       class="mt-6 border-t pt-6 border-gray-200 dark:border-gray-700 grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- Odds Range -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Odds Range</label>
-        <div class="flex items-center space-x-4">
-          <div class="flex-1">
-            <input
-              type="range"
-              min="1"
-              max="5"
-              step="0.1"
-              v-model.number="filters.minOdds"
-              class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-indigo-600"
-            />
-            <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Min Odds: {{ filters.minOdds }}</p>
-          </div>
-          <div class="flex-1">
-            <input
-              type="range"
-              min="1"
-              max="10"
-              step="0.1"
-              v-model.number="filters.maxOdds"
-              class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-indigo-600"
-            />
-            <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">Max Odds: {{ filters.maxOdds }}</p>
-          </div>
-        </div>
-      </div>
+ <!-- Odds Range Sliders -->
+<div class="flex items-center space-x-4">
+  <div class="flex-1">
+    <input
+      type="range"
+      min="1"
+      max="10"
+      step="0.1"
+      v-model.number="filters.minOdds"
+      class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg cursor-pointer accent-indigo-600"
+    />
+    <p class="text-xs mt-1 text-gray-600 dark:text-gray-400">Min Odds: {{ filters.minOdds }}</p>
+  </div>
+  <div class="flex-1">
+    <input
+      type="range"
+      min="1"
+      max="10"
+      step="0.1"
+      v-model.number="filters.maxOdds"
+      class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg cursor-pointer accent-indigo-600"
+    />
+    <p class="text-xs mt-1 text-gray-600 dark:text-gray-400">Max Odds: {{ filters.maxOdds }}</p>
+  </div>
+</div>
+
 
       <!-- Ranking Type -->
       <div>
@@ -233,11 +248,16 @@
 
                     <!-- Match Header -->
                     <div
-                        class="relative p-6 pb-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-800">
-                        <div class="absolute top-4 right-4 bg-white dark:bg-gray-700 px-2 py-1 rounded-full shadow-xs">
-                            <span class="text-xs font-semibold text-indigo-600 dark:text-indigo-300">{{ match.match_time
-                            }}</span>
-                        </div>
+                                    class="relative p-6 pb-4 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-800">
+                                    <div class="absolute top-4 right-4 bg-white dark:bg-gray-700 px-2 py-1 rounded-full shadow-xs text-right space-y-0.5">
+            <div class="text-[11px] font-semibold text-indigo-600 dark:text-indigo-300">
+                🕒 {{ match.match_time }}
+            </div>
+            <div class="text-[10px] text-gray-500 dark:text-gray-400">
+                📅 {{ new Date(match.match_date).toLocaleDateString() }}
+            </div>
+            </div>
+
 
                         <div
                             class="text-xs font-medium text-indigo-500 dark:text-indigo-400 mb-1 uppercase tracking-wider">
@@ -550,19 +570,22 @@ const todayLabel = new Date().toLocaleDateString('en-US', {
   day: 'numeric',
 });
 
+
 // Filters
 const showAdvancedFilters = ref(false);
 const filters = ref({
   league: '',
   predictionType: '',
   timeOfDay: 'all',
-  minOdds: '',
-  maxOdds: '',
+  minOdds: 0,     // default minimum value
+  maxOdds: 50,    // default maximum value
   rankingType: 'all',
   teamSearch: '',
   over25: false,
   gg: false,
-  matchDate: ''
+  matchDate: 'today',  // ✅ Set default here
+  startHour: 0,
+  endHour: 23,
 });
 
 // Utilities
@@ -582,16 +605,18 @@ function resetFilters() {
   filters.value = {
     league: '',
     predictionType: '',
-    timeOfDay: 'all',
-    minOdds: '',
-    maxOdds: '',
+    minOdds: 0,
+    maxOdds: 50,
     rankingType: 'all',
     teamSearch: '',
     over25: false,
     gg: false,
-    matchDate: ''
+    matchDate: '',
+    startHour: 0,
+    endHour: 23,
   };
 }
+
 
 function getMatchDate(dateStr) {
   const [year, month, day] = dateStr.split('-');
@@ -643,37 +668,62 @@ const availableLeagues = computed(() => {
 
 const filteredMatches = computed(() => {
   return props.matches.filter(match => {
+    // League filter
     if (filters.value.league && match.league !== filters.value.league) return false;
+
+    // Prediction type
     if (filters.value.predictionType && getPrediction(match) !== filters.value.predictionType) return false;
+
+    // Match date (today/yesterday/tomorrow)
     if (filters.value.matchDate && match.match_date && !isMatchOnSelectedDate(match.match_date)) return false;
-    if (filters.value.timeOfDay !== 'all') {
+
+    // Time range filter (hour only)
+    if (filters.value.startHour !== null && filters.value.endHour !== null) {
       const hour = parseInt(match.match_time.split(':')[0]);
-      if (
-        (filters.value.timeOfDay === 'morning' && (hour < 6 || hour >= 12)) ||
-        (filters.value.timeOfDay === 'afternoon' && (hour < 12 || hour >= 18)) ||
-        (filters.value.timeOfDay === 'evening' && (hour < 18 || hour >= 23))
-      ) return false;
+      const { startHour, endHour } = filters.value;
+      if (startHour <= endHour) {
+        if (hour < startHour || hour > endHour) return false;
+      } else {
+        // e.g. 22 → 2
+        if (!(hour >= startHour || hour <= endHour)) return false;
+      }
     }
-    if (filters.value.minOdds &&
-      parseFloat(match.odds_home) < filters.value.minOdds &&
-      parseFloat(match.odds_draw) < filters.value.minOdds &&
-      parseFloat(match.odds_away) < filters.value.minOdds) return false;
-    if (filters.value.maxOdds &&
-      (parseFloat(match.odds_home) > filters.value.maxOdds ||
-       parseFloat(match.odds_draw) > filters.value.maxOdds ||
-       parseFloat(match.odds_away) > filters.value.maxOdds)) return false;
+
+    // Odds range filter (at least one in range)
+    const homeOdds = parseFloat(match.odds_home);
+    const drawOdds = parseFloat(match.odds_draw);
+    const awayOdds = parseFloat(match.odds_away);
+    const oddsInRange = odds =>
+      odds >= filters.value.minOdds && odds <= filters.value.maxOdds;
+    if (
+      !oddsInRange(homeOdds) &&
+      !oddsInRange(drawOdds) &&
+      !oddsInRange(awayOdds)
+    ) return false;
+
+    // Ranking filter
     if (filters.value.rankingType !== 'all' && match.details) {
       const homeRank = parseInt(match.details.home_rank);
       const awayRank = parseInt(match.details.away_rank);
       if (filters.value.rankingType === 'topVsTop' && (homeRank > 10 || awayRank > 10)) return false;
       if (filters.value.rankingType === 'mismatch' && Math.abs(homeRank - awayRank) < 10) return false;
     }
+
+    // Over 2.5 goals filter
     if (filters.value.over25 && parseFloat(getOver25Prob(match)) < 0.75) return false;
+
+    // GG filter (both teams score)
     if (filters.value.gg && !isGuaranteedGG(match)) return false;
+
+    // Team name search
     if (filters.value.teamSearch) {
       const term = filters.value.teamSearch.toLowerCase();
-      if (!match.home_team.toLowerCase().includes(term) && !match.away_team.toLowerCase().includes(term)) return false;
+      if (
+        !match.home_team.toLowerCase().includes(term) &&
+        !match.away_team.toLowerCase().includes(term)
+      ) return false;
     }
+
     return true;
   });
 });

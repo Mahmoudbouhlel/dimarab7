@@ -223,7 +223,16 @@
       class="form-checkbox rounded text-indigo-600 dark:bg-gray-800 dark:border-gray-600">
     <span>💥 1 or 2 Win + Odds > 2</span>
   </label>
+  <label class="flex items-center space-x-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+  <input type="checkbox" v-model="filters.hasComparison"
+    class="form-checkbox rounded text-indigo-600 dark:bg-gray-800 dark:border-gray-600">
+  <span>📊 With Team Comparison</span>
+</label>
+
+
 </div>
+
+
 
     </div>
   </transition>
@@ -598,6 +607,8 @@ const filters = ref({
   startHour: 0,
   endHour: 23,
   strongWinOdds: false,  // ✅ Add this
+  hasComparison: false,
+
 
 });
 
@@ -628,6 +639,7 @@ function resetFilters() {
     startHour: 0,
     endHour: 23,
     strongWinOdds: false,
+    hasComparison: false,
 
   };
 }
@@ -742,6 +754,21 @@ const filteredMatches = computed(() => {
   const awayGoals = parseInt(match.details.away_g?.split(":")[0]) || 0;
 
   if (!(homeGoals > 50 || awayGoals > 50 || (homeGoals + awayGoals) > 100)) {
+    return false;
+  }
+}
+ // With Team Comparison
+ if (filters.value.hasComparison) {
+  const d = match.details;
+  if (
+    !d ||
+    d.home_rank == null ||
+    d.away_rank == null ||
+    d.home_mp == null ||
+    d.away_mp == null ||
+    d.home_pts == null ||
+    d.away_pts == null
+  ) {
     return false;
   }
 }

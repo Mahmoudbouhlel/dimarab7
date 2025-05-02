@@ -798,26 +798,74 @@ const filteredMatches = computed(() => {
 
 function getPrediction(match) {
   if (!match.details) return 'closely contested match';
-  const homeWins = match.details.h2h_home_wins;
-  const awayWins = match.details.h2h_away_wins;
-  const homeRank = parseInt(match.details.home_rank);
-  const awayRank = parseInt(match.details.away_rank);
-  if (homeWins > awayWins * 1.5 && homeRank < awayRank) return 'strong home win';
-  if (awayWins > homeWins * 1.5 && awayRank < homeRank) return 'likely away win';
-  if (Math.abs(homeWins - awayWins) <= 1) return 'potential draw';
+
+  const d = match.details;
+
+  // Parse H2H
+  const homeWins = d.h2h_home_wins || 0;
+  const awayWins = d.h2h_away_wins || 0;
+  const draws = d.h2h_draws || 0;
+  const totalH2H = homeWins + awayWins + draws;
+
+  // Team comparison
+  const homeRank = parseInt(d.home_rank);
+  const awayRank = parseInt(d.away_rank);
+  const homePts = parseInt(d.home_pts);
+  const awayPts = parseInt(d.away_pts);
+  const homeGD = parseInt(d.home_gd.replace("+", "")) || 0;
+  const awayGD = parseInt(d.away_gd.replace("+", "")) || 0;
+
+  // Strong home win logic
+  if (
+    totalH2H >= 3 &&
+    homeWins >= 2 &&
+    homeWins > awayWins + 1 &&
+    homeRank < awayRank &&
+    homePts >= awayPts - 5 &&
+    homeGD >= awayGD - 5
+  ) {
+    return 'strong home win';
+  }
+
+  // Likely away win logic
+  if (
+    totalH2H >= 3 &&
+    awayWins >= 2 &&
+    awayWins > homeWins + 1 &&
+    awayRank < homeRank &&
+    awayPts >= homePts - 5 &&
+    awayGD >= homeGD - 5
+  ) {
+    return 'likely away win';
+  }
+
+  // Balanced H2H or draw tendency
+  if (Math.abs(homeWins - awayWins) <= 1 && draws >= 1) {
+    return 'potential draw';
+  }
+
+  // Fallback
   return 'closely contested match';
 }
 
 function getConfidence(match) {
   if (!match.details) return 'Low';
-  const total = match.details.h2h_home_wins + match.details.h2h_away_wins + match.details.h2h_draws;
-  if (!total) return 'Low';
-  const top = Math.max(match.details.h2h_home_wins, match.details.h2h_away_wins);
+
+  const d = match.details;
+  const total = d.h2h_home_wins + d.h2h_away_wins + d.h2h_draws;
+
+  if (!total || total < 3) return 'Low';
+
+  const top = Math.max(d.h2h_home_wins, d.h2h_away_wins);
   const ratio = top / total;
-  if (ratio >= 0.65) return 'High';
-  if (ratio >= 0.5) return 'Medium';
+
+  const goalGap = Math.abs(parseInt(d.home_gd || 0) - parseInt(d.away_gd || 0));
+
+  if (ratio >= 0.7 && goalGap >= 10) return 'High';
+  if (ratio >= 0.5 || goalGap >= 5) return 'Medium';
   return 'Low';
 }
+
 </script>
 
 <style>

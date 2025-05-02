@@ -203,17 +203,28 @@
 
       <!-- New Filters: Over 2.5 & GG -->
       <div class="md:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-4">
-        <label class="flex items-center space-x-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-          <input type="checkbox" v-model="filters.over25"
-            class="form-checkbox rounded text-indigo-600 dark:bg-gray-800 dark:border-gray-600">
-          <span>⚽ Over 2.5 Goals (75%)</span>
-        </label>
-        <label class="flex items-center space-x-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-          <input type="checkbox" v-model="filters.gg"
-            class="form-checkbox rounded text-indigo-600 dark:bg-gray-800 dark:border-gray-600">
-          <span>🤝 GG (Both Teams Score 75%)</span>
-        </label>
-      </div>
+  <!-- Over 2.5 -->
+  <label class="flex items-center space-x-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+    <input type="checkbox" v-model="filters.over25"
+      class="form-checkbox rounded text-indigo-600 dark:bg-gray-800 dark:border-gray-600">
+    <span>⚽ Over 2.5 (Each Team Scored 50+)</span>
+  </label>
+
+  <!-- GG -->
+  <label class="flex items-center space-x-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+    <input type="checkbox" v-model="filters.gg"
+      class="form-checkbox rounded text-indigo-600 dark:bg-gray-800 dark:border-gray-600">
+    <span>🤝 GG (Both Teams Scored 50+)</span>
+  </label>
+
+  <!-- Strong Win + High Odds -->
+  <label class="flex items-center space-x-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+    <input type="checkbox" v-model="filters.strongWinOdds"
+      class="form-checkbox rounded text-indigo-600 dark:bg-gray-800 dark:border-gray-600">
+    <span>💥 1 or 2 Win + Odds > 2</span>
+  </label>
+</div>
+
     </div>
   </transition>
 </div>
@@ -254,7 +265,7 @@
                 🕒 {{ match.match_time }}
             </div>
             <div class="text-[10px] text-gray-500 dark:text-gray-400">
-                📅 {{ new Date(match.match_date).toLocaleDateString() }}
+                📅 {{ match.match_date }}
             </div>
             </div>
 
@@ -586,6 +597,8 @@ const filters = ref({
   matchDate: 'today',  // ✅ Set default here
   startHour: 0,
   endHour: 23,
+  strongWinOdds: false,  // ✅ Add this
+
 });
 
 // Utilities
@@ -614,6 +627,8 @@ function resetFilters() {
     matchDate: '',
     startHour: 0,
     endHour: 23,
+    strongWinOdds: false,
+
   };
 }
 
@@ -688,6 +703,16 @@ const filteredMatches = computed(() => {
         if (!(hour >= startHour || hour <= endHour)) return false;
       }
     }
+    if (filters.value.strongWinOdds) {
+  const prediction = getPrediction(match);
+  const oddsHome = parseFloat(match.odds_home);
+  const oddsAway = parseFloat(match.odds_away);
+
+  const isStrongHome = prediction === 'strong home win' && oddsHome > 2;
+  const isStrongAway = prediction === 'likely away win' && oddsAway > 2;
+
+  if (!isStrongHome && !isStrongAway) return false;
+}
 
     // Odds range filter (at least one in range)
     const homeOdds = parseFloat(match.odds_home);
@@ -710,10 +735,26 @@ const filteredMatches = computed(() => {
     }
 
     // Over 2.5 goals filter
-    if (filters.value.over25 && parseFloat(getOver25Prob(match)) < 0.75) return false;
+    if (filters.value.over25) {
+  if (!match.details) return false;
+
+  const homeGoals = parseInt(match.details.home_g?.split(":")[0]) || 0;
+  const awayGoals = parseInt(match.details.away_g?.split(":")[0]) || 0;
+
+  if (!(homeGoals > 50 || awayGoals > 50 || (homeGoals + awayGoals) > 100)) {
+    return false;
+  }
+}
 
     // GG filter (both teams score)
-    if (filters.value.gg && !isGuaranteedGG(match)) return false;
+    if (filters.value.gg) {
+  if (!match.details) return false;
+
+  const homeGoals = parseInt(match.details.home_g?.split(":")[0]) || 0;
+  const awayGoals = parseInt(match.details.away_g?.split(":")[0]) || 0;
+
+  if (homeGoals < 50 || awayGoals < 50) return false;
+}
 
     // Team name search
     if (filters.value.teamSearch) {

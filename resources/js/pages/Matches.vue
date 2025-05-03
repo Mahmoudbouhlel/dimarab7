@@ -222,6 +222,99 @@
     </div>
   </transition>
 </div>
+<div class="flex justify-end mb-4 px-4 sm:px-0">
+  <button
+    @click="showBestBets = !showBestBets"
+    class="px-4 py-2 bg-indigo-600 text-white text-sm font-semibold rounded-lg shadow hover:bg-indigo-700 transition"
+  >
+    {{ showBestBets ? 'Hide' : 'Show' }} Best Bets
+  </button>
+</div>
+
+<!-- Best Bets Section -->
+<section
+  v-if="showBestBets && Object.values(bestBets).some(b => b)"
+  class="my-12 px-4 sm:px-0"
+>  <div class="bg-white shadow-lg rounded-2xl p-6 ring-1 ring-gray-100">
+    <h2 class="text-2xl font-bold text-indigo-700 mb-6">🔥 Top AI-Picked Bets</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- GG -->
+      <div v-if="bestBets.bestGG" class="p-4 rounded-xl border border-indigo-200 bg-indigo-50 shadow flex flex-col justify-between">
+        <div>
+          <h3 class="text-sm font-semibold text-indigo-700 mb-1">Both Teams to Score (GG)</h3>
+          <p class="text-sm mb-2">{{ bestBets.bestGG.home_team }} vs {{ bestBets.bestGG.away_team }}</p>
+        </div>
+        <a :href="bestBets.bestGG.match_link" target="_blank" class="text-xs text-indigo-600 hover:underline font-semibold mt-auto">🔍 Deep Analysis</a>
+      </div>
+
+      <!-- Over 2.5 Goals -->
+      <div v-if="bestBets.bestOver25" class="p-4 rounded-xl border border-yellow-200 bg-yellow-50 shadow flex flex-col justify-between">
+        <div>
+          <h3 class="text-sm font-semibold text-yellow-700 mb-1">Over 2.5 Goals</h3>
+          <p class="text-sm mb-2">{{ bestBets.bestOver25.home_team }} vs {{ bestBets.bestOver25.away_team }}</p>
+        </div>
+        <a :href="bestBets.bestOver25.match_link" target="_blank" class="text-xs text-yellow-700 hover:underline font-semibold mt-auto">🔍 Deep Analysis</a>
+      </div>
+
+      <!-- Best 1 -->
+      <div v-if="bestBets.best1" class="p-4 rounded-xl border border-blue-200 bg-blue-50 shadow flex flex-col justify-between">
+        <div>
+          <h3 class="text-sm font-semibold text-blue-700 mb-1">Home Win (1)</h3>
+          <p class="text-sm mb-2">{{ bestBets.best1.home_team }} vs {{ bestBets.best1.away_team }}</p>
+        </div>
+        <a :href="bestBets.best1.match_link" target="_blank" class="text-xs text-blue-700 hover:underline font-semibold mt-auto">🔍 Deep Analysis</a>
+      </div>
+
+      <!-- Best 2 -->
+      <div v-if="bestBets.best2" class="p-4 rounded-xl border border-red-200 bg-red-50 shadow flex flex-col justify-between">
+        <div>
+          <h3 class="text-sm font-semibold text-red-700 mb-1">Away Win (2)</h3>
+          <p class="text-sm mb-2">{{ bestBets.best2.home_team }} vs {{ bestBets.best2.away_team }}</p>
+        </div>
+        <a :href="bestBets.best2.match_link" target="_blank" class="text-xs text-red-700 hover:underline font-semibold mt-auto">🔍 Deep Analysis</a>
+      </div>
+
+      <!-- 1 + Over 2.5 -->
+      <div v-if="bestBets.best1Over25" class="p-4 rounded-xl border border-cyan-200 bg-cyan-50 shadow flex flex-col justify-between">
+        <div>
+          <h3 class="text-sm font-semibold text-cyan-700 mb-1">Home Win + Over 2.5</h3>
+          <p class="text-sm mb-2">{{ bestBets.best1Over25.home_team }} vs {{ bestBets.best1Over25.away_team }}</p>
+        </div>
+        <a :href="bestBets.best1Over25.match_link" target="_blank" class="text-xs text-cyan-700 hover:underline font-semibold mt-auto">🔍 Deep Analysis</a>
+      </div>
+
+      <!-- 2 + Over 2.5 -->
+      <div v-if="bestBets.best2Over25" class="p-4 rounded-xl border border-pink-200 bg-pink-50 shadow flex flex-col justify-between">
+        <div>
+          <h3 class="text-sm font-semibold text-pink-700 mb-1">Away Win + Over 2.5</h3>
+          <p class="text-sm mb-2">{{ bestBets.best2Over25.home_team }} vs {{ bestBets.best2Over25.away_team }}</p>
+        </div>
+        <a :href="bestBets.best2Over25.match_link" target="_blank" class="text-xs text-pink-700 hover:underline font-semibold mt-auto">🔍 Deep Analysis</a>
+      </div>
+
+      <!-- Top Home Scorer -->
+      <div v-if="bestBets.bestHomeGoalTeam" class="p-4 rounded-xl border border-green-200 bg-green-50 shadow flex flex-col justify-between">
+        <div>
+          <h3 class="text-sm font-semibold text-green-700 mb-1">Best Scoring Home Team</h3>
+          <p class="text-sm mb-2">{{ bestBets.bestHomeGoalTeam.home_team }} vs {{ bestBets.bestHomeGoalTeam.away_team }}</p>
+        </div>
+        <a :href="bestBets.bestHomeGoalTeam.match_link" target="_blank" class="text-xs text-green-700 hover:underline font-semibold mt-auto">🔍 Deep Analysis</a>
+      </div>
+
+      <!-- Top Away Scorer -->
+      <div v-if="bestBets.bestAwayGoalTeam" class="p-4 rounded-xl border border-purple-200 bg-purple-50 shadow flex flex-col justify-between">
+        <div>
+          <h3 class="text-sm font-semibold text-purple-700 mb-1">Best Scoring Away Team</h3>
+          <p class="text-sm mb-2">{{ bestBets.bestAwayGoalTeam.home_team }} vs {{ bestBets.bestAwayGoalTeam.away_team }}</p>
+        </div>
+        <a :href="bestBets.bestAwayGoalTeam.match_link" target="_blank" class="text-xs text-purple-700 hover:underline font-semibold mt-auto">🔍 Deep Analysis</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
 
         <!-- Main Content -->
@@ -893,6 +986,132 @@ function getConfidence(match) {
   if (ratio >= 0.5 || goalGap >= 5) return 'Medium';
   return 'Low';
 }
+const bestBets = computed(() => generateBestBets(filteredMatches.value));
+
+function generateBestBets(matches) {
+  const bets = {
+    bestGG: null,
+    bestOver25: null,
+    best1: null,
+    best2: null,
+    best1Over25: null,
+    best2Over25: null,
+    bestHomeGoalTeam: null,
+    bestAwayGoalTeam: null,
+  };
+
+  const filtered = matches.filter(m => m.details && m.odds_home && m.odds_away);
+
+  for (const match of filtered) {
+    const d = match.details;
+    const homeGoals = parseInt(d.home_g?.split(":")[0]) || 0;
+    const awayGoals = parseInt(d.away_g?.split(":")[0]) || 0;
+    const totalGoals = homeGoals + awayGoals;
+    const oddsHome = parseFloat(match.odds_home);
+    const oddsAway = parseFloat(match.odds_away);
+
+   // Best GG (Both Teams to Score)
+if (
+  d.home_mp >= 10 && d.away_mp >= 10 &&
+  homeGoals >= 50 && awayGoals >= 50 &&
+  homeGoals / d.home_mp >= 1.2 &&
+  awayGoals / d.away_mp >= 1.2
+) {
+  const currentGGTotal = parseInt(bets.bestGG?.details?.home_g || 0) + parseInt(bets.bestGG?.details?.away_g || 0);
+  if (!bets.bestGG || totalGoals > currentGGTotal) {
+    bets.bestGG = match;
+  }
+}
+
+// Best Over 2.5
+if (
+  d.home_mp >= 10 && d.away_mp >= 10 &&
+  (homeGoals > 50 || awayGoals > 50 || totalGoals > 100) &&
+  totalGoals / (d.home_mp + d.away_mp) >= 2.5
+) {
+  const currentTotal = parseInt(bets.bestOver25?.details?.home_g || 0) + parseInt(bets.bestOver25?.details?.away_g || 0);
+  if (!bets.bestOver25 || totalGoals > currentTotal) {
+    bets.bestOver25 = match;
+  }
+}
+
+// Best 1 (Home Win)
+if (
+  getPrediction(match) === 'strong home win' &&
+  oddsHome > 1.4 && oddsHome < 2.5 &&
+  d.home_pts > d.away_pts &&
+  d.home_rank < d.away_rank
+) {
+  if (!bets.best1 || oddsHome > parseFloat(bets.best1.odds_home)) {
+    bets.best1 = match;
+  }
+}
+
+// Best 2 (Away Win)
+if (
+  getPrediction(match) === 'likely away win' &&
+  oddsAway > 1.4 && oddsAway < 2.5 &&
+  d.away_pts > d.home_pts &&
+  d.away_rank < d.home_rank
+) {
+  if (!bets.best2 || oddsAway > parseFloat(bets.best2.odds_away)) {
+    bets.best2 = match;
+  }
+}
+
+// Best 1 + Over 2.5
+if (
+  getPrediction(match) === 'strong home win' &&
+  oddsHome > 1.4 && oddsHome < 3 &&
+  (homeGoals > 70 || totalGoals > 100) &&
+  totalGoals / (d.home_mp + d.away_mp) > 2.5
+) {
+  if (!bets.best1Over25 || oddsHome > parseFloat(bets.best1Over25.odds_home)) {
+    bets.best1Over25 = match;
+  }
+}
+
+// Best 2 + Over 2.5
+if (
+  getPrediction(match) === 'likely away win' &&
+  oddsAway > 1.4 && oddsAway < 3 &&
+  (awayGoals > 60 || totalGoals > 130) &&
+  totalGoals / (d.home_mp + d.away_mp) > 2.5
+) {
+  if (!bets.best2Over25 || oddsAway > parseFloat(bets.best2Over25.odds_away)) {
+    bets.best2Over25 = match;
+  }
+}
+
+// Best Home Team Scorer
+if (
+  d.home_mp >= 10 &&
+  homeGoals > 60 &&
+  homeGoals / d.home_mp > 1.5
+) {
+  const currentHomeGoals = parseInt(bets.bestHomeGoalTeam?.details?.home_g || 0);
+  if (!bets.bestHomeGoalTeam || homeGoals > currentHomeGoals) {
+    bets.bestHomeGoalTeam = match;
+  }
+}
+
+// Best Away Team Scorer
+if (
+  d.away_mp >= 10 &&
+  awayGoals > 60 &&
+  awayGoals / d.away_mp > 1.5
+) {
+  const currentAwayGoals = parseInt(bets.bestAwayGoalTeam?.details?.away_g || 0);
+  if (!bets.bestAwayGoalTeam || awayGoals > currentAwayGoals) {
+    bets.bestAwayGoalTeam = match;
+  }
+
+    }
+  }
+
+  return bets;
+}
+const showBestBets = ref(true); // default is shown
 
 </script>
 

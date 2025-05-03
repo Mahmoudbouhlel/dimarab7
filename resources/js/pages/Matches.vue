@@ -2,71 +2,77 @@
     <div
         class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 text-gray-800  :bg-gray-900  :text-gray-100">
         <!-- Header -->
-        <header
-            class="bg-white/70 backdrop-blur-md shadow-md px-6 py-4 flex items-center justify-between sticky top-0 z-20">
-            <div class="flex items-center space-x-3">
-                <div class="relative w-10 h-10">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Flag_of_Tunisia.svg"
-                        alt="Tunisia Logo" class="w-10 h-10 rounded-full object-cover border-2 border-red-500" />
-                    <div
-                        class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white flex items-center justify-center shadow">
-                        <span class="text-white text-xs">⚽</span>
-                    </div>
-                </div>
-                <div>
-                    <h1
-                        class="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-blue-600">
-                        Dima Rab7
-                    </h1>
-                    <p class="text-xs font-medium text-gray-500 ">Football Predictions</p>
-                </div>
+        <header class="bg-white/90 backdrop-blur-xl shadow-[0_2px_10px_-3px_rgba(0,0,0,0.1)] border-b border-gray-100 px-6 py-3 flex items-center justify-between sticky top-0 z-50 transition-all duration-300 hover:shadow-sm">
+    <div class="flex items-center space-x-3 group">
+        <!-- Animated logo container -->
+        <div class="relative w-10 h-10 group-hover:rotate-[15deg] transition-transform duration-300">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Flag_of_Tunisia.svg"
+                alt="Tunisia Logo" class="w-10 h-10 rounded-full object-cover border-[3px] border-white shadow-md" />
+            <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full border-2 border-white flex items-center justify-center shadow-sm">
+                <span class="text-white text-xs">⚽</span>
             </div>
-            <div class="hidden md:flex items-center space-x-4">
-                <button
-                    class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition shadow-sm">
-                    Premium Tips
-                </button>
-                <button
-                    class="p-2 bg-gray-100 text-gray-600 rounded-full hover:bg-gray-200 transition  :bg-gray-700  :hover:bg-gray-600">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd"
-                            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </button>
+        </div>
+        <!-- Modern text styling -->
+        <div>
+            <h1 class="text-2xl font-bold text-gray-900 tracking-tight">
+                Dima Rab7
+            </h1>
+            <p class="text-xs font-medium text-gray-500/90">AI Football Predictions</p>
+        </div>
+    </div>
+
+    <div class="flex items-center space-x-4">
+        <!-- Modern floating action button -->
+        <button class="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-lg text-sm font-semibold hover:shadow-lg hover:shadow-blue-100 hover:-translate-y-0.5 transition-all duration-300 active:scale-95">
+            <span class="drop-shadow-sm">Premium Tips</span>
+            <span class="ml-1.5 opacity-80">→</span>
+        </button>
+
+        <!-- Animated hamburger menu -->
+        <button class="p-2 group focus:outline-none">
+            <div class="w-6 space-y-1.5">
+                <span class="block h-0.5 w-6 bg-gray-600 group-hover:bg-gray-900 transition-all duration-300 group-hover:translate-y-1.5 group-hover:rotate-45 origin-center"></span>
+                <span class="block h-0.5 w-4 ml-auto bg-gray-600 group-hover:bg-gray-900 transition-all duration-300 group-hover:opacity-0"></span>
+                <span class="block h-0.5 w-6 bg-gray-600 group-hover:bg-gray-900 transition-all duration-300 group-hover:-translate-y-1.5 group-hover:-rotate-45 origin-center"></span>
             </div>
-        </header>
-  <!-- Modern Advanced Filter Section -->
+        </button>
+    </div>
+</header>
+<!-- Modern & Animated Advanced Filters -->
 <div
-  class="rounded-2xl bg-white  :bg-gray-900 shadow-lg ring-1 ring-gray-200  :ring-gray-700 p-6 mb-10 transition-all duration-300">
+  class="rounded-2xl bg-white dark:bg-gray-900 shadow-xl ring-1 ring-gray-200 dark:ring-gray-700 p-6 mb-10 transition-all duration-500 hover:shadow-2xl hover:ring-indigo-300"
+>
   <!-- Header -->
   <div class="flex items-center justify-between mb-6">
-    <div class="flex items-center space-x-2">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600  :text-indigo-400" fill="none"
-        viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M3 4a1 1 0 011-1h16a1 1 0 011 1v3a1 1 0 01-.293.707L13 15.414V19a1 1 0 01-.293.707l-2 2A1 1 0 019 21v-5.586L3.293 7.707A1 1 0 013 7V4z" />
-      </svg>
-      <h3 class="text-xl font-semibold text-gray-800  :text-gray-100">Advanced Filters</h3>
+    <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 bg-indigo-100 dark:bg-indigo-800 rounded-full flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-700 dark:text-indigo-300" fill="none"
+          viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 4a1 1 0 011-1h16a1 1 0 011 1v3a1 1 0 01-.293.707L13 15.414V19a1 1 0 01-.293.707l-2 2A1 1 0 019 21v-5.586L3.293 7.707A1 1 0 013 7V4z" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-semibold text-gray-800 dark:text-white tracking-tight">Advanced Filters</h3>
     </div>
+
     <button @click="resetFilters"
-      class="text-sm bg-gray-100  :bg-gray-800 text-gray-600  :text-gray-300 px-3 py-1.5 rounded-full hover:bg-gray-200  :hover:bg-gray-700 transition font-medium">
-      Reset All
+      class="text-sm px-4 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-full font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+      🔄 Reset All
     </button>
   </div>
 
-  <!-- Basic Filters -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-    <!-- League Select -->
+  <!-- Filter Inputs Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- League -->
     <div>
-      <label class="text-sm font-medium text-gray-700  :text-gray-300 mb-1 block">League</label>
+      <label class="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-300">🏆 League</label>
       <div class="relative">
         <select v-model="filters.league"
-          class="w-full appearance-none bg-gray-50  :bg-gray-800 text-gray-800  :text-gray-100 border border-gray-200  :border-gray-700 rounded-xl px-4 py-2 pr-10 focus:ring-2 focus:ring-indigo-500 text-sm">
+          class="w-full rounded-xl px-4 py-2 pr-10 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-indigo-500 transition">
           <option value="">All Leagues</option>
           <option v-for="league in availableLeagues" :key="league" :value="league">{{ league }}</option>
         </select>
-        <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none">
+        <div class="absolute right-3 top-2.5 pointer-events-none">
           <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
           </svg>
@@ -76,17 +82,17 @@
 
     <!-- Prediction Type -->
     <div>
-      <label class="text-sm font-medium text-gray-700  :text-gray-300 mb-1 block">Prediction Type</label>
+      <label class="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-300">📊 Prediction Type</label>
       <div class="relative">
         <select v-model="filters.predictionType"
-          class="w-full appearance-none bg-gray-50  :bg-gray-800 text-gray-800  :text-gray-100 border border-gray-200  :border-gray-700 rounded-xl px-4 py-2 pr-10 focus:ring-2 focus:ring-indigo-500 text-sm">
+          class="w-full rounded-xl px-4 py-2 pr-10 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-indigo-500 transition">
           <option value="">All Predictions</option>
           <option value="strong home win">Strong Home Win</option>
           <option value="likely away win">Likely Away Win</option>
           <option value="potential draw">Potential Draw</option>
           <option value="closely contested match">Closely Contested</option>
         </select>
-        <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none">
+        <div class="absolute right-3 top-2.5 pointer-events-none">
           <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
           </svg>
@@ -94,92 +100,79 @@
       </div>
     </div>
 
-    <!-- Match Date Filter -->
+    <!-- Match Date Buttons -->
     <div>
-      <label class="text-sm font-medium text-gray-700  :text-gray-300 mb-1 block">Match Date</label>
+      <label class="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-300">📅 Match Date</label>
       <div class="flex gap-2">
-        <button @click="setDateFilter('yesterday')"
-          :class="[filters.matchDate === 'yesterday' ? 'bg-indigo-100  :bg-indigo-900 text-indigo-700  :text-indigo-300 border-indigo-300' : 'bg-white  :bg-gray-800 text-gray-700  :text-gray-300 border-gray-200  :border-gray-600', 'flex-1 py-1.5 text-xs rounded-full border text-center transition font-medium']">
-          Yesterday
-        </button>
-        <button @click="setDateFilter('today')"
-          :class="[filters.matchDate === 'today' ? 'bg-indigo-100  :bg-indigo-900 text-indigo-700  :text-indigo-300 border-indigo-300' : 'bg-white  :bg-gray-800 text-gray-700  :text-gray-300 border-gray-200  :border-gray-600', 'flex-1 py-1.5 text-xs rounded-full border text-center transition font-medium']">
-          Today
-        </button>
-        <button @click="setDateFilter('tomorrow')"
-          :class="[filters.matchDate === 'tomorrow' ? 'bg-indigo-100  :bg-indigo-900 text-indigo-700  :text-indigo-300 border-indigo-300' : 'bg-white  :bg-gray-800 text-gray-700  :text-gray-300 border-gray-200  :border-gray-600', 'flex-1 py-1.5 text-xs rounded-full border text-center transition font-medium']">
-          Tomorrow
+        <button v-for="option in ['yesterday', 'today', 'tomorrow']" :key="option"
+          @click="setDateFilter(option)"
+          :class="[
+            filters.matchDate === option
+              ? 'bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 border-indigo-400'
+              : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600',
+            'flex-1 text-xs rounded-full border text-center py-1.5 font-semibold transition hover:ring-1 hover:ring-indigo-400'
+          ]">
+          {{ option.charAt(0).toUpperCase() + option.slice(1) }}
         </button>
       </div>
     </div>
   </div>
-  <!-- Match Time Range -->
-<div class="md:col-span-2">
-  <label class="block text-sm font-medium text-gray-700  :text-gray-300 mb-2">Match Time Range (24h)</label>
-  <div class="flex space-x-4 items-center">
-    <div class="flex-1">
-      <input type="range" min="0" max="23" v-model.number="filters.startHour"
-        class="w-full accent-indigo-600 h-2 bg-gray-200  :bg-gray-700 rounded-lg cursor-pointer" />
-      <p class="text-xs mt-1 text-gray-600  :text-gray-400">Start Hour: {{ filters.startHour }}:00</p>
-    </div>
-    <div class="flex-1">
-      <input type="range" min="0" max="23" v-model.number="filters.endHour"
-        class="w-full accent-indigo-600 h-2 bg-gray-200  :bg-gray-700 rounded-lg cursor-pointer" />
-      <p class="text-xs mt-1 text-gray-600  :text-gray-400">End Hour: {{ filters.endHour }}:00</p>
+
+  <!-- Time Range -->
+  <div class="mt-6">
+    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">🕒 Match Time Range</label>
+    <div class="flex flex-col md:flex-row gap-4">
+      <div class="flex-1">
+        <input type="range" min="0" max="23" v-model.number="filters.startHour"
+          class="w-full h-2 rounded bg-gray-200 dark:bg-gray-700 accent-indigo-600" />
+        <p class="text-xs mt-1 text-gray-600 dark:text-gray-400">Start: {{ filters.startHour }}:00</p>
+      </div>
+      <div class="flex-1">
+        <input type="range" min="0" max="23" v-model.number="filters.endHour"
+          class="w-full h-2 rounded bg-gray-200 dark:bg-gray-700 accent-indigo-600" />
+        <p class="text-xs mt-1 text-gray-600 dark:text-gray-400">End: {{ filters.endHour }}:00</p>
+      </div>
     </div>
   </div>
-</div>
-
 
   <!-- Advanced Toggle -->
-  <div class="text-right">
+  <div class="text-right mt-4">
     <button @click="showAdvancedFilters = !showAdvancedFilters"
-      class="text-sm text-indigo-600  :text-indigo-400 hover:underline font-medium">
-      {{ showAdvancedFilters ? 'Hide' : 'Show' }} More Filters
+      class="text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:underline transition">
+      {{ showAdvancedFilters ? '🔽 Hide' : '🔼 Show' }} More Filters
     </button>
   </div>
 
-  <!-- Expanded Filters -->
+  <!-- Transitioned Advanced Filters -->
   <transition name="fade">
     <div v-if="showAdvancedFilters"
-      class="mt-6 border-t pt-6 border-gray-200  :border-gray-700 grid grid-cols-1 md:grid-cols-3 gap-6">
- <!-- Odds Range Sliders -->
-<div class="flex items-center space-x-4">
-  <div class="flex-1">
-    <input
-      type="range"
-      min="1"
-      max="10"
-      step="0.1"
-      v-model.number="filters.minOdds"
-      class="w-full h-2 bg-gray-200  :bg-gray-700 rounded-lg cursor-pointer accent-indigo-600"
-    />
-    <p class="text-xs mt-1 text-gray-600  :text-gray-400">Min Odds: {{ filters.minOdds }}</p>
-  </div>
-  <div class="flex-1">
-    <input
-      type="range"
-      min="1"
-      max="10"
-      step="0.1"
-      v-model.number="filters.maxOdds"
-      class="w-full h-2 bg-gray-200  :bg-gray-700 rounded-lg cursor-pointer accent-indigo-600"
-    />
-    <p class="text-xs mt-1 text-gray-600  :text-gray-400">Max Odds: {{ filters.maxOdds }}</p>
-  </div>
-</div>
+      class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Odds Range -->
+      <div class="md:col-span-3 flex gap-4">
+        <div class="flex-1">
+          <label class="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1">📈 Min Odds</label>
+          <input type="range" min="1" max="10" step="0.1" v-model.number="filters.minOdds"
+            class="w-full h-2 rounded bg-gray-200 dark:bg-gray-700 accent-indigo-600" />
+          <p class="text-xs mt-1 text-gray-600 dark:text-gray-400">From: {{ filters.minOdds }}</p>
+        </div>
+        <div class="flex-1">
+          <label class="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1">📉 Max Odds</label>
+          <input type="range" min="1" max="10" step="0.1" v-model.number="filters.maxOdds"
+            class="w-full h-2 rounded bg-gray-200 dark:bg-gray-700 accent-indigo-600" />
+          <p class="text-xs mt-1 text-gray-600 dark:text-gray-400">To: {{ filters.maxOdds }}</p>
+        </div>
+      </div>
 
-
-      <!-- Ranking Type -->
+      <!-- Team Ranking Type -->
       <div>
-        <label class="block text-sm font-medium text-gray-700  :text-gray-300 mb-1">Team Ranking</label>
+        <label class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 block">📊 Ranking Type</label>
         <div class="flex gap-2">
           <button v-for="type in ['all', 'topVsTop', 'mismatch']" :key="type" @click="setRankingFilter(type)"
             :class="[
               filters.rankingType === type
-                ? 'bg-indigo-100  :bg-indigo-900 text-indigo-700  :text-indigo-300 border-indigo-300'
-                : 'bg-white  :bg-gray-800 text-gray-700  :text-gray-300 border-gray-200  :border-gray-600',
-              'flex-1 py-1.5 text-xs rounded-full border text-center transition font-medium'
+                ? 'bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 border-indigo-300'
+                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600',
+              'flex-1 text-xs rounded-full border py-1.5 font-semibold transition hover:ring-1 hover:ring-indigo-300'
             ]">
             {{ type === 'all' ? 'All' : type === 'topVsTop' ? 'Top vs Top' : 'Mismatch' }}
           </button>
@@ -187,13 +180,13 @@
       </div>
 
       <!-- Team Search -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700  :text-gray-300 mb-1">Search Teams</label>
+      <div class="md:col-span-2">
+        <label class="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1">🔍 Search Teams</label>
         <div class="relative">
-          <input type="text" v-model="filters.teamSearch" placeholder="Enter team name..."
-            class="w-full px-10 py-2 bg-gray-50  :bg-gray-800 border border-gray-200  :border-gray-700 rounded-xl text-sm text-gray-800  :text-white" />
-          <div class="absolute inset-y-0 left-3 flex items-center text-gray-400">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <input type="text" v-model="filters.teamSearch" placeholder="e.g. Barcelona"
+            class="w-full rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 px-4 py-2 text-sm text-gray-800 dark:text-white pl-10 transition focus:ring-2 focus:ring-indigo-500" />
+          <div class="absolute left-3 top-2.5 text-gray-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M21 21l-6-6m2-5a7 7 0 10-14 0 7 7 0 0014 0z" />
             </svg>
@@ -201,48 +194,33 @@
         </div>
       </div>
 
-      <!-- New Filters: Over 2.5 & GG -->
-      <div class="md:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-4">
-  <!-- Over 2.5 -->
-  <label class="flex items-center space-x-2 text-sm font-medium text-gray-700  :text-gray-300">
-    <input type="checkbox" v-model="filters.over25"
-      class="form-checkbox rounded text-indigo-600  :bg-gray-800  :border-gray-600">
-    <span>⚽ Over 2.5 (Each Team Scored 50+)</span>
-  </label>
-
-  <!-- GG -->
-  <label class="flex items-center space-x-2 text-sm font-medium text-gray-700  :text-gray-300">
-    <input type="checkbox" v-model="filters.gg"
-      class="form-checkbox rounded text-indigo-600  :bg-gray-800  :border-gray-600">
-    <span>🤝 GG (Both Teams Scored 50+)</span>
-  </label>
-
-  <!-- Strong Win + High Odds -->
-  <label class="flex items-center space-x-2 text-sm font-medium text-gray-700  :text-gray-300">
-    <input type="checkbox" v-model="filters.strongWinOdds"
-      class="form-checkbox rounded text-indigo-600  :bg-gray-800  :border-gray-600">
-    <span>💥 1 or 2 Win + Odds > 2</span>
-  </label>
-  <label class="flex items-center space-x-2 text-sm font-medium text-gray-700  :text-gray-300">
-  <input type="checkbox" v-model="filters.hasComparison"
-    class="form-checkbox rounded text-indigo-600  :bg-gray-800  :border-gray-600">
-  <span>📊 With Team Comparison</span>
-</label>
-<!-- Big Rank Gap -->
-<label class="flex items-center space-x-2 text-sm font-medium text-gray-700">
-  <input type="checkbox" v-model="filters.bigRankGap" class="form-checkbox text-indigo-600">
-  <span>💣 Big Rank Gap (≥10 places)</span>
-</label>
-
-
-
-</div>
-
-
-
+      <!-- Extra Toggles -->
+      <div class="md:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-4 mt-2">
+        <label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+          <input type="checkbox" v-model="filters.over25" class="rounded text-indigo-600" />
+          ⚽ Over 2.5 Goals
+        </label>
+        <label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+          <input type="checkbox" v-model="filters.gg" class="rounded text-indigo-600" />
+          🤝 Both Teams Scored
+        </label>
+        <label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+          <input type="checkbox" v-model="filters.strongWinOdds" class="rounded text-indigo-600" />
+          💥 1/2 Win + Odds > 2
+        </label>
+        <label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+          <input type="checkbox" v-model="filters.hasComparison" class="rounded text-indigo-600" />
+          📊 Has Comparison
+        </label>
+        <label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+          <input type="checkbox" v-model="filters.bigRankGap" class="rounded text-indigo-600" />
+          💣 Big Rank Gap
+        </label>
+      </div>
     </div>
   </transition>
 </div>
+
 
         <!-- Main Content -->
         <main class="">
@@ -267,285 +245,296 @@
 
 
 
-            <!-- Modern Match Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div v-for="match in filteredMatches" :key="match.id"
-                    class="bg-white  :bg-gray-850 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-100  :border-gray-700 hover:border-gray-200  :hover:border-gray-600">
+          <!-- Ultra-Modern Match Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-0">
+    <div v-for="match in filteredMatches" :key="match.id"
+         class="bg-white dark:bg-gray-850 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800/50 relative">
 
-                    <!-- Match Header -->
-                    <div
-                                    class="relative p-6 pb-4 bg-gradient-to-r from-blue-50 to-indigo-50  :from-gray-800  :to-gray-800">
-                                    <div class="absolute top-4 right-4 bg-white  :bg-gray-700 px-2 py-1 rounded-full shadow-xs text-right space-y-0.5">
-            <div class="text-[11px] font-semibold text-indigo-600  :text-indigo-300">
-                🕒 {{ match.match_time }}
+        <!-- Glow Effect for Top Predictions -->
+        <div v-if="getPrediction(match) === 'strong home win'"
+             class="absolute inset-0 rounded-2xl pointer-events-none bg-blue-500/5 group-hover:bg-blue-500/10 transition-all duration-700"></div>
+        <div v-if="getPrediction(match) === 'likely away win'"
+             class="absolute inset-0 rounded-2xl pointer-events-none bg-red-500/5 group-hover:bg-red-500/10 transition-all duration-700"></div>
+
+        <!-- Match Header with Dynamic Gradient -->
+        <div class="relative p-6 pb-4 bg-gradient-to-r from-blue-50/80 to-indigo-50/80 dark:from-gray-800 dark:to-gray-800">
+            <!-- Floating Time Badge -->
+            <div class="absolute top-4 right-4 backdrop-blur-sm bg-white/90 dark:bg-gray-700/90 px-3 py-1.5 rounded-full shadow-xs flex items-center space-x-2">
+                <span class="text-xs font-semibold text-indigo-600 dark:text-indigo-300 flex items-center">
+                    <span class="w-2 h-2 bg-indigo-500 rounded-full mr-1.5 animate-pulse"></span>
+                    {{ match.match_time }}
+                </span>
+                <span class="text-[10px] text-gray-500 dark:text-gray-400">
+                    {{ match.match_date }}
+                </span>
             </div>
-            <div class="text-[10px] text-gray-500  :text-gray-400">
-                📅 {{ match.match_date }}
+
+            <!-- League Tag -->
+            <div class="inline-flex items-center px-3 py-1 rounded-full bg-white dark:bg-gray-700 shadow-xs mb-3">
+                <span class="text-xs font-bold text-indigo-500 dark:text-indigo-400 uppercase tracking-wider">
+                    {{ match.league }}
+                </span>
             </div>
-            </div>
 
+            <!-- Team Names with Hover Effects -->
+            <h3 class="text-2xl font-extrabold text-center">
+                <span class="text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                    {{ match.home_team }}
+                </span>
+                <span class="mx-2 text-gray-400 dark:text-gray-500 font-normal">vs</span>
+                <span class="text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors duration-300">
+                    {{ match.away_team }}
+                </span>
+            </h3>
+        </div>
 
-                        <div
-                            class="text-xs font-medium text-indigo-500  :text-indigo-400 mb-1 uppercase tracking-wider">
-                            {{ match.league }}
-                        </div>
-
-                        <h3 class="text-2xl font-extrabold text-center">
-                            <span
-                                class="text-gray-900  :text-white group-hover:text-blue-600  :group-hover:text-blue-400 transition-colors">
-                                {{ match.home_team }}
-                            </span>
-                            <span class="mx-2 text-gray-400  :text-gray-500 font-normal">vs</span>
-                            <span
-                                class="text-gray-900  :text-white group-hover:text-red-600  :group-hover:text-red-400 transition-colors">
-                                {{ match.away_team }}
-                            </span>
-                        </h3>
+        <!-- Odds Section with 3D Card Effect -->
+        <div class="px-6 py-4 bg-gray-50/50 dark:bg-gray-800/30 backdrop-blur-sm">
+            <div class="grid grid-cols-3 gap-3">
+                <!-- Home Odds Card -->
+                <div @click="selectPrediction(match, 'home')"
+                    :class="[
+                        'relative rounded-xl p-3 text-center border-2 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 hover:shadow-lg',
+                        'bg-gradient-to-b from-blue-50/80 to-white dark:from-blue-900/20 dark:to-gray-800',
+                        'border-blue-200 dark:border-blue-800/30 hover:border-blue-300 dark:hover:border-blue-700',
+                        getPrediction(match) === 'strong home win' ? 'ring-2 ring-blue-500 dark:ring-blue-400 z-10 scale-[1.03]' : ''
+                    ]">
+                    <div class="text-xs font-bold text-blue-600 dark:text-blue-300 mb-1">Home</div>
+                    <div class="text-xl font-black text-gray-900 dark:text-white">@{{ match.odds_home }}</div>
+                    <div v-if="getPrediction(match) === 'strong home win'"
+                         class="absolute -top-2 -right-2 bg-blue-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full animate-bounce">
+                        BEST BET
                     </div>
+                </div>
 
-                    <!-- Odds Section -->
-                    <div class="px-6 py-4 bg-gray-50  :bg-gray-800/50">
-                        <div class="grid grid-cols-3 gap-3">
-  <!-- Home -->
-  <div
-    :class="[
-      'rounded-xl p-3 text-center border transition-shadow relative',
-      'bg-gradient-to-b from-blue-50 to-white  :from-blue-900/20  :to-gray-800',
-      'border-blue-100  :border-blue-800/50 hover:shadow-md',
-      getPrediction(match) === 'strong home win' ? 'ring-2 ring-blue-500  :ring-blue-400' : ''
-    ]">
-    <div class="text-xs font-semibold text-blue-600  :text-blue-300 mb-1">Home</div>
-    <div class="text-xl font-bold text-gray-900  :text-white">@{{ match.odds_home }}</div>
-    <div v-if="getPrediction(match) === 'strong home win'" class="mt-1 text-[10px] text-blue-700  :text-blue-300 font-semibold">
-      🏠 Prediction: 1 <br>
-      🔥 Confidence: {{ getConfidence(match) }}
-    </div>
-  </div>
+                <!-- Draw Odds Card -->
+                <div @click="selectPrediction(match, 'draw')"
+                    :class="[
+                        'relative rounded-xl p-3 text-center border-2 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 hover:shadow-lg',
+                        'bg-gradient-to-b from-gray-50/80 to-white dark:from-gray-700/20 dark:to-gray-800',
+                        'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600',
+                        getPrediction(match) === 'potential draw' ? 'ring-2 ring-gray-500 dark:ring-gray-300 z-10 scale-[1.03]' : ''
+                    ]">
+                    <div class="text-xs font-bold text-gray-600 dark:text-gray-300 mb-1">Draw</div>
+                    <div class="text-xl font-black text-gray-900 dark:text-white">@{{ match.odds_draw }}</div>
+                </div>
 
-  <!-- Draw -->
-  <div
-    :class="[
-      'rounded-xl p-3 text-center border transition-shadow relative',
-      'bg-gradient-to-b from-gray-50 to-white  :from-gray-700  :to-gray-800',
-      'border-gray-200  :border-gray-700 hover:shadow-md',
-      getPrediction(match) === 'potential draw' ? 'ring-2 ring-gray-500  :ring-gray-300' : ''
-    ]">
-    <div class="text-xs font-semibold text-gray-600  :text-gray-300 mb-1">Draw</div>
-    <div class="text-xl font-bold text-gray-900  :text-white">@{{ match.odds_draw }}</div>
-    <div v-if="getPrediction(match) === 'potential draw'" class="mt-1 text-[10px] text-gray-700  :text-gray-300 font-semibold">
-      🤝 Prediction: X <br>
-      Confidence: {{ getConfidence(match) }}
-    </div>
-  </div>
-
-  <!-- Away -->
-  <div
-    :class="[
-      'rounded-xl p-3 text-center border transition-shadow relative',
-      'bg-gradient-to-b from-red-50 to-white  :from-red-900/20  :to-gray-800',
-      'border-red-100  :border-red-800/50 hover:shadow-md',
-      getPrediction(match) === 'likely away win' ? 'ring-2 ring-red-500  :ring-red-400' : ''
-    ]">
-    <div class="text-xs font-semibold text-red-600  :text-red-300 mb-1">Away</div>
-    <div class="text-xl font-bold text-gray-900  :text-white">@{{ match.odds_away }}</div>
-    <div v-if="getPrediction(match) === 'likely away win'" class="mt-1 text-[10px] text-red-700  :text-red-300 font-semibold">
-      🛫 Prediction: 2 <br>
-      🔥 Confidence: {{ getConfidence(match) }}
-    </div>
-  </div>
-</div>
-
-
-                    </div>
-
-                    <!-- Prediction Section -->
-                    <div v-if="match.details" class="px-6 py-3 border-t border-gray-100  :border-gray-700">
-                        <div
-                            class="flex items-center justify-between bg-indigo-50/50  :bg-indigo-900/20 p-3 rounded-lg">
-                            <div class="flex items-center">
-                                <div class="w-3 h-3 rounded-full bg-indigo-500 mr-2"></div>
-                                <span class="text-sm font-medium text-gray-700  :text-gray-300">AI Prediction</span>
-                            </div>
-                            <span class="font-bold text-indigo-600  :text-indigo-400">{{ getPrediction(match)
-                            }}</span>
-                        </div>
-                    </div>
-
-                    <!-- Team Comparison -->
-                    <div v-if="match.details" class="p-6 pt-4">
-                        <div class="flex items-center mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-500" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                            </svg>
-                            <h3 class="text-sm font-bold text-gray-800  :text-gray-200">TEAM COMPARISON</h3>
-                        </div>
-
-                        <div class="space-y-5">
-                            <!-- Home Team -->
-                            <div class="relative">
-                                <div class="absolute top-3 left-3 w-2 h-2 rounded-full bg-blue-500"></div>
-                                <div class="pl-6">
-                                    <div class="flex items-center justify-between mb-2">
-                                        <h4 class="font-bold text-gray-900  :text-gray-100">{{ match.home_team }}
-                                        </h4>
-                                        <span
-                                            class="text-xs font-medium bg-blue-100  :bg-blue-900/30 text-blue-600  :text-blue-300 px-2 py-1 rounded-full">
-                                            #{{ match.details.home_rank }}
-                                        </span>
-                                    </div>
-
-                                    <div class="grid grid-cols-4 gap-2 text-xs mb-3">
-                                        <div class="text-center">
-                                            <div class="font-bold">{{ match.details.home_mp }}</div>
-                                            <div class="text-gray-500  :text-gray-400 text-[0.65rem]">Matches</div>
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="font-bold text-green-600  :text-green-400">{{
-                                                match.details.home_w }}</div>
-                                            <div class="text-gray-500  :text-gray-400 text-[0.65rem]">Wins</div>
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="font-bold">{{ match.details.home_d }}</div>
-                                            <div class="text-gray-500  :text-gray-400 text-[0.65rem]">Draws</div>
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="font-bold text-indigo-600  :text-indigo-400">{{
-                                                match.details.home_pts }}</div>
-                                            <div class="text-gray-500  :text-gray-400 text-[0.65rem]">Points</div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Enhanced Stats Row -->
-                                    <div class="grid grid-cols-3 gap-2 bg-gray-50  :bg-gray-800/30 p-2 rounded-lg">
-                                        <div class="text-center">
-                                            <div class="text-lg font-bold text-gray-900  :text-white">{{
-                                                match.details.home_g }}</div>
-                                            <div class="text-xs text-gray-500  :text-gray-400">Goals</div>
-                                        </div>
-                                        <div class="text-center border-x border-gray-200  :border-gray-700">
-                                            <div class="text-lg font-bold" :class="{
-                                                'text-green-500  :text-green-400': match.details.home_gd > 0,
-                                                'text-red-500  :text-red-400': match.details.home_gd < 0,
-                                                'text-gray-500  :text-gray-400': match.details.home_gd === 0
-                                            }">
-                                                {{ match.details.home_gd > 0 ? '+' : '' }}{{ match.details.home_gd }}
-                                            </div>
-                                            <div class="text-xs text-gray-500  :text-gray-400">GD</div>
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="text-lg font-bold text-indigo-600  :text-indigo-400">{{
-                                                match.details.home_pts }}</div>
-                                            <div class="text-xs text-gray-500  :text-gray-400">Pts</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Away Team -->
-                            <div class="relative">
-                                <div class="absolute top-3 left-3 w-2 h-2 rounded-full bg-red-500"></div>
-                                <div class="pl-6">
-                                    <div class="flex items-center justify-between mb-2">
-                                        <h4 class="font-bold text-gray-900  :text-gray-100">{{ match.away_team }}
-                                        </h4>
-                                        <span
-                                            class="text-xs font-medium bg-red-100  :bg-red-900/30 text-red-600  :text-red-300 px-2 py-1 rounded-full">
-                                            #{{ match.details.away_rank }}
-                                        </span>
-                                    </div>
-
-                                    <div class="grid grid-cols-4 gap-2 text-xs mb-3">
-                                        <div class="text-center">
-                                            <div class="font-bold">{{ match.details.away_mp }}</div>
-                                            <div class="text-gray-500  :text-gray-400 text-[0.65rem]">Matches</div>
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="font-bold text-green-600  :text-green-400">{{
-                                                match.details.away_w }}</div>
-                                            <div class="text-gray-500  :text-gray-400 text-[0.65rem]">Wins</div>
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="font-bold">{{ match.details.away_d }}</div>
-                                            <div class="text-gray-500  :text-gray-400 text-[0.65rem]">Draws</div>
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="font-bold text-indigo-600  :text-indigo-400">{{
-                                                match.details.away_pts }}</div>
-                                            <div class="text-gray-500  :text-gray-400 text-[0.65rem]">Points</div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Enhanced Stats Row -->
-                                    <div class="grid grid-cols-3 gap-2 bg-gray-50  :bg-gray-800/30 p-2 rounded-lg">
-                                        <div class="text-center">
-                                            <div class="text-lg font-bold text-gray-900  :text-white">{{
-                                                match.details.away_g }}</div>
-                                            <div class="text-xs text-gray-500  :text-gray-400">Goals</div>
-                                        </div>
-                                        <div class="text-center border-x border-gray-200  :border-gray-700">
-                                            <div class="text-lg font-bold" :class="{
-                                                'text-green-500  :text-green-400': match.details.away_gd > 0,
-                                                'text-red-500  :text-red-400': match.details.away_gd < 0,
-                                                'text-gray-500  :text-gray-400': match.details.away_gd === 0
-                                            }">
-                                                {{ match.details.away_gd > 0 ? '+' : '' }}{{ match.details.away_gd }}
-                                            </div>
-                                            <div class="text-xs text-gray-500  :text-gray-400">GD</div>
-                                        </div>
-                                        <div class="text-center">
-                                            <div class="text-lg font-bold text-indigo-600  :text-indigo-400">{{
-                                                match.details.away_pts }}</div>
-                                            <div class="text-xs text-gray-500  :text-gray-400">Pts</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- H2H History -->
-                    <div v-if="match.details && match.details.h2h_home_wins !== null"
-                        class="px-6 py-4 bg-gray-50  :bg-gray-800/50 border-t border-gray-100  :border-gray-700">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-indigo-500" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                                </svg>
-                                <h3 class="text-sm font-bold text-gray-800  :text-gray-200">HEAD-TO-HEAD</h3>
-                            </div>
-                            <div class="flex items-center space-x-4">
-                                <div class="text-center">
-                                    <div class="text-xs text-gray-500  :text-gray-400">Home</div>
-                                    <div class="font-bold text-blue-600  :text-blue-400">{{
-                                        match.details.h2h_home_wins }}</div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="text-xs text-gray-500  :text-gray-400">Draws</div>
-                                    <div class="font-bold">{{ match.details.h2h_draws }}</div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="text-xs text-gray-500  :text-gray-400">Away</div>
-                                    <div class="font-bold text-red-600  :text-red-400">{{ match.details.h2h_away_wins
-                                    }}</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <a :href="match.match_link" target="_blank" rel="noopener"
-                            class="w-full flex items-center justify-center py-2.5 px-4 bg-white  :bg-gray-800 border border-gray-200  :border-gray-700 rounded-lg text-sm font-medium text-indigo-600  :text-indigo-400 hover:bg-indigo-50  :hover:bg-indigo-900/30 transition-colors">
-                            View Full Analysis
-                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" stroke-width="2"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 3h7m0 0v7m0-7L10 14"></path>
-                            </svg>
-                        </a>
+                <!-- Away Odds Card -->
+                <div @click="selectPrediction(match, 'away')"
+                    :class="[
+                        'relative rounded-xl p-3 text-center border-2 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 hover:shadow-lg',
+                        'bg-gradient-to-b from-red-50/80 to-white dark:from-red-900/20 dark:to-gray-800',
+                        'border-red-200 dark:border-red-800/30 hover:border-red-300 dark:hover:border-red-700',
+                        getPrediction(match) === 'likely away win' ? 'ring-2 ring-red-500 dark:ring-red-400 z-10 scale-[1.03]' : ''
+                    ]">
+                    <div class="text-xs font-bold text-red-600 dark:text-red-300 mb-1">Away</div>
+                    <div class="text-xl font-black text-gray-900 dark:text-white">@{{ match.odds_away }}</div>
+                    <div v-if="getPrediction(match) === 'likely away win'"
+                         class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full animate-bounce">
+                        HOT PICK
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- AI Prediction Banner -->
+        <div v-if="match.details" class="px-6 py-3 border-t border-gray-100 dark:border-gray-700">
+            <div class="flex items-center justify-between bg-indigo-50/70 dark:bg-indigo-900/30 p-3 rounded-lg backdrop-blur-sm border border-indigo-100 dark:border-indigo-800/50">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center mr-3">
+                        <span class="text-white text-sm">AI</span>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Prediction Confidence</p>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1">
+                            <div class="bg-gradient-to-r from-indigo-400 to-purple-500 h-1.5 rounded-full"
+                                 :style="{ width: getConfidence(match) + '%' }"></div>
+                        </div>
+                    </div>
+                </div>
+                <span class="font-bold text-indigo-600 dark:text-indigo-400 text-sm bg-white dark:bg-gray-800 px-2 py-1 rounded">
+                    {{ getPrediction(match) }}
+                </span>
+            </div>
+        </div>
+
+        <!-- Team Comparison Section -->
+        <div v-if="match.details" class="p-6 pt-4">
+            <!-- Section Header -->
+            <div class="flex items-center mb-4">
+                <div class="w-8 h-8 rounded-md bg-gradient-to-r from-indigo-500 to-blue-500 flex items-center justify-center mr-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                    </svg>
+                </div>
+                <h3 class="text-sm font-bold text-gray-800 dark:text-gray-200 uppercase tracking-wider">Team Analytics</h3>
+            </div>
+
+            <!-- Comparison Grid -->
+            <div class="space-y-6">
+                <!-- Home Team -->
+                <div class="relative">
+                    <div class="absolute top-3 left-3 w-3 h-3 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 animate-pulse"></div>
+                    <div class="pl-8">
+                        <!-- Team Header -->
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-gray-900 dark:text-gray-100 flex items-center">
+                                <span class="w-6 h-6 bg-blue-100 dark:bg-blue-900/50 rounded-full flex items-center justify-center mr-2">
+                                    <span class="text-blue-600 dark:text-blue-300 text-xs font-bold">H</span>
+                                </span>
+                                {{ match.home_team }}
+                            </h4>
+                            <span class="text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 px-2.5 py-1 rounded-full">
+                                Rank #{{ match.details.home_rank }}
+                            </span>
+                        </div>
+
+                        <!-- Stats Grid -->
+                        <div class="grid grid-cols-4 gap-3 text-xs mb-3">
+                            <div class="text-center bg-gray-50 dark:bg-gray-800/50 p-2 rounded-lg">
+                                <div class="font-bold">{{ match.details.home_mp }}</div>
+                                <div class="text-gray-500 dark:text-gray-400 text-[0.65rem]">Matches</div>
+                            </div>
+                            <div class="text-center bg-green-50/70 dark:bg-green-900/20 p-2 rounded-lg">
+                                <div class="font-bold text-green-600 dark:text-green-400">{{ match.details.home_w }}</div>
+                                <div class="text-gray-500 dark:text-gray-400 text-[0.65rem]">Wins</div>
+                            </div>
+                            <div class="text-center bg-gray-50 dark:bg-gray-800/50 p-2 rounded-lg">
+                                <div class="font-bold">{{ match.details.home_d }}</div>
+                                <div class="text-gray-500 dark:text-gray-400 text-[0.65rem]">Draws</div>
+                            </div>
+                            <div class="text-center bg-indigo-50/70 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                <div class="font-bold text-indigo-600 dark:text-indigo-400">{{ match.details.home_pts }}</div>
+                                <div class="text-gray-500 dark:text-gray-400 text-[0.65rem]">Points</div>
+                            </div>
+                        </div>
+
+                        <!-- Enhanced Stats -->
+                        <div class="grid grid-cols-3 gap-2 bg-gray-50 dark:bg-gray-800/30 p-2 rounded-lg border border-gray-100 dark:border-gray-700">
+                            <div class="text-center">
+                                <div class="text-lg font-bold text-gray-900 dark:text-white">{{ match.details.home_g }}</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">Goals</div>
+                            </div>
+                            <div class="text-center border-x border-gray-200 dark:border-gray-700">
+                                <div class="text-lg font-bold" :class="{
+                                    'text-green-500 dark:text-green-400': match.details.home_gd > 0,
+                                    'text-red-500 dark:text-red-400': match.details.home_gd < 0,
+                                    'text-gray-500 dark:text-gray-400': match.details.home_gd === 0
+                                }">
+                                    {{ match.details.home_gd > 0 ? '+' : '' }}{{ match.details.home_gd }}
+                                </div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">GD</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-lg font-bold text-indigo-600 dark:text-indigo-400">{{ match.details.home_pts }}</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">Pts</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Away Team -->
+                <div class="relative">
+                    <div class="absolute top-3 left-3 w-3 h-3 rounded-full bg-gradient-to-r from-red-400 to-red-600 animate-pulse"></div>
+                    <div class="pl-8">
+                        <!-- Team Header -->
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-gray-900 dark:text-gray-100 flex items-center">
+                                <span class="w-6 h-6 bg-red-100 dark:bg-red-900/50 rounded-full flex items-center justify-center mr-2">
+                                    <span class="text-red-600 dark:text-red-300 text-xs font-bold">A</span>
+                                </span>
+                                {{ match.away_team }}
+                            </h4>
+                            <span class="text-xs font-medium bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-300 px-2.5 py-1 rounded-full">
+                                Rank #{{ match.details.away_rank }}
+                            </span>
+                        </div>
+
+                        <!-- Stats Grid -->
+                        <div class="grid grid-cols-4 gap-3 text-xs mb-3">
+                            <div class="text-center bg-gray-50 dark:bg-gray-800/50 p-2 rounded-lg">
+                                <div class="font-bold">{{ match.details.away_mp }}</div>
+                                <div class="text-gray-500 dark:text-gray-400 text-[0.65rem]">Matches</div>
+                            </div>
+                            <div class="text-center bg-green-50/70 dark:bg-green-900/20 p-2 rounded-lg">
+                                <div class="font-bold text-green-600 dark:text-green-400">{{ match.details.away_w }}</div>
+                                <div class="text-gray-500 dark:text-gray-400 text-[0.65rem]">Wins</div>
+                            </div>
+                            <div class="text-center bg-gray-50 dark:bg-gray-800/50 p-2 rounded-lg">
+                                <div class="font-bold">{{ match.details.away_d }}</div>
+                                <div class="text-gray-500 dark:text-gray-400 text-[0.65rem]">Draws</div>
+                            </div>
+                            <div class="text-center bg-indigo-50/70 dark:bg-indigo-900/20 p-2 rounded-lg">
+                                <div class="font-bold text-indigo-600 dark:text-indigo-400">{{ match.details.away_pts }}</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">Points</div>
+                            </div>
+                        </div>
+
+                        <!-- Enhanced Stats -->
+                        <div class="grid grid-cols-3 gap-2 bg-gray-50 dark:bg-gray-800/30 p-2 rounded-lg border border-gray-100 dark:border-gray-700">
+                            <div class="text-center">
+                                <div class="text-lg font-bold text-gray-900 dark:text-white">{{ match.details.away_g }}</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">Goals</div>
+                            </div>
+                            <div class="text-center border-x border-gray-200 dark:border-gray-700">
+                                <div class="text-lg font-bold" :class="{
+                                    'text-green-500 dark:text-green-400': match.details.away_gd > 0,
+                                    'text-red-500 dark:text-red-400': match.details.away_gd < 0,
+                                    'text-gray-500 dark:text-gray-400': match.details.away_gd === 0
+                                }">
+                                    {{ match.details.away_gd > 0 ? '+' : '' }}{{ match.details.away_gd }}
+                                </div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">GD</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-lg font-bold text-indigo-600 dark:text-indigo-400">{{ match.details.away_pts }}</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">Pts</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- H2H History -->
+        <div v-if="match.details && match.details.h2h_home_wins !== null"
+             class="px-6 py-4 bg-gray-50/50 dark:bg-gray-800/30 backdrop-blur-sm border-t border-gray-100 dark:border-gray-700">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-md bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center mr-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-sm font-bold text-gray-800 dark:text-gray-200 uppercase tracking-wider">Head-to-Head</h3>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="text-center">
+                        <div class="text-xs text-gray-500 dark:text-gray-400">Home Wins</div>
+                        <div class="font-bold text-blue-600 dark:text-blue-400">{{ match.details.h2h_home_wins }}</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-xs text-gray-500 dark:text-gray-400">Draws</div>
+                        <div class="font-bold">{{ match.details.h2h_draws }}</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-xs text-gray-500 dark:text-gray-400">Away Wins</div>
+                        <div class="font-bold text-red-600 dark:text-red-400">{{ match.details.h2h_away_wins }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View Analysis Button -->
+            <a :href="match.match_link" target="_blank" rel="noopener"
+               class="w-full flex items-center justify-center py-3 px-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 transition-colors group/button">
+                <span class="group-hover/button:translate-x-1 transition-transform duration-300">Deep Analysis</span>
+                <svg class="w-4 h-4 ml-2 group-hover/button:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 3h7m0 0v7m0-7L10 14"></path>
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>
             <!-- No Results Message -->
             <div v-if="filteredMatches.length === 0"
                 class="bg-white  :bg-gray-800 p-8 rounded-xl text-center shadow-md">

@@ -981,5 +981,5 @@ function getConfidence(match) {
 <style>
 .text-xxs {
     font-size: 0.65rem;
-}
+} 
 </style>

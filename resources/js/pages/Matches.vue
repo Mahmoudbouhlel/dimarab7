@@ -1010,102 +1010,60 @@ function generateBestBets(matches) {
     const oddsHome = parseFloat(match.odds_home);
     const oddsAway = parseFloat(match.odds_away);
 
-   // Best GG (Both Teams to Score)
-if (
-  d.home_mp >= 10 && d.away_mp >= 10 &&
-  homeGoals >= 50 && awayGoals >= 50 &&
-  homeGoals / d.home_mp >= 1.2 &&
-  awayGoals / d.away_mp >= 1.2
-) {
-  const currentGGTotal = parseInt(bets.bestGG?.details?.home_g || 0) + parseInt(bets.bestGG?.details?.away_g || 0);
-  if (!bets.bestGG || totalGoals > currentGGTotal) {
-    bets.bestGG = match;
-  }
-}
+    // GG
+    if (homeGoals >= 50 && awayGoals >= 50) {
+      if (!bets.bestGG || totalGoals > (parseInt(bets.bestGG.details.home_g) + parseInt(bets.bestGG.details.away_g))) {
+        bets.bestGG = match;
+      }
+    }
 
-// Best Over 2.5
-if (
-  d.home_mp >= 10 && d.away_mp >= 10 &&
-  (homeGoals > 50 || awayGoals > 50 || totalGoals > 100) &&
-  totalGoals / (d.home_mp + d.away_mp) >= 2.5
-) {
-  const currentTotal = parseInt(bets.bestOver25?.details?.home_g || 0) + parseInt(bets.bestOver25?.details?.away_g || 0);
-  if (!bets.bestOver25 || totalGoals > currentTotal) {
-    bets.bestOver25 = match;
-  }
-}
+    // Over 2.5
+    if (homeGoals > 50 || awayGoals > 50 || totalGoals > 100) {
+      if (!bets.bestOver25 || totalGoals > (parseInt(bets.bestOver25.details.home_g) + parseInt(bets.bestOver25.details.away_g))) {
+        bets.bestOver25 = match;
+      }
+    }
 
-// Best 1 (Home Win)
-if (
-  getPrediction(match) === 'strong home win' &&
-  oddsHome > 1.4 && oddsHome < 2.5 &&
-  d.home_pts > d.away_pts &&
-  d.home_rank < d.away_rank
-) {
-  if (!bets.best1 || oddsHome > parseFloat(bets.best1.odds_home)) {
-    bets.best1 = match;
-  }
-}
+    // Best 1
+    if (oddsHome > 1.4 && oddsHome < 2.5 && getPrediction(match) === 'strong home win') {
+      if (!bets.best1 || oddsHome > parseFloat(bets.best1.odds_home)) {
+        bets.best1 = match;
+      }
+    }
 
-// Best 2 (Away Win)
-if (
-  getPrediction(match) === 'likely away win' &&
-  oddsAway > 1.4 && oddsAway < 2.5 &&
-  d.away_pts > d.home_pts &&
-  d.away_rank < d.home_rank
-) {
-  if (!bets.best2 || oddsAway > parseFloat(bets.best2.odds_away)) {
-    bets.best2 = match;
-  }
-}
+    // Best 2
+    if (oddsAway > 1.4 && oddsAway < 2.5 && getPrediction(match) === 'likely away win') {
+      if (!bets.best2 || oddsAway > parseFloat(bets.best2.odds_away)) {
+        bets.best2 = match;
+      }
+    }
 
-// Best 1 + Over 2.5
-if (
-  getPrediction(match) === 'strong home win' &&
-  oddsHome > 1.4 && oddsHome < 3 &&
-  (homeGoals > 70 || totalGoals > 100) &&
-  totalGoals / (d.home_mp + d.away_mp) > 2.5
-) {
-  if (!bets.best1Over25 || oddsHome > parseFloat(bets.best1Over25.odds_home)) {
-    bets.best1Over25 = match;
-  }
-}
+    // Best 1 + Over 2.5
+    if (oddsHome > 1.4 && getPrediction(match) === 'strong home win' && (homeGoals > 70 || totalGoals > 100)) {
+      if (!bets.best1Over25 || oddsHome > parseFloat(bets.best1Over25.odds_home)) {
+        bets.best1Over25 = match;
+      }
+    }
 
-// Best 2 + Over 2.5
-if (
-  getPrediction(match) === 'likely away win' &&
-  oddsAway > 1.4 && oddsAway < 3 &&
-  (awayGoals > 60 || totalGoals > 130) &&
-  totalGoals / (d.home_mp + d.away_mp) > 2.5
-) {
-  if (!bets.best2Over25 || oddsAway > parseFloat(bets.best2Over25.odds_away)) {
-    bets.best2Over25 = match;
-  }
-}
+    // Best 2 + Over 2.5
+    if (oddsAway > 1.4 && getPrediction(match) === 'likely away win' && (awayGoals > 60 || totalGoals > 130)) {
+      if (!bets.best2Over25 || oddsAway > parseFloat(bets.best2Over25.odds_away)) {
+        bets.best2Over25 = match;
+      }
+    }
 
-// Best Home Team Scorer
-if (
-  d.home_mp >= 10 &&
-  homeGoals > 60 &&
-  homeGoals / d.home_mp > 1.5
-) {
-  const currentHomeGoals = parseInt(bets.bestHomeGoalTeam?.details?.home_g || 0);
-  if (!bets.bestHomeGoalTeam || homeGoals > currentHomeGoals) {
-    bets.bestHomeGoalTeam = match;
-  }
-}
+    // Best home scoring team
+    if (homeGoals > 60) {
+      if (!bets.bestHomeGoalTeam || homeGoals > parseInt(bets.bestHomeGoalTeam.details.home_g)) {
+        bets.bestHomeGoalTeam = match;
+      }
+    }
 
-// Best Away Team Scorer
-if (
-  d.away_mp >= 10 &&
-  awayGoals > 60 &&
-  awayGoals / d.away_mp > 1.5
-) {
-  const currentAwayGoals = parseInt(bets.bestAwayGoalTeam?.details?.away_g || 0);
-  if (!bets.bestAwayGoalTeam || awayGoals > currentAwayGoals) {
-    bets.bestAwayGoalTeam = match;
-  }
-
+    // Best away scoring team
+    if (awayGoals > 60) {
+      if (!bets.bestAwayGoalTeam || awayGoals > parseInt(bets.bestAwayGoalTeam.details.away_g)) {
+        bets.bestAwayGoalTeam = match;
+      }
     }
   }
 

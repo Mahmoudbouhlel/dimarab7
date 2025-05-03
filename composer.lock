@@ -4306,7 +4306,11 @@
         },
         {
             "name": "symfony/polyfill-ctype",
+<<<<<<< HEAD
             "version": "v1.32.0",
+=======
+            "version": "v1.31.0",
+>>>>>>> aed912ea31a139f1cf101fabcbd97fc94a1b9229
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
@@ -4365,7 +4369,11 @@
                 "portable"
             ],
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/polyfill-ctype/tree/v1.32.0"
+=======
+                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.31.0"
+>>>>>>> aed912ea31a139f1cf101fabcbd97fc94a1b9229
             },
             "funding": [
                 {
@@ -4463,6 +4471,7 @@
         },
         {
             "name": "symfony/polyfill-intl-idn",
+<<<<<<< HEAD
             "version": "v1.32.0",
             "source": {
                 "type": "git",
@@ -4473,6 +4482,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/9614ac4d8061dc257ecc64cba1b140873dce8ad3",
                 "reference": "9614ac4d8061dc257ecc64cba1b140873dce8ad3",
+=======
+            "version": "v1.31.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-intl-idn.git",
+                "reference": "c36586dcf89a12315939e00ec9b4474adcb1d773"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/c36586dcf89a12315939e00ec9b4474adcb1d773",
+                "reference": "c36586dcf89a12315939e00ec9b4474adcb1d773",
+>>>>>>> aed912ea31a139f1cf101fabcbd97fc94a1b9229
                 "shasum": ""
             },
             "require": {
@@ -4526,7 +4547,11 @@
                 "shim"
             ],
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/polyfill-intl-idn/tree/v1.32.0"
+=======
+                "source": "https://github.com/symfony/polyfill-intl-idn/tree/v1.31.0"
+>>>>>>> aed912ea31a139f1cf101fabcbd97fc94a1b9229
             },
             "funding": [
                 {
@@ -4542,7 +4567,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-09-10T14:38:51+00:00"
+=======
+            "time": "2024-09-09T11:45:10+00:00"
+>>>>>>> aed912ea31a139f1cf101fabcbd97fc94a1b9229
         },
         {
             "name": "symfony/polyfill-intl-normalizer",
@@ -9146,12 +9175,21 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
+<<<<<<< HEAD
     "stability-flags": [],
+=======
+    "stability-flags": {},
+>>>>>>> aed912ea31a139f1cf101fabcbd97fc94a1b9229
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
+<<<<<<< HEAD
     "platform-dev": [],
     "plugin-api-version": "2.3.0"
+=======
+    "platform-dev": {},
+    "plugin-api-version": "2.6.0"
+>>>>>>> aed912ea31a139f1cf101fabcbd97fc94a1b9229
 }

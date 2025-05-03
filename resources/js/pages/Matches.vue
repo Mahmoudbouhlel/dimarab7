@@ -981,5 +981,9 @@ function getConfidence(match) {
 <style>
 .text-xxs {
     font-size: 0.65rem;
+<<<<<<< HEAD
 }
+=======
+} 
+>>>>>>> aed912ea31a139f1cf101fabcbd97fc94a1b9229
 </style>

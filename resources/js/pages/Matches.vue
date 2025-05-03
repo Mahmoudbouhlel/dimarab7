@@ -39,8 +39,6 @@
         </button>
     </div>
 </header>
-
-
 <PremiumModal :open="showPremium" :bets="bestBets" @close="showPremium = false" />
 
 
@@ -539,17 +537,8 @@
                 </svg>
             </a>
         </div>
-
     </div>
-
 </div>
-<div v-if="paginatedMatches.length < filteredMatches.length" class="text-center mt-6">
-  <button @click="seeMore"
-    class="px-6 py-2 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition">
-    🔽 See More
-  </button>
-</div>
-
             <!-- No Results Message -->
             <div v-if="filteredMatches.length === 0"
                 class="bg-white  :bg-gray-800 p-8 rounded-xl text-center shadow-md">
@@ -586,7 +575,6 @@
 
 <script setup>
  import { ref, computed } from 'vue';
-
  import PremiumModal from '@/Components/PremiumModal.vue' // path depends on your structure
  const showPremium = ref(false);
  const bestBets = computed(() => generateBestBets(filteredMatches.value));
@@ -657,14 +645,14 @@ function generateBestBets(matches) {
      }
 
      // Best 1 (home win)
-     if (oddsHome > 1.4  && getPrediction(match) === 'strong home win') {
+     if (oddsHome > 1.4 && oddsHome < 2.5 && getPrediction(match) === 'strong home win') {
        if (!bets.best1 || oddsHome > parseFloat(bets.best1.odds_home)) {
          bets.best1 = match;
        }
      }
 
      // Best 2 (away win)
-     if (oddsAway > 1.4  &&getPrediction(match) === 'likely away win') {
+     if (oddsAway > 1.4 && oddsAway < 2.5 &&getPrediction(match) === 'likely away win') {
        if (!bets.best2 || oddsAway > parseFloat(bets.best2.odds_away)) {
          bets.best2 = match;
        }

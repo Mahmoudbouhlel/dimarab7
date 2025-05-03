@@ -23,10 +23,11 @@
 
     <div class="flex items-center space-x-4">
         <!-- Modern floating action button -->
-        <button class="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-lg text-sm font-semibold hover:shadow-lg hover:shadow-blue-100 hover:-translate-y-0.5 transition-all duration-300 active:scale-95">
-            <span class="drop-shadow-sm">Premium Tips</span>
-            <span class="ml-1.5 opacity-80">→</span>
-        </button>
+        <button
+             @click="showPremium = true"
+             class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition shadow-sm">
+             Premium Tips
+             </button>
 
         <!-- Animated hamburger menu -->
         <button class="p-2 group focus:outline-none">
@@ -38,6 +39,11 @@
         </button>
     </div>
 </header>
+
+
+<PremiumModal :open="showPremium" :bets="bestBets" @close="showPremium = false" />
+
+
 <!-- Modern & Animated Advanced Filters -->
 <div
   class="rounded-2xl bg-white dark:bg-gray-900 shadow-xl ring-1 ring-gray-200 dark:ring-gray-700 p-6 mb-10 transition-all duration-500 hover:shadow-2xl hover:ring-indigo-300"
@@ -247,8 +253,8 @@
 
           <!-- Ultra-Modern Match Grid -->
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-0">
-    <div v-for="match in filteredMatches" :key="match.id"
-         class="bg-white dark:bg-gray-850 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800/50 relative">
+    <div v-for="match in paginatedMatches" :key="match.id"
+        class="bg-white dark:bg-gray-850 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800/50 relative">
 
         <!-- Glow Effect for Top Predictions -->
         <div v-if="getPrediction(match) === 'strong home win'"
@@ -533,8 +539,17 @@
                 </svg>
             </a>
         </div>
+
     </div>
+
 </div>
+<div v-if="paginatedMatches.length < filteredMatches.length" class="text-center mt-6">
+  <button @click="seeMore"
+    class="px-6 py-2 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition">
+    🔽 See More
+  </button>
+</div>
+
             <!-- No Results Message -->
             <div v-if="filteredMatches.length === 0"
                 class="bg-white  :bg-gray-800 p-8 rounded-xl text-center shadow-md">
@@ -570,9 +585,27 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+ import { ref, computed } from 'vue';
 
-const props = defineProps({
+ import PremiumModal from '@/Components/PremiumModal.vue' // path depends on your structure
+ const showPremium = ref(false);
+ const bestBets = computed(() => generateBestBets(filteredMatches.value));
+
+
+ const itemsPerPage = ref(50);
+const currentPage = ref(1);
+
+const paginatedMatches = computed(() => {
+  const start = (currentPage.value - 1) * itemsPerPage.value;
+  const end = start + itemsPerPage.value;
+  return filteredMatches.value.slice(start, end);
+});
+function seeMore() {
+  currentPage.value += 1;
+}
+
+
+    const props = defineProps({
   matches: {
     type: Array,
     default: () => [],
@@ -585,7 +618,89 @@ const todayLabel = new Date().toLocaleDateString('en-US', {
   day: 'numeric',
 });
 
+function generateBestBets(matches) {
+   const bets = {
+     bestGG: null,
+     bestOver25: null,
+     best1: null,
+     best2: null,
+     best1Over25: null,
+     best2Over25: null,
+     bestHomeGoalTeam: null,
+     bestAwayGoalTeam: null,
+   };
 
+   const filtered = matches.filter(m => m.details && m.odds_home && m.odds_away);
+
+   for (const match of filtered) {
+     const d = match.details;
+
+     const homeGoals = parseInt(d.home_g?.split(":")[0]) || 0;
+     const awayGoals = parseInt(d.away_g?.split(":")[0]) || 0;
+     const totalGoals = homeGoals + awayGoals;
+
+     const oddsHome = parseFloat(match.odds_home);
+     const oddsAway = parseFloat(match.odds_away);
+
+     // Best GG
+     if (homeGoals >= 50 && awayGoals >= 50) {
+       if (!bets.bestGG || totalGoals > (bets.bestGG.details.home_g + bets.bestGG.details.away_g)) {
+         bets.bestGG = match;
+       }
+     }
+
+     // Best Over 2.5
+     if (homeGoals > 50 || awayGoals > 50 || totalGoals > 100) {
+       if (!bets.bestOver25 || totalGoals > (parseInt(bets.bestOver25.details.home_g) + parseInt(bets.bestOver25.details.away_g))) {
+         bets.bestOver25 = match;
+       }
+     }
+
+     // Best 1 (home win)
+     if (oddsHome > 1.4  && getPrediction(match) === 'strong home win') {
+       if (!bets.best1 || oddsHome > parseFloat(bets.best1.odds_home)) {
+         bets.best1 = match;
+       }
+     }
+
+     // Best 2 (away win)
+     if (oddsAway > 1.4  &&getPrediction(match) === 'likely away win') {
+       if (!bets.best2 || oddsAway > parseFloat(bets.best2.odds_away)) {
+         bets.best2 = match;
+       }
+     }
+
+     // Best 1 + Over 2.5
+     if (oddsHome > 1.4 && getPrediction(match) === 'strong home win' && (homeGoals > 70 || totalGoals > 100)) {
+       if (!bets.best1Over25 || oddsHome > parseFloat(bets.best1Over25.odds_home)) {
+         bets.best1Over25 = match;
+       }
+     }
+
+     // Best 2 + Over 2.5
+     if (oddsAway > 1.4 && getPrediction(match) === 'likely away win' && (awayGoals > 60 || totalGoals > 130)) {
+       if (!bets.best2Over25 || oddsAway > parseFloat(bets.best2Over25.odds_away)) {
+         bets.best2Over25 = match;
+       }
+     }
+
+     // Best Home Team Scorer
+     if (homeGoals > 60) {
+       if (!bets.bestHomeGoalTeam || homeGoals > parseInt(bets.bestHomeGoalTeam.details.home_g)) {
+         bets.bestHomeGoalTeam = match;
+       }
+     }
+
+     // Best Away Team Scorer
+     if (awayGoals > 60) {
+       if (!bets.bestAwayGoalTeam || awayGoals > parseInt(bets.bestAwayGoalTeam.details.away_g)) {
+         bets.bestAwayGoalTeam = match;
+       }
+     }
+   }
+
+   return bets;
+ }
 // Filters
 const showAdvancedFilters = ref(false);
 const filters = ref({

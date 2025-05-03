@@ -39,8 +39,6 @@
         </button>
     </div>
 </header>
-<PremiumModal :open="showPremium" :bets="bestBets" @close="showPremium = false" />
-
 
 <!-- Modern & Animated Advanced Filters -->
 <div
@@ -252,7 +250,7 @@
           <!-- Ultra-Modern Match Grid -->
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-0">
     <div v-for="match in paginatedMatches" :key="match.id"
-        class="bg-white dark:bg-gray-850 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800/50 relative">
+         class="bg-white dark:bg-gray-850 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800/50 relative">
 
         <!-- Glow Effect for Top Predictions -->
         <div v-if="getPrediction(match) === 'strong home win'"
@@ -555,6 +553,12 @@
                 </button>
             </div>
         </main>
+        <div v-if="paginatedMatches.length < filteredMatches.length" class="mt-8 text-center">
+  <button @click="seeMore"
+    class="px-6 py-2 bg-indigo-600 text-white rounded-full font-semibold shadow hover:bg-indigo-700 transition">
+    🔄 See More
+  </button>
+</div>
 
         <!-- Footer -->
         <footer class="bg-blue-900 text-white p-6 mt-10">
@@ -574,26 +578,9 @@
 </template>
 
 <script setup>
- import { ref, computed } from 'vue';
- import PremiumModal from '@/Components/PremiumModal.vue' // path depends on your structure
- const showPremium = ref(false);
- const bestBets = computed(() => generateBestBets(filteredMatches.value));
+import { ref, computed } from 'vue';
 
-
- const itemsPerPage = ref(50);
-const currentPage = ref(1);
-
-const paginatedMatches = computed(() => {
-  const start = (currentPage.value - 1) * itemsPerPage.value;
-  const end = start + itemsPerPage.value;
-  return filteredMatches.value.slice(start, end);
-});
-function seeMore() {
-  currentPage.value += 1;
-}
-
-
-    const props = defineProps({
+const props = defineProps({
   matches: {
     type: Array,
     default: () => [],
@@ -605,90 +592,19 @@ const todayLabel = new Date().toLocaleDateString('en-US', {
   month: 'short',
   day: 'numeric',
 });
+const itemsPerPage = ref(50);
+const currentPage = ref(1);
 
-function generateBestBets(matches) {
-   const bets = {
-     bestGG: null,
-     bestOver25: null,
-     best1: null,
-     best2: null,
-     best1Over25: null,
-     best2Over25: null,
-     bestHomeGoalTeam: null,
-     bestAwayGoalTeam: null,
-   };
+const paginatedMatches = computed(() => {
+  const start = (currentPage.value - 1) * itemsPerPage.value;
+  const end = start + itemsPerPage.value;
+  return filteredMatches.value.slice(start, end);
+});
 
-   const filtered = matches.filter(m => m.details && m.odds_home && m.odds_away);
+function seeMore() {
+  currentPage.value++;
+}
 
-   for (const match of filtered) {
-     const d = match.details;
-
-     const homeGoals = parseInt(d.home_g?.split(":")[0]) || 0;
-     const awayGoals = parseInt(d.away_g?.split(":")[0]) || 0;
-     const totalGoals = homeGoals + awayGoals;
-
-     const oddsHome = parseFloat(match.odds_home);
-     const oddsAway = parseFloat(match.odds_away);
-
-     // Best GG
-     if (homeGoals >= 50 && awayGoals >= 50) {
-       if (!bets.bestGG || totalGoals > (bets.bestGG.details.home_g + bets.bestGG.details.away_g)) {
-         bets.bestGG = match;
-       }
-     }
-
-     // Best Over 2.5
-     if (homeGoals > 50 || awayGoals > 50 || totalGoals > 100) {
-       if (!bets.bestOver25 || totalGoals > (parseInt(bets.bestOver25.details.home_g) + parseInt(bets.bestOver25.details.away_g))) {
-         bets.bestOver25 = match;
-       }
-     }
-
-     // Best 1 (home win)
-     if (oddsHome > 1.4 && oddsHome < 2.5 && getPrediction(match) === 'strong home win') {
-       if (!bets.best1 || oddsHome > parseFloat(bets.best1.odds_home)) {
-         bets.best1 = match;
-       }
-     }
-
-     // Best 2 (away win)
-     if (oddsAway > 1.4 && oddsAway < 2.5 &&getPrediction(match) === 'likely away win') {
-       if (!bets.best2 || oddsAway > parseFloat(bets.best2.odds_away)) {
-         bets.best2 = match;
-       }
-     }
-
-     // Best 1 + Over 2.5
-     if (oddsHome > 1.4 && getPrediction(match) === 'strong home win' && (homeGoals > 70 || totalGoals > 100)) {
-       if (!bets.best1Over25 || oddsHome > parseFloat(bets.best1Over25.odds_home)) {
-         bets.best1Over25 = match;
-       }
-     }
-
-     // Best 2 + Over 2.5
-     if (oddsAway > 1.4 && getPrediction(match) === 'likely away win' && (awayGoals > 60 || totalGoals > 130)) {
-       if (!bets.best2Over25 || oddsAway > parseFloat(bets.best2Over25.odds_away)) {
-         bets.best2Over25 = match;
-       }
-     }
-
-     // Best Home Team Scorer
-     if (homeGoals > 60) {
-       if (!bets.bestHomeGoalTeam || homeGoals > parseInt(bets.bestHomeGoalTeam.details.home_g)) {
-         bets.bestHomeGoalTeam = match;
-       }
-     }
-
-     // Best Away Team Scorer
-     if (awayGoals > 60) {
-       if (!bets.bestAwayGoalTeam || awayGoals > parseInt(bets.bestAwayGoalTeam.details.away_g)) {
-         bets.bestAwayGoalTeam = match;
-       }
-     }
-   }
-
-   return bets;
- }
 // Filters
 const showAdvancedFilters = ref(false);
 const filters = ref({

@@ -1111,7 +1111,7 @@ if (
 
   return bets;
 }
-const showBestBets = ref(true); // default is shown
+const showBestBets = ref(fasle); // default is shown
 
 </script>
 

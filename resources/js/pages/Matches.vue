@@ -222,6 +222,12 @@
         <input type="checkbox" v-model="filters.winDiffOver10" class="rounded text-indigo-600" />
         🏆 Win Diff > 10
         </label>
+        <label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+  <input type="checkbox" v-model="filters.winDiffOver5" class="rounded text-indigo-600" />
+  🏆 Win Diff > 5
+</label>
+
+
             <label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
             <input type="checkbox" v-model="filters.strongGG" class="rounded text-indigo-600" />
             🔥 Strong GG 50+:50+
@@ -764,6 +770,7 @@ const filters = ref({
   bigRankGap: false, // 👈 Add this line
   winDiffOver10: false, // 👈 Add this
   strongGG: false,
+  winDiffOver5: false,
 
 
 });
@@ -799,6 +806,7 @@ function resetFilters() {
     bigRankGap: false, // 👈 Add this line
     winDiffOver10: false, // 👈 Add here too
     strongGG: false,
+    winDiffOver5: false,
 
 
   };
@@ -883,6 +891,17 @@ if (filters.value.winDiffOver10 && match.details) {
   const winDiff = Math.abs(homeWins - awayWins);
   if (winDiff <= 10) return false;
 }
+
+if (filters.value.winDiffOver5 && match.details) {
+  const homeWins = parseInt(match.details.home_w);
+  const awayWins = parseInt(match.details.away_w);
+  if (isNaN(homeWins) || isNaN(awayWins)) return false;
+
+  const winDiff = Math.abs(homeWins - awayWins);
+  if (winDiff <= 5) return false;
+}
+
+
 if (filters.value.strongGG && match.details) {
   const [hGF, hGA] = match.details.home_g?.split(':').map(Number) || [];
   const [aGF, aGA] = match.details.away_g?.split(':').map(Number) || [];

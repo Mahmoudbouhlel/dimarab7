@@ -144,102 +144,130 @@
       {{ showAdvancedFilters ? '🔽 Hide' : '🔼 Show' }} More Filters
     </button>
   </div>
-
-  <!-- Transitioned Advanced Filters -->
-  <transition name="fade">
-    <div v-if="showAdvancedFilters"
-      class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700 grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- Odds Range -->
-      <div class="md:col-span-3 flex gap-4">
-        <div class="flex-1">
-          <label class="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1">📈 Min Odds</label>
-          <input type="range" min="1" max="10" step="0.1" v-model.number="filters.minOdds"
-            class="w-full h-2 rounded bg-gray-200 dark:bg-gray-700 accent-indigo-600" />
-          <p class="text-xs mt-1 text-gray-600 dark:text-gray-400">From: {{ filters.minOdds }}</p>
-        </div>
-        <div class="flex-1">
-          <label class="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1">📉 Max Odds</label>
-          <input type="range" min="1" max="10" step="0.1" v-model.number="filters.maxOdds"
-            class="w-full h-2 rounded bg-gray-200 dark:bg-gray-700 accent-indigo-600" />
-          <p class="text-xs mt-1 text-gray-600 dark:text-gray-400">To: {{ filters.maxOdds }}</p>
-        </div>
+<!-- Transitioned Advanced Filters -->
+<transition name="fade">
+  <div
+    v-if="showAdvancedFilters"
+    class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700 grid grid-cols-1 md:grid-cols-3 gap-6"
+  >
+    <!-- Odds Range -->
+    <div class="md:col-span-3 flex gap-4">
+      <div class="flex-1">
+        <label class="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1">📈 Min Odds</label>
+        <input type="range" min="1" max="10" step="0.1" v-model.number="filters.minOdds"
+          class="w-full h-2 rounded bg-gray-200 dark:bg-gray-700 accent-indigo-600" />
+        <p class="text-xs mt-1 text-gray-600 dark:text-gray-400">From: {{ filters.minOdds }}</p>
       </div>
-
-      <!-- Team Ranking Type -->
-      <div>
-        <label class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 block">📊 Ranking Type</label>
-        <div class="flex gap-2">
-          <button v-for="type in ['all', 'topVsTop', 'mismatch']" :key="type" @click="setRankingFilter(type)"
-            :class="[
-              filters.rankingType === type
-                ? 'bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 border-indigo-300'
-                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600',
-              'flex-1 text-xs rounded-full border py-1.5 font-semibold transition hover:ring-1 hover:ring-indigo-300'
-            ]">
-            {{ type === 'all' ? 'All' : type === 'topVsTop' ? 'Top vs Top' : 'Mismatch' }}
-          </button>
-        </div>
-      </div>
-
-      <!-- Team Search -->
-      <div class="md:col-span-2">
-        <label class="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1">🔍 Search Teams</label>
-        <div class="relative">
-          <input type="text" v-model="filters.teamSearch" placeholder="e.g. Barcelona"
-            class="w-full rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 px-4 py-2 text-sm text-gray-800 dark:text-white pl-10 transition focus:ring-2 focus:ring-indigo-500" />
-          <div class="absolute left-3 top-2.5 text-gray-400">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M21 21l-6-6m2-5a7 7 0 10-14 0 7 7 0 0014 0z" />
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      <!-- Extra Toggles -->
-      <div class="md:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-4 mt-2">
-        <label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-          <input type="checkbox" v-model="filters.over25" class="rounded text-indigo-600" />
-          ⚽ Over 2.5 Goals
-        </label>
-        <label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-          <input type="checkbox" v-model="filters.gg" class="rounded text-indigo-600" />
-          🤝 Both Teams Scored
-        </label>
-        <label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-          <input type="checkbox" v-model="filters.strongWinOdds" class="rounded text-indigo-600" />
-          💥 1/2 Win + Odds > 2
-        </label>
-        <label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-          <input type="checkbox" v-model="filters.hasComparison" class="rounded text-indigo-600" />
-          📊 Has Comparison
-        </label>
-        <label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-          <input type="checkbox" v-model="filters.bigRankGap" class="rounded text-indigo-600" />
-          💣 Big Rank Gap
-        </label>
-        <label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-        <input type="checkbox" v-model="filters.winDiffOver10" class="rounded text-indigo-600" />
-        🏆 Win Diff > 10
-        </label>
-        <label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-  <input type="checkbox" v-model="filters.winDiffOver5" class="rounded text-indigo-600" />
-  🏆 Win Diff > 5
-</label>
-
-
-            <label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-            <input type="checkbox" v-model="filters.strongGG" class="rounded text-indigo-600" />
-            🔥 Strong GG 50+:50+
-            </label>
-<!-- ✅ Hot Picks Filter -->
-<label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
-    <input type="checkbox" v-model="filters.showHotPicks" class="rounded text-indigo-600" />
-    🚀 Show HOT Picks Only
-  </label>
+      <div class="flex-1">
+        <label class="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1">📉 Max Odds</label>
+        <input type="range" min="1" max="10" step="0.1" v-model.number="filters.maxOdds"
+          class="w-full h-2 rounded bg-gray-200 dark:bg-gray-700 accent-indigo-600" />
+        <p class="text-xs mt-1 text-gray-600 dark:text-gray-400">To: {{ filters.maxOdds }}</p>
       </div>
     </div>
-  </transition>
+
+    <!-- Team Ranking Type -->
+    <div>
+      <label class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 block">📊 Ranking Type</label>
+      <div class="flex gap-2">
+        <button
+          v-for="type in ['all', 'topVsTop', 'mismatch']"
+          :key="type"
+          @click="setRankingFilter(type)"
+          :class="[
+            filters.rankingType === type
+              ? 'bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 border-indigo-300'
+              : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600',
+            'flex-1 text-xs rounded-full border py-1.5 font-semibold transition hover:ring-1 hover:ring-indigo-300'
+          ]"
+        >
+          {{ type === 'all' ? 'All' : type === 'topVsTop' ? 'Top vs Top' : 'Mismatch' }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Team Search -->
+    <div class="md:col-span-2">
+      <label class="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-1">🔍 Search Teams</label>
+      <div class="relative">
+        <input type="text" v-model="filters.teamSearch" placeholder="e.g. Barcelona"
+          class="w-full rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 px-4 py-2 text-sm text-gray-800 dark:text-white pl-10 transition focus:ring-2 focus:ring-indigo-500" />
+        <div class="absolute left-3 top-2.5 text-gray-400">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 10-14 0 7 7 0 0014 0z" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Extra Toggles -->
+    <div class="md:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-4 mt-2">
+      <label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+        <input type="checkbox" v-model="filters.over25" class="rounded text-indigo-600" />
+        ⚽ Over 2.5 Goals
+      </label>
+      <label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+        <input type="checkbox" v-model="filters.gg" class="rounded text-indigo-600" />
+        🤝 Both Teams Scored
+      </label>
+      <label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+        <input type="checkbox" v-model="filters.strongWinOdds" class="rounded text-indigo-600" />
+        💥 1/2 Win + Odds > 2
+      </label>
+      <label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+        <input type="checkbox" v-model="filters.hasComparison" class="rounded text-indigo-600" />
+        📊 Has Comparison
+      </label>
+      <label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+        <input type="checkbox" v-model="filters.bigRankGap" class="rounded text-indigo-600" />
+        💣 Big Rank Gap
+      </label>
+      <label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+        <input type="checkbox" v-model="filters.winDiffOver10" class="rounded text-indigo-600" />
+        🏆 Win Diff > 10
+      </label>
+      <label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+        <input type="checkbox" v-model="filters.winDiffOver5" class="rounded text-indigo-600" />
+        🏆 Win Diff > 5
+      </label>
+      <label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+        <input type="checkbox" v-model="filters.strongGG" class="rounded text-indigo-600" />
+        🔥 Strong GG 50+:50+
+      </label>
+      <label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+        <input type="checkbox" v-model="filters.showHotPicks" class="rounded text-indigo-600" />
+        🚀 Show HOT Picks Only
+      </label>
+      <div class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+  <label for="minGDDiff" class="whitespace-nowrap">📈 Min GD Difference</label>
+  <input
+    type="number"
+    id="minGDDiff"
+    v-model.number="filters.minGDDiff"
+    min="0"
+    max="100"
+    class="w-20 rounded-md border border-gray-300 dark:border-gray-600 px-2 py-1 text-sm text-gray-800 dark:text-white bg-white dark:bg-gray-800"
+  />
+</div>
+
+
+      <!-- H2H Min Wins Filters -->
+      <div class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+        <label for="minAwayH2HWins" class="whitespace-nowrap">🟥 Min Away H2H Wins</label>
+        <input type="number" id="minAwayH2HWins" v-model.number="filters.minAwayH2HWins" min="0" max="20"
+          class="w-16 rounded-md border border-gray-300 dark:border-gray-600 px-2 py-1 text-sm text-gray-800 dark:text-white bg-white dark:bg-gray-800" />
+      </div>
+
+      <div class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+        <label for="minHomeH2HWins" class="whitespace-nowrap">🟦 Min Home H2H Wins</label>
+        <input type="number" id="minHomeH2HWins" v-model.number="filters.minHomeH2HWins" min="0" max="20"
+          class="w-16 rounded-md border border-gray-300 dark:border-gray-600 px-2 py-1 text-sm text-gray-800 dark:text-white bg-white dark:bg-gray-800" />
+      </div>
+    </div>
+  </div>
+</transition>
+
 </div>
 <div v-if="totalPages > 1" class="flex justify-center items-center space-x-4 mt-6">
   <button @click="goToPrevPage" :disabled="currentPage === 1"
@@ -776,6 +804,9 @@ const filters = ref({
   strongGG: false,
   winDiffOver5: false,
   showHotPicks: false,
+  bigGDDiff: false,
+  minAwayH2HWins: 0,
+minHomeH2HWins: 0,
 
 
 });
@@ -813,6 +844,9 @@ function resetFilters() {
     strongGG: false,
     winDiffOver5: false,
     showHotPicks: false,
+    bigGDDiff: false,
+    minAwayH2HWins: 0,
+minHomeH2HWins: 0,
 
 
   };
@@ -888,6 +922,24 @@ if (filters.value.bigRankGap && match.details) {
     return false;
   }
 }
+if (filters.value.minAwayH2HWins > 0 && match.details) {
+  const awayWins = parseInt(match.details.h2h_away_wins || 0);
+  if (awayWins < filters.value.minAwayH2HWins) return false;
+}
+
+if (filters.value.minHomeH2HWins > 0 && match.details) {
+  const homeWins = parseInt(match.details.h2h_home_wins || 0);
+  if (homeWins < filters.value.minHomeH2HWins) return false;
+}
+
+if (filters.value.minGDDiff > 0 && match.details) {
+  const homeGD = parseInt(match.details.home_gd?.replace('+', '')) || 0;
+  const awayGD = parseInt(match.details.away_gd?.replace('+', '')) || 0;
+  const gdDiff = Math.abs(homeGD - awayGD);
+
+  if (gdDiff < filters.value.minGDDiff) return false;
+}
+
 
 if (filters.value.showHotPicks) {
   const prediction = getPrediction(match);

@@ -232,7 +232,11 @@
             <input type="checkbox" v-model="filters.strongGG" class="rounded text-indigo-600" />
             🔥 Strong GG 50+:50+
             </label>
-
+<!-- ✅ Hot Picks Filter -->
+<label class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+    <input type="checkbox" v-model="filters.showHotPicks" class="rounded text-indigo-600" />
+    🚀 Show HOT Picks Only
+  </label>
       </div>
     </div>
   </transition>
@@ -771,6 +775,7 @@ const filters = ref({
   winDiffOver10: false, // 👈 Add this
   strongGG: false,
   winDiffOver5: false,
+  showHotPicks: false,
 
 
 });
@@ -807,6 +812,7 @@ function resetFilters() {
     winDiffOver10: false, // 👈 Add here too
     strongGG: false,
     winDiffOver5: false,
+    showHotPicks: false,
 
 
   };
@@ -882,6 +888,14 @@ if (filters.value.bigRankGap && match.details) {
     return false;
   }
 }
+
+if (filters.value.showHotPicks) {
+  const prediction = getPrediction(match);
+  if (prediction !== 'likely away win' && prediction !== 'strong home win') {
+    return false;
+  }
+}
+
 // Win difference > 10
 if (filters.value.winDiffOver10 && match.details) {
   const homeWins = parseInt(match.details.home_w);

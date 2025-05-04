@@ -834,7 +834,7 @@ function resetFilters() {
     teamSearch: '',
     over25: false,
     gg: false,
-    matchDate: '',
+    matchDate: 'today',  // ✅ Set default here
     startHour: 0,
     endHour: 23,
     strongWinOdds: false,
@@ -846,7 +846,7 @@ function resetFilters() {
     showHotPicks: false,
     bigGDDiff: false,
     minAwayH2HWins: 0,
-minHomeH2HWins: 0,
+    minHomeH2HWins: 0,
 
 
   };

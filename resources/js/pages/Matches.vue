@@ -890,7 +890,7 @@ const filters = ref({
   startHour: 0,
   endHour: 23,
   strongWinOdds: false,  // ✅ Add this
-  hasComparison: false,
+  hasComparison: true,
   bigRankGap: false, // 👈 Add this line
   winDiffOver10: false, // 👈 Add this
   strongGG: false,
@@ -930,7 +930,7 @@ function resetFilters() {
     startHour: 0,
     endHour: 23,
     strongWinOdds: false,
-    hasComparison: false,
+    hasComparison: true,
     bigRankGap: false, // 👈 Add this line
     winDiffOver10: false, // 👈 Add here too
     strongGG: false,

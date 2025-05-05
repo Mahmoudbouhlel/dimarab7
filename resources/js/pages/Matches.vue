@@ -42,23 +42,23 @@
 
 <!-- Modern & Animated Advanced Filters -->
 <div
-  class="rounded-2xl bg-white dark:bg-gray-900 shadow-xl ring-1 ring-gray-200 dark:ring-gray-700 p-6 mb-10 transition-all duration-500 hover:shadow-2xl hover:ring-indigo-300"
+  class="rounded-2xl bg-white   :bg-gray-900 shadow-xl ring-1 ring-gray-200   :ring-gray-700 p-6 mb-10 transition-all duration-500 hover:shadow-2xl hover:ring-indigo-300"
 >
   <!-- Header -->
   <div class="flex items-center justify-between mb-6">
     <div class="flex items-center space-x-3">
-      <div class="w-10 h-10 bg-indigo-100 dark:bg-indigo-800 rounded-full flex items-center justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-700 dark:text-indigo-300" fill="none"
+      <div class="w-10 h-10 bg-indigo-100   :bg-indigo-800 rounded-full flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-700   :text-indigo-300" fill="none"
           viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M3 4a1 1 0 011-1h16a1 1 0 011 1v3a1 1 0 01-.293.707L13 15.414V19a1 1 0 01-.293.707l-2 2A1 1 0 019 21v-5.586L3.293 7.707A1 1 0 013 7V4z" />
         </svg>
       </div>
-      <h3 class="text-xl font-semibold text-gray-800 dark:text-white tracking-tight">Advanced Filters</h3>
+      <h3 class="text-xl font-semibold text-gray-800   :text-white tracking-tight">Advanced Filters</h3>
     </div>
 
     <button @click="resetFilters"
-      class="text-sm px-4 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-full font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+      class="text-sm px-4 py-1.5 bg-gray-100   :bg-gray-800 text-gray-600   :text-gray-300 rounded-full font-medium hover:bg-gray-200   :hover:bg-gray-700 transition">
       🔄 Reset All
     </button>
   </div>
@@ -67,10 +67,10 @@
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
     <!-- League -->
     <div>
-      <label class="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-300">🏆 League</label>
+      <label class="block mb-1 text-sm font-medium text-gray-700   :text-gray-300">🏆 League</label>
       <div class="relative">
         <select v-model="filters.league"
-          class="w-full rounded-xl px-4 py-2 pr-10 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-indigo-500 transition">
+          class="w-full rounded-xl px-4 py-2 pr-10 text-sm bg-gray-50   :bg-gray-800 border border-gray-300   :border-gray-600 text-gray-800   :text-gray-100 focus:ring-2 focus:ring-indigo-500 transition">
           <option value="">All Leagues</option>
           <option v-for="league in availableLeagues" :key="league" :value="league">{{ league }}</option>
         </select>
@@ -84,15 +84,18 @@
 
     <!-- Prediction Type -->
     <div>
-      <label class="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-300">📊 Prediction Type</label>
+      <label class="block mb-1 text-sm font-medium text-gray-700   :text-gray-300">📊 Prediction Type</label>
       <div class="relative">
         <select v-model="filters.predictionType"
-          class="w-full rounded-xl px-4 py-2 pr-10 text-sm bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-indigo-500 transition">
+          class="w-full rounded-xl px-4 py-2 pr-10 text-sm bg-gray-50   :bg-gray-800 border border-gray-300   :border-gray-600 text-gray-800   :text-gray-100 focus:ring-2 focus:ring-indigo-500 transition">
           <option value="">All Predictions</option>
-          <option value="strong home win">Strong Home Win</option>
-          <option value="likely away win">Likely Away Win</option>
-          <option value="potential draw">Potential Draw</option>
-          <option value="closely contested match">Closely Contested</option>
+          <option value="super home win">🔥 Super Home Win</option>
+            <option value="strong home win">Strong Home Win</option>
+            <option value="potential draw">Potential Draw</option>
+            <option value="likely away win">Likely Away Win</option>
+            <option value="super away win">🔥 Super Away Win</option>
+            <option value="closely contested match">Closely Contested</option>
+
         </select>
         <div class="absolute right-3 top-2.5 pointer-events-none">
           <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -104,14 +107,14 @@
 
     <!-- Match Date Buttons -->
     <div>
-      <label class="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-300">📅 Match Date</label>
+      <label class="block mb-1 text-sm font-medium text-gray-700   :text-gray-300">📅 Match Date</label>
       <div class="flex gap-2">
         <button v-for="option in ['yesterday', 'today', 'tomorrow']" :key="option"
           @click="setDateFilter(option)"
           :class="[
             filters.matchDate === option
-              ? 'bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 border-indigo-400'
-              : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-600',
+              ? 'bg-indigo-100   :bg-indigo-900 text-indigo-700   :text-indigo-300 border-indigo-400'
+              : 'bg-white   :bg-gray-800 text-gray-700   :text-gray-300 border-gray-300   :border-gray-600',
             'flex-1 text-xs rounded-full border text-center py-1.5 font-semibold transition hover:ring-1 hover:ring-indigo-400'
           ]">
           {{ option.charAt(0).toUpperCase() + option.slice(1) }}
@@ -122,17 +125,17 @@
 
   <!-- Time Range -->
   <div class="mt-6">
-    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">🕒 Match Time Range</label>
+    <label class="block text-sm font-medium text-gray-700   :text-gray-300 mb-2">🕒 Match Time Range</label>
     <div class="flex flex-col md:flex-row gap-4">
       <div class="flex-1">
         <input type="range" min="0" max="23" v-model.number="filters.startHour"
-          class="w-full h-2 rounded bg-gray-200 dark:bg-gray-700 accent-indigo-600" />
-        <p class="text-xs mt-1 text-gray-600 dark:text-gray-400">Start: {{ filters.startHour }}:00</p>
+          class="w-full h-2 rounded bg-gray-200   :bg-gray-700 accent-indigo-600" />
+        <p class="text-xs mt-1 text-gray-600   :text-gray-400">Start: {{ filters.startHour }}:00</p>
       </div>
       <div class="flex-1">
         <input type="range" min="0" max="23" v-model.number="filters.endHour"
-          class="w-full h-2 rounded bg-gray-200 dark:bg-gray-700 accent-indigo-600" />
-        <p class="text-xs mt-1 text-gray-600 dark:text-gray-400">End: {{ filters.endHour }}:00</p>
+          class="w-full h-2 rounded bg-gray-200   :bg-gray-700 accent-indigo-600" />
+        <p class="text-xs mt-1 text-gray-600   :text-gray-400">End: {{ filters.endHour }}:00</p>
       </div>
     </div>
   </div>
@@ -140,48 +143,47 @@
   <!-- Advanced Toggle -->
   <div class="text-right mt-4">
     <button @click="showAdvancedFilters = !showAdvancedFilters"
-      class="text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:underline transition">
+      class="text-sm font-medium text-indigo-600   :text-indigo-400 hover:underline transition">
       {{ showAdvancedFilters ? '🔽 Hide' : '🔼 Show' }} More Filters
     </button>
   </div>
 <!-- Modernized Advanced Filters -->
-<!-- Modernized Advanced Filters -->
 <transition name="fade">
   <div
     v-if="showAdvancedFilters"
-    class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700 space-y-6"
+    class="mt-6 pt-6 border-t border-gray-200   :border-gray-700 space-y-6"
   >
     <!-- Odds Range Slider with Modern Look -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div class="bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-sm">
-        <h3 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4 flex items-center">
-          <span class="bg-indigo-100 dark:bg-indigo-900 p-1.5 rounded-lg mr-2">📈</span>
+      <div class="bg-white   :bg-gray-800 p-4 rounded-2xl shadow-sm">
+        <h3 class="text-sm font-semibold text-gray-700   :text-gray-300 mb-4 flex items-center">
+          <span class="bg-indigo-100   :bg-indigo-900 p-1.5 rounded-lg mr-2">📈</span>
           Odds Range
         </h3>
         <div class="flex gap-6">
           <div class="flex-1">
             <div class="flex justify-between mb-1">
-              <label class="text-xs font-medium text-gray-500 dark:text-gray-400">Min</label>
-              <span class="text-xs font-medium text-indigo-600 dark:text-indigo-400">{{ filters.minOdds }}</span>
+              <label class="text-xs font-medium text-gray-500   :text-gray-400">Min</label>
+              <span class="text-xs font-medium text-indigo-600   :text-indigo-400">{{ filters.minOdds }}</span>
             </div>
             <input type="range" min="1" max="10" step="0.1" v-model.number="filters.minOdds"
-              class="w-full h-2 rounded-full bg-gray-200 dark:bg-gray-700 accent-indigo-600" />
+              class="w-full h-2 rounded-full bg-gray-200   :bg-gray-700 accent-indigo-600" />
           </div>
           <div class="flex-1">
             <div class="flex justify-between mb-1">
-              <label class="text-xs font-medium text-gray-500 dark:text-gray-400">Max</label>
-              <span class="text-xs font-medium text-indigo-600 dark:text-indigo-400">{{ filters.maxOdds }}</span>
+              <label class="text-xs font-medium text-gray-500   :text-gray-400">Max</label>
+              <span class="text-xs font-medium text-indigo-600   :text-indigo-400">{{ filters.maxOdds }}</span>
             </div>
             <input type="range" min="1" max="10" step="0.1" v-model.number="filters.maxOdds"
-              class="w-full h-2 rounded-full bg-gray-200 dark:bg-gray-700 accent-indigo-600" />
+              class="w-full h-2 rounded-full bg-gray-200   :bg-gray-700 accent-indigo-600" />
           </div>
         </div>
       </div>
 
       <!-- Team Search with Modern Look -->
-      <div class="bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-sm">
-        <h3 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4 flex items-center">
-          <span class="bg-indigo-100 dark:bg-indigo-900 p-1.5 rounded-lg mr-2">🔍</span>
+      <div class="bg-white   :bg-gray-800 p-4 rounded-2xl shadow-sm">
+        <h3 class="text-sm font-semibold text-gray-700   :text-gray-300 mb-4 flex items-center">
+          <span class="bg-indigo-100   :bg-indigo-900 p-1.5 rounded-lg mr-2">🔍</span>
           Search Teams
         </h3>
         <div class="relative">
@@ -189,7 +191,7 @@
             type="text"
             v-model="filters.teamSearch"
             placeholder="e.g. Barcelona"
-            class="w-full rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 px-4 py-2.5 text-sm text-gray-800 dark:text-white pl-10 transition focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+            class="w-full rounded-xl bg-gray-50   :bg-gray-900 border border-gray-200   :border-gray-700 px-4 py-2.5 text-sm text-gray-800   :text-white pl-10 transition focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
           />
           <div class="absolute left-3 top-3 text-gray-400">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -202,9 +204,9 @@
     </div>
 
     <!-- Ranking Type with Modern Pills -->
-    <div class="bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-sm">
-      <h3 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4 flex items-center">
-        <span class="bg-indigo-100 dark:bg-indigo-900 p-1.5 rounded-lg mr-2">📊</span>
+    <div class="bg-white   :bg-gray-800 p-4 rounded-2xl shadow-sm">
+      <h3 class="text-sm font-semibold text-gray-700   :text-gray-300 mb-4 flex items-center">
+        <span class="bg-indigo-100   :bg-indigo-900 p-1.5 rounded-lg mr-2">📊</span>
         Ranking Type
       </h3>
       <div class="flex gap-3">
@@ -216,7 +218,7 @@
             'flex-1 py-2 px-4 rounded-full text-sm font-medium transition-all duration-200 border',
             filters.rankingType === type
               ? 'bg-indigo-600 text-white border-transparent shadow-md'
-              : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700'
+              : 'bg-white   :bg-gray-800 text-gray-600   :text-gray-300 border-gray-200   :border-gray-700 hover:bg-gray-50   :hover:bg-gray-700'
           ]"
         >
           {{ type === 'all' ? 'All' : type === 'topVsTop' ? 'Top vs Top' : 'Mismatch' }}
@@ -227,25 +229,25 @@
     <!-- Main Filter Groups -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <!-- Match Conditions -->
-      <div class="bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-sm">
-        <h3 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4 flex items-center">
-          <span class="bg-indigo-100 dark:bg-indigo-900 p-1.5 rounded-lg mr-2">⚽</span>
+      <div class="bg-white   :bg-gray-800 p-4 rounded-2xl shadow-sm">
+        <h3 class="text-sm font-semibold text-gray-700   :text-gray-300 mb-4 flex items-center">
+          <span class="bg-indigo-100   :bg-indigo-900 p-1.5 rounded-lg mr-2">⚽</span>
           Match Conditions
         </h3>
         <div class="grid grid-cols-1 gap-3">
-          <label class="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded-lg transition-colors">
+          <label class="flex items-center gap-3 text-sm text-gray-700   :text-gray-300 hover:bg-gray-50   :hover:bg-gray-700 p-2 rounded-lg transition-colors">
             <input type="checkbox" v-model="filters.over25" class="rounded text-indigo-600 w-4 h-4 border-gray-300 focus:ring-indigo-500" />
             <span>Over 2.5 Goals</span>
           </label>
-          <label class="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded-lg transition-colors">
+          <label class="flex items-center gap-3 text-sm text-gray-700   :text-gray-300 hover:bg-gray-50   :hover:bg-gray-700 p-2 rounded-lg transition-colors">
             <input type="checkbox" v-model="filters.gg" class="rounded text-indigo-600 w-4 h-4 border-gray-300 focus:ring-indigo-500" />
             <span>Both Teams Scored</span>
           </label>
-          <label class="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded-lg transition-colors">
+          <label class="flex items-center gap-3 text-sm text-gray-700   :text-gray-300 hover:bg-gray-50   :hover:bg-gray-700 p-2 rounded-lg transition-colors">
             <input type="checkbox" v-model="filters.strongWinOdds" class="rounded text-indigo-600 w-4 h-4 border-gray-300 focus:ring-indigo-500" />
             <span>1/2 Win + Odds > 2</span>
           </label>
-          <label class="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded-lg transition-colors">
+          <label class="flex items-center gap-3 text-sm text-gray-700   :text-gray-300 hover:bg-gray-50   :hover:bg-gray-700 p-2 rounded-lg transition-colors">
             <input type="checkbox" v-model="filters.strongGG" class="rounded text-indigo-600 w-4 h-4 border-gray-300 focus:ring-indigo-500" />
             <span>Strong GG 50+:50+</span>
           </label>
@@ -253,81 +255,80 @@
       </div>
 
       <!-- Performance Metrics -->
-      <div class="bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-sm">
-        <h3 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4 flex items-center">
-          <span class="bg-indigo-100 dark:bg-indigo-900 p-1.5 rounded-lg mr-2">🏆</span>
+      <div class="bg-white   :bg-gray-800 p-4 rounded-2xl shadow-sm">
+        <h3 class="text-sm font-semibold text-gray-700   :text-gray-300 mb-4 flex items-center">
+          <span class="bg-indigo-100   :bg-indigo-900 p-1.5 rounded-lg mr-2">🏆</span>
           Performance Metrics
         </h3>
         <div class="grid grid-cols-1 gap-3">
-          <label class="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded-lg transition-colors">
+          <label class="flex items-center gap-3 text-sm text-gray-700   :text-gray-300 hover:bg-gray-50   :hover:bg-gray-700 p-2 rounded-lg transition-colors">
             <input type="checkbox" v-model="filters.bigRankGap" class="rounded text-indigo-600 w-4 h-4 border-gray-300 focus:ring-indigo-500" />
             <span>Big Rank Gap</span>
           </label>
-          <label class="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded-lg transition-colors">
+          <label class="flex items-center gap-3 text-sm text-gray-700   :text-gray-300 hover:bg-gray-50   :hover:bg-gray-700 p-2 rounded-lg transition-colors">
             <input type="checkbox" v-model="filters.winDiffOver10" class="rounded text-indigo-600 w-4 h-4 border-gray-300 focus:ring-indigo-500" />
             <span>Win Diff > 10</span>
           </label>
-          <label class="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded-lg transition-colors">
+          <label class="flex items-center gap-3 text-sm text-gray-700   :text-gray-300 hover:bg-gray-50   :hover:bg-gray-700 p-2 rounded-lg transition-colors">
             <input type="checkbox" v-model="filters.winDiffOver5" class="rounded text-indigo-600 w-4 h-4 border-gray-300 focus:ring-indigo-500" />
             <span>Win Diff > 5</span>
           </label>
-          <label class="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 p-2 rounded-lg transition-colors">
-  <input type="checkbox" v-model="filters.hasComparison" class="rounded text-indigo-600 w-4 h-4 border-gray-300 focus:ring-indigo-500" />
-  <span>Has Comparison</span>
-</label>
-
+          <label class="flex items-center gap-3 text-sm text-gray-700   :text-gray-300 hover:bg-gray-50   :hover:bg-gray-700 p-2 rounded-lg transition-colors">
+            <input type="checkbox" v-model="filters.hasComparison" class="rounded text-indigo-600 w-4 h-4 border-gray-300 focus:ring-indigo-500" />
+            <span>Has Comparison</span>
+          </label>
         </div>
       </div>
     </div>
 
     <!-- Numeric Inputs in Modern Style -->
-    <div class="bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-sm">
-      <h3 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4 flex items-center">
-        <span class="bg-indigo-100 dark:bg-indigo-900 p-1.5 rounded-lg mr-2">🔢</span>
+    <div class="bg-white   :bg-gray-800 p-4 rounded-2xl shadow-sm">
+      <h3 class="text-sm font-semibold text-gray-700   :text-gray-300 mb-4 flex items-center">
+        <span class="bg-indigo-100   :bg-indigo-900 p-1.5 rounded-lg mr-2">🔢</span>
         Numeric Filters
       </h3>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
-          <label for="minGDDiff" class="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">Min GD Difference</label>
+          <label for="minGDDiff" class="block text-xs font-medium text-gray-500   :text-gray-400 mb-1">Min GD Difference</label>
           <div class="relative">
-            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500 dark:text-gray-400">📈</span>
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500   :text-gray-400">📈</span>
             <input
               type="number"
               id="minGDDiff"
               v-model.number="filters.minGDDiff"
               min="0"
               max="100"
-              class="w-full rounded-lg border border-gray-200 dark:border-gray-700 py-2 pl-9 pr-3 text-sm bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              class="w-full rounded-lg border border-gray-200   :border-gray-700 py-2 pl-9 pr-3 text-sm bg-gray-50   :bg-gray-900 text-gray-800   :text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
             />
           </div>
         </div>
 
         <div>
-          <label for="minHomeH2HWins" class="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">Min Home H2H Wins</label>
+          <label for="minHomeH2HWins" class="block text-xs font-medium text-gray-500   :text-gray-400 mb-1">Min Home H2H Wins</label>
           <div class="relative">
-            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500 dark:text-gray-400">🟦</span>
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500   :text-gray-400">🟦</span>
             <input
               type="number"
               id="minHomeH2HWins"
               v-model.number="filters.minHomeH2HWins"
               min="0"
               max="20"
-              class="w-full rounded-lg border border-gray-200 dark:border-gray-700 py-2 pl-9 pr-3 text-sm bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              class="w-full rounded-lg border border-gray-200   :border-gray-700 py-2 pl-9 pr-3 text-sm bg-gray-50   :bg-gray-900 text-gray-800   :text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
             />
           </div>
         </div>
 
         <div>
-          <label for="minAwayH2HWins" class="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">Min Away H2H Wins</label>
+          <label for="minAwayH2HWins" class="block text-xs font-medium text-gray-500   :text-gray-400 mb-1">Min Away H2H Wins</label>
           <div class="relative">
-            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500 dark:text-gray-400">🟥</span>
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500   :text-gray-400">🟥</span>
             <input
               type="number"
               id="minAwayH2HWins"
               v-model.number="filters.minAwayH2HWins"
               min="0"
               max="20"
-              class="w-full rounded-lg border border-gray-200 dark:border-gray-700 py-2 pl-9 pr-3 text-sm bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              class="w-full rounded-lg border border-gray-200   :border-gray-700 py-2 pl-9 pr-3 text-sm bg-gray-50   :bg-gray-900 text-gray-800   :text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
             />
           </div>
         </div>
@@ -338,8 +339,8 @@
     <div class="flex justify-center">
       <label class="relative inline-flex items-center cursor-pointer">
         <input type="checkbox" v-model="filters.showHotPicks" class="sr-only peer">
-        <div class="w-14 h-7 bg-gray-200 dark:bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 dark:peer-focus:ring-indigo-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-indigo-600"></div>
-        <span class="ml-3 text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center">
+        <div class="w-14 h-7 bg-gray-200   :bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300   :peer-focus:ring-indigo-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-indigo-600"></div>
+        <span class="ml-3 text-sm font-medium text-gray-700   :text-gray-300 flex items-center">
           <span class="mr-1.5">🚀</span> Show HOT Picks Only
         </span>
       </label>
@@ -348,11 +349,13 @@
   </div>
 </transition>
 </div>
+
+
 <div v-if="totalPages > 1" class="flex justify-center items-center space-x-4 mt-6">
   <button @click="goToPrevPage" :disabled="currentPage === 1"
     class="px-3 py-1 text-sm border rounded disabled:opacity-50">Prev</button>
 
-  <span class="text-sm text-gray-600 dark:text-gray-300">
+  <span class="text-sm text-gray-600   :text-gray-300">
     Page {{ currentPage }} of {{ totalPages }}
   </span>
 
@@ -470,119 +473,129 @@
 
 
 
-          <!-- Ultra-Modern Match Grid -->
+        <!-- Ultra-Modern Match Grid -->
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-0">
-    <div v-for="match in paginatedMatches"
-    :key="match.id"
-         class="bg-white dark:bg-gray-850 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800/50 relative">
+  <div v-for="match in paginatedMatches"
+       :key="match.id"
+       class="bg-white   :bg-gray-850 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group border border-gray-100   :border-gray-700 relative">
 
-        <!-- Glow Effect for Top Predictions -->
-        <div v-if="getPrediction(match) === 'strong home win'"
-             class="absolute inset-0 rounded-2xl pointer-events-none bg-blue-500/5 group-hover:bg-blue-500/10 transition-all duration-700"></div>
-        <div v-if="getPrediction(match) === 'likely away win'"
-             class="absolute inset-0 rounded-2xl pointer-events-none bg-red-500/5 group-hover:bg-red-500/10 transition-all duration-700"></div>
+    <!-- Glow Effect for Predictions -->
+    <div
+      :class="{
+        'absolute inset-0 rounded-2xl pointer-events-none transition-all duration-700':
+          true,
+        'bg-blue-500/5 group-hover:bg-blue-500/10': getPrediction(match).includes('home'),
+        'bg-red-500/5 group-hover:bg-red-500/10': getPrediction(match).includes('away')
+      }"
+      v-if="['strong home win', 'super home win', 'likely away win', 'super away win'].includes(getPrediction(match))"
+    ></div>
 
-        <!-- Match Header with Dynamic Gradient -->
-        <div class="relative p-6 pb-4 bg-gradient-to-r from-blue-50/80 to-indigo-50/80 dark:from-gray-800 dark:to-gray-800">
-            <!-- Floating Time Badge -->
-            <div class="absolute top-4 right-4 backdrop-blur-sm bg-white/90 dark:bg-gray-700/90 px-3 py-1.5 rounded-full shadow-xs flex items-center space-x-2">
-                <span class="text-xs font-semibold text-indigo-600 dark:text-indigo-300 flex items-center">
-                    <span class="w-2 h-2 bg-indigo-500 rounded-full mr-1.5 animate-pulse"></span>
-                    {{ match.match_time }}
-                </span>
-                <span class="text-[10px] text-gray-500 dark:text-gray-400">
-                    {{ match.match_date }}
-                </span>
-            </div>
+    <!-- Match Header -->
+    <div class="relative p-6 pb-4 bg-gradient-to-r from-blue-50/80 to-indigo-50/80   :from-gray-800   :to-gray-800">
+      <!-- Match Time -->
+      <div class="absolute top-4 right-4 backdrop-blur-sm bg-white/90   :bg-gray-700/90 px-3 py-1.5 rounded-full shadow-xs flex items-center space-x-2">
+        <span class="text-xs font-semibold text-indigo-600   :text-indigo-300 flex items-center">
+          <span class="w-2 h-2 bg-indigo-500 rounded-full mr-1.5 animate-pulse"></span>
+          {{ match.match_time }}
+        </span>
+        <span class="text-[10px] text-gray-500   :text-gray-400">
+          {{ match.match_date }}
+        </span>
+      </div>
 
-            <!-- League Tag -->
-            <div class="inline-flex items-center px-3 py-1 rounded-full bg-white dark:bg-gray-700 shadow-xs mb-3">
-                <span class="text-xs font-bold text-indigo-500 dark:text-indigo-400 uppercase tracking-wider">
-                    {{ match.league }}
-                </span>
-            </div>
+      <!-- League -->
+      <div class="inline-flex items-center px-3 py-1 rounded-full bg-white   :bg-gray-700 shadow-xs mb-3">
+        <span class="text-xs font-bold text-indigo-500   :text-indigo-400 uppercase tracking-wider">
+          {{ match.league }}
+        </span>
+      </div>
 
-            <!-- Team Names with Hover Effects -->
-            <h3 class="text-2xl font-extrabold text-center">
-                <span class="text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
-                    {{ match.home_team }}
-                </span>
-                <span class="mx-2 text-gray-400 dark:text-gray-500 font-normal">vs</span>
-                <span class="text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors duration-300">
-                    {{ match.away_team }}
-                </span>
-            </h3>
+      <!-- Teams -->
+      <h3 class="text-2xl font-extrabold text-center">
+        <span class="text-gray-900   :text-white group-hover:text-blue-600   :group-hover:text-blue-400 transition-colors duration-300">
+          {{ match.home_team }}
+        </span>
+        <span class="mx-2 text-gray-400   :text-gray-500 font-normal">vs</span>
+        <span class="text-gray-900   :text-white group-hover:text-red-600   :group-hover:text-red-400 transition-colors duration-300">
+          {{ match.away_team }}
+        </span>
+      </h3>
+    </div>
+
+    <!-- Odds Section -->
+    <div class="px-6 py-4 bg-gray-50/50   :bg-gray-800/30 backdrop-blur-sm">
+      <div class="grid grid-cols-3 gap-3">
+        <!-- Home Odds -->
+        <div @click="selectPrediction(match, 'home')"
+             :class="[
+               'relative rounded-xl p-3 text-center border-2 cursor-pointer transform transition-all hover:-translate-y-1 hover:shadow-lg',
+               'bg-gradient-to-b from-blue-50/80 to-white   :from-blue-900/20   :to-gray-800',
+               'border-blue-200   :border-blue-800/30 hover:border-blue-300   :hover:border-blue-700',
+               getPrediction(match).includes('home') ? 'ring-2 ring-blue-500   :ring-blue-400 scale-[1.03]' : ''
+             ]">
+          <div class="text-xs font-bold text-blue-600   :text-blue-300 mb-1">Home</div>
+          <div class="text-xl font-black text-gray-900   :text-white">@{{ match.odds_home }}</div>
+          <div v-if="getPrediction(match) === 'strong home win'"
+               class="absolute -top-2 -right-2 bg-blue-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full animate-bounce">BEST BET</div>
+          <div v-if="getPrediction(match) === 'super home win'"
+               class="absolute -top-2 -right-2 bg-blue-700 text-white text-[10px] font-bold px-2 py-0.5 rounded-full animate-bounce">SUPER PICK</div>
         </div>
 
-        <!-- Odds Section with 3D Card Effect -->
-        <div class="px-6 py-4 bg-gray-50/50 dark:bg-gray-800/30 backdrop-blur-sm">
-            <div class="grid grid-cols-3 gap-3">
-                <!-- Home Odds Card -->
-                <div @click="selectPrediction(match, 'home')"
-                    :class="[
-                        'relative rounded-xl p-3 text-center border-2 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 hover:shadow-lg',
-                        'bg-gradient-to-b from-blue-50/80 to-white dark:from-blue-900/20 dark:to-gray-800',
-                        'border-blue-200 dark:border-blue-800/30 hover:border-blue-300 dark:hover:border-blue-700',
-                        getPrediction(match) === 'strong home win' ? 'ring-2 ring-blue-500 dark:ring-blue-400 z-10 scale-[1.03]' : ''
-                    ]">
-                    <div class="text-xs font-bold text-blue-600 dark:text-blue-300 mb-1">Home</div>
-                    <div class="text-xl font-black text-gray-900 dark:text-white">@{{ match.odds_home }}</div>
-                    <div v-if="getPrediction(match) === 'strong home win'"
-                         class="absolute -top-2 -right-2 bg-blue-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full animate-bounce">
-                        BEST BET
-                    </div>
-                </div>
-
-                <!-- Draw Odds Card -->
-                <div @click="selectPrediction(match, 'draw')"
-                    :class="[
-                        'relative rounded-xl p-3 text-center border-2 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 hover:shadow-lg',
-                        'bg-gradient-to-b from-gray-50/80 to-white dark:from-gray-700/20 dark:to-gray-800',
-                        'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600',
-                        getPrediction(match) === 'potential draw' ? 'ring-2 ring-gray-500 dark:ring-gray-300 z-10 scale-[1.03]' : ''
-                    ]">
-                    <div class="text-xs font-bold text-gray-600 dark:text-gray-300 mb-1">Draw</div>
-                    <div class="text-xl font-black text-gray-900 dark:text-white">@{{ match.odds_draw }}</div>
-                </div>
-
-                <!-- Away Odds Card -->
-                <div @click="selectPrediction(match, 'away')"
-                    :class="[
-                        'relative rounded-xl p-3 text-center border-2 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 hover:shadow-lg',
-                        'bg-gradient-to-b from-red-50/80 to-white dark:from-red-900/20 dark:to-gray-800',
-                        'border-red-200 dark:border-red-800/30 hover:border-red-300 dark:hover:border-red-700',
-                        getPrediction(match) === 'likely away win' ? 'ring-2 ring-red-500 dark:ring-red-400 z-10 scale-[1.03]' : ''
-                    ]">
-                    <div class="text-xs font-bold text-red-600 dark:text-red-300 mb-1">Away</div>
-                    <div class="text-xl font-black text-gray-900 dark:text-white">@{{ match.odds_away }}</div>
-                    <div v-if="getPrediction(match) === 'likely away win'"
-                         class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full animate-bounce">
-                        HOT PICK
-                    </div>
-                </div>
-            </div>
+        <!-- Draw Odds -->
+        <div @click="selectPrediction(match, 'draw')"
+             :class="[
+               'relative rounded-xl p-3 text-center border-2 cursor-pointer transform transition-all hover:-translate-y-1 hover:shadow-lg',
+               'bg-gradient-to-b from-gray-50/80 to-white   :from-gray-700/20   :to-gray-800',
+               'border-gray-200   :border-gray-700 hover:border-gray-300   :hover:border-gray-600',
+               getPrediction(match).includes('draw') ? 'ring-2 ring-gray-500   :ring-gray-300 scale-[1.03]' : ''
+             ]">
+          <div class="text-xs font-bold text-gray-600   :text-gray-300 mb-1">Draw</div>
+          <div class="text-xl font-black text-gray-900   :text-white">@{{ match.odds_draw }}</div>
         </div>
 
-        <!-- AI Prediction Banner -->
-        <div v-if="match.details" class="px-6 py-3 border-t border-gray-100 dark:border-gray-700">
-            <div class="flex items-center justify-between bg-indigo-50/70 dark:bg-indigo-900/30 p-3 rounded-lg backdrop-blur-sm border border-indigo-100 dark:border-indigo-800/50">
-                <div class="flex items-center">
-                    <div class="w-8 h-8 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center mr-3">
-                        <span class="text-white text-sm">AI</span>
-                    </div>
-                    <div>
-                        <p class="text-sm font-medium text-gray-700 dark:text-gray-300">Prediction Confidence</p>
-                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 mt-1">
-                            <div class="bg-gradient-to-r from-indigo-400 to-purple-500 h-1.5 rounded-full"
-                                 :style="{ width: getConfidence(match) + '%' }"></div>
-                        </div>
-                    </div>
-                </div>
-                <span class="font-bold text-indigo-600 dark:text-indigo-400 text-sm bg-white dark:bg-gray-800 px-2 py-1 rounded">
-                    {{ getPrediction(match) }}
-                </span>
-            </div>
+        <!-- Away Odds -->
+        <div @click="selectPrediction(match, 'away')"
+             :class="[
+               'relative rounded-xl p-3 text-center border-2 cursor-pointer transform transition-all hover:-translate-y-1 hover:shadow-lg',
+               'bg-gradient-to-b from-red-50/80 to-white   :from-red-900/20   :to-gray-800',
+               'border-red-200   :border-red-800/30 hover:border-red-300   :hover:border-red-700',
+               getPrediction(match).includes('away') ? 'ring-2 ring-red-500   :ring-red-400 scale-[1.03]' : ''
+             ]">
+          <div class="text-xs font-bold text-red-600   :text-red-300 mb-1">Away</div>
+          <div class="text-xl font-black text-gray-900   :text-white">@{{ match.odds_away }}</div>
+          <div v-if="getPrediction(match) === 'likely away win'"
+               class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full animate-bounce">HOT PICK</div>
+          <div v-if="getPrediction(match) === 'super away win'"
+               class="absolute -top-2 -right-2 bg-red-700 text-white text-[10px] font-bold px-2 py-0.5 rounded-full animate-bounce">SUPER PICK</div>
         </div>
+      </div>
+    </div>
+
+    <!-- AI Prediction Display -->
+    <div v-if="match.details" class="px-6 py-3 border-t border-gray-100   :border-gray-700">
+      <div class="flex items-center justify-between bg-indigo-50/70   :bg-indigo-900/30 p-3 rounded-lg border border-indigo-100   :border-indigo-800/50">
+        <div class="flex items-center">
+          <div class="w-8 h-8 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center mr-3">
+            <span class="text-white text-sm">AI</span>
+          </div>
+          <div>
+            <p class="text-sm font-medium text-gray-700   :text-gray-300">Prediction Confidence</p>
+            <div class="w-full bg-gray-200   :bg-gray-700 rounded-full h-1.5 mt-1">
+              <div class="bg-gradient-to-r from-indigo-400 to-purple-500 h-1.5 rounded-full"
+                   :style="{ width: getConfidence(match) === 'High' ? '85%' : getConfidence(match) === 'Medium' ? '65%' : '35%' }"></div>
+            </div>
+          </div>
+        </div>
+        <span :class="{
+            'text-blue-700   :text-blue-400': getPrediction(match).includes('home'),
+            'text-red-700   :text-red-400': getPrediction(match).includes('away'),
+            'text-gray-700   :text-gray-300': getPrediction(match).includes('draw') || getPrediction(match).includes('contested')
+          }"
+          class="font-bold text-sm bg-white   :bg-gray-800 px-2 py-1 rounded">
+          {{ getPrediction(match) }}
+        </span>
+      </div>
+    </div>
 
         <!-- Team Comparison Section -->
         <div v-if="match.details" class="p-6 pt-4">
@@ -593,7 +606,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                     </svg>
                 </div>
-                <h3 class="text-sm font-bold text-gray-800 dark:text-gray-200 uppercase tracking-wider">Team Analytics</h3>
+                <h3 class="text-sm font-bold text-gray-800   :text-gray-200 uppercase tracking-wider">Team Analytics</h3>
             </div>
 
             <!-- Comparison Grid -->
@@ -604,56 +617,56 @@
                     <div class="pl-8">
                         <!-- Team Header -->
                         <div class="flex items-center justify-between mb-3">
-                            <h4 class="font-bold text-gray-900 dark:text-gray-100 flex items-center">
-                                <span class="w-6 h-6 bg-blue-100 dark:bg-blue-900/50 rounded-full flex items-center justify-center mr-2">
-                                    <span class="text-blue-600 dark:text-blue-300 text-xs font-bold">H</span>
+                            <h4 class="font-bold text-gray-900   :text-gray-100 flex items-center">
+                                <span class="w-6 h-6 bg-blue-100   :bg-blue-900/50 rounded-full flex items-center justify-center mr-2">
+                                    <span class="text-blue-600   :text-blue-300 text-xs font-bold">H</span>
                                 </span>
                                 {{ match.home_team }}
                             </h4>
-                            <span class="text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-300 px-2.5 py-1 rounded-full">
+                            <span class="text-xs font-medium bg-blue-100   :bg-blue-900/30 text-blue-600   :text-blue-300 px-2.5 py-1 rounded-full">
                                 Rank #{{ match.details.home_rank }}
                             </span>
                         </div>
 
                         <!-- Stats Grid -->
                         <div class="grid grid-cols-4 gap-3 text-xs mb-3">
-                            <div class="text-center bg-gray-50 dark:bg-gray-800/50 p-2 rounded-lg">
+                            <div class="text-center bg-gray-50   :bg-gray-800/50 p-2 rounded-lg">
                                 <div class="font-bold">{{ match.details.home_mp }}</div>
-                                <div class="text-gray-500 dark:text-gray-400 text-[0.65rem]">Matches</div>
+                                <div class="text-gray-500   :text-gray-400 text-[0.65rem]">Matches</div>
                             </div>
-                            <div class="text-center bg-green-50/70 dark:bg-green-900/20 p-2 rounded-lg">
-                                <div class="font-bold text-green-600 dark:text-green-400">{{ match.details.home_w }}</div>
-                                <div class="text-gray-500 dark:text-gray-400 text-[0.65rem]">Wins</div>
+                            <div class="text-center bg-green-50/70   :bg-green-900/20 p-2 rounded-lg">
+                                <div class="font-bold text-green-600   :text-green-400">{{ match.details.home_w }}</div>
+                                <div class="text-gray-500   :text-gray-400 text-[0.65rem]">Wins</div>
                             </div>
-                            <div class="text-center bg-gray-50 dark:bg-gray-800/50 p-2 rounded-lg">
+                            <div class="text-center bg-gray-50   :bg-gray-800/50 p-2 rounded-lg">
                                 <div class="font-bold">{{ match.details.home_d }}</div>
-                                <div class="text-gray-500 dark:text-gray-400 text-[0.65rem]">Draws</div>
+                                <div class="text-gray-500   :text-gray-400 text-[0.65rem]">Draws</div>
                             </div>
-                            <div class="text-center bg-indigo-50/70 dark:bg-indigo-900/20 p-2 rounded-lg">
-                                <div class="font-bold text-indigo-600 dark:text-indigo-400">{{ match.details.home_pts }}</div>
-                                <div class="text-gray-500 dark:text-gray-400 text-[0.65rem]">Points</div>
+                            <div class="text-center bg-indigo-50/70   :bg-indigo-900/20 p-2 rounded-lg">
+                                <div class="font-bold text-indigo-600   :text-indigo-400">{{ match.details.home_pts }}</div>
+                                <div class="text-gray-500   :text-gray-400 text-[0.65rem]">Points</div>
                             </div>
                         </div>
 
                         <!-- Enhanced Stats -->
-                        <div class="grid grid-cols-3 gap-2 bg-gray-50 dark:bg-gray-800/30 p-2 rounded-lg border border-gray-100 dark:border-gray-700">
+                        <div class="grid grid-cols-3 gap-2 bg-gray-50   :bg-gray-800/30 p-2 rounded-lg border border-gray-100   :border-gray-700">
                             <div class="text-center">
-                                <div class="text-lg font-bold text-gray-900 dark:text-white">{{ match.details.home_g }}</div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">Goals</div>
+                                <div class="text-lg font-bold text-gray-900   :text-white">{{ match.details.home_g }}</div>
+                                <div class="text-xs text-gray-500   :text-gray-400">Goals</div>
                             </div>
-                            <div class="text-center border-x border-gray-200 dark:border-gray-700">
+                            <div class="text-center border-x border-gray-200   :border-gray-700">
                                 <div class="text-lg font-bold" :class="{
-                                    'text-green-500 dark:text-green-400': match.details.home_gd > 0,
-                                    'text-red-500 dark:text-red-400': match.details.home_gd < 0,
-                                    'text-gray-500 dark:text-gray-400': match.details.home_gd === 0
+                                    'text-green-500   :text-green-400': match.details.home_gd > 0,
+                                    'text-red-500   :text-red-400': match.details.home_gd < 0,
+                                    'text-gray-500   :text-gray-400': match.details.home_gd === 0
                                 }">
                                     {{ match.details.home_gd > 0 ? '+' : '' }}{{ match.details.home_gd }}
                                 </div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">GD</div>
+                                <div class="text-xs text-gray-500   :text-gray-400">GD</div>
                             </div>
                             <div class="text-center">
-                                <div class="text-lg font-bold text-indigo-600 dark:text-indigo-400">{{ match.details.home_pts }}</div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">Pts</div>
+                                <div class="text-lg font-bold text-indigo-600   :text-indigo-400">{{ match.details.home_pts }}</div>
+                                <div class="text-xs text-gray-500   :text-gray-400">Pts</div>
                             </div>
                         </div>
                     </div>
@@ -665,56 +678,56 @@
                     <div class="pl-8">
                         <!-- Team Header -->
                         <div class="flex items-center justify-between mb-3">
-                            <h4 class="font-bold text-gray-900 dark:text-gray-100 flex items-center">
-                                <span class="w-6 h-6 bg-red-100 dark:bg-red-900/50 rounded-full flex items-center justify-center mr-2">
-                                    <span class="text-red-600 dark:text-red-300 text-xs font-bold">A</span>
+                            <h4 class="font-bold text-gray-900   :text-gray-100 flex items-center">
+                                <span class="w-6 h-6 bg-red-100   :bg-red-900/50 rounded-full flex items-center justify-center mr-2">
+                                    <span class="text-red-600   :text-red-300 text-xs font-bold">A</span>
                                 </span>
                                 {{ match.away_team }}
                             </h4>
-                            <span class="text-xs font-medium bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-300 px-2.5 py-1 rounded-full">
+                            <span class="text-xs font-medium bg-red-100   :bg-red-900/30 text-red-600   :text-red-300 px-2.5 py-1 rounded-full">
                                 Rank #{{ match.details.away_rank }}
                             </span>
                         </div>
 
                         <!-- Stats Grid -->
                         <div class="grid grid-cols-4 gap-3 text-xs mb-3">
-                            <div class="text-center bg-gray-50 dark:bg-gray-800/50 p-2 rounded-lg">
+                            <div class="text-center bg-gray-50   :bg-gray-800/50 p-2 rounded-lg">
                                 <div class="font-bold">{{ match.details.away_mp }}</div>
-                                <div class="text-gray-500 dark:text-gray-400 text-[0.65rem]">Matches</div>
+                                <div class="text-gray-500   :text-gray-400 text-[0.65rem]">Matches</div>
                             </div>
-                            <div class="text-center bg-green-50/70 dark:bg-green-900/20 p-2 rounded-lg">
-                                <div class="font-bold text-green-600 dark:text-green-400">{{ match.details.away_w }}</div>
-                                <div class="text-gray-500 dark:text-gray-400 text-[0.65rem]">Wins</div>
+                            <div class="text-center bg-green-50/70   :bg-green-900/20 p-2 rounded-lg">
+                                <div class="font-bold text-green-600   :text-green-400">{{ match.details.away_w }}</div>
+                                <div class="text-gray-500   :text-gray-400 text-[0.65rem]">Wins</div>
                             </div>
-                            <div class="text-center bg-gray-50 dark:bg-gray-800/50 p-2 rounded-lg">
+                            <div class="text-center bg-gray-50   :bg-gray-800/50 p-2 rounded-lg">
                                 <div class="font-bold">{{ match.details.away_d }}</div>
-                                <div class="text-gray-500 dark:text-gray-400 text-[0.65rem]">Draws</div>
+                                <div class="text-gray-500   :text-gray-400 text-[0.65rem]">Draws</div>
                             </div>
-                            <div class="text-center bg-indigo-50/70 dark:bg-indigo-900/20 p-2 rounded-lg">
-                                <div class="font-bold text-indigo-600 dark:text-indigo-400">{{ match.details.away_pts }}</div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">Points</div>
+                            <div class="text-center bg-indigo-50/70   :bg-indigo-900/20 p-2 rounded-lg">
+                                <div class="font-bold text-indigo-600   :text-indigo-400">{{ match.details.away_pts }}</div>
+                                <div class="text-xs text-gray-500   :text-gray-400">Points</div>
                             </div>
                         </div>
 
                         <!-- Enhanced Stats -->
-                        <div class="grid grid-cols-3 gap-2 bg-gray-50 dark:bg-gray-800/30 p-2 rounded-lg border border-gray-100 dark:border-gray-700">
+                        <div class="grid grid-cols-3 gap-2 bg-gray-50   :bg-gray-800/30 p-2 rounded-lg border border-gray-100   :border-gray-700">
                             <div class="text-center">
-                                <div class="text-lg font-bold text-gray-900 dark:text-white">{{ match.details.away_g }}</div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">Goals</div>
+                                <div class="text-lg font-bold text-gray-900   :text-white">{{ match.details.away_g }}</div>
+                                <div class="text-xs text-gray-500   :text-gray-400">Goals</div>
                             </div>
-                            <div class="text-center border-x border-gray-200 dark:border-gray-700">
+                            <div class="text-center border-x border-gray-200   :border-gray-700">
                                 <div class="text-lg font-bold" :class="{
-                                    'text-green-500 dark:text-green-400': match.details.away_gd > 0,
-                                    'text-red-500 dark:text-red-400': match.details.away_gd < 0,
-                                    'text-gray-500 dark:text-gray-400': match.details.away_gd === 0
+                                    'text-green-500   :text-green-400': match.details.away_gd > 0,
+                                    'text-red-500   :text-red-400': match.details.away_gd < 0,
+                                    'text-gray-500   :text-gray-400': match.details.away_gd === 0
                                 }">
                                     {{ match.details.away_gd > 0 ? '+' : '' }}{{ match.details.away_gd }}
                                 </div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">GD</div>
+                                <div class="text-xs text-gray-500   :text-gray-400">GD</div>
                             </div>
                             <div class="text-center">
-                                <div class="text-lg font-bold text-indigo-600 dark:text-indigo-400">{{ match.details.away_pts }}</div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">Pts</div>
+                                <div class="text-lg font-bold text-indigo-600   :text-indigo-400">{{ match.details.away_pts }}</div>
+                                <div class="text-xs text-gray-500   :text-gray-400">Pts</div>
                             </div>
                         </div>
                     </div>
@@ -724,7 +737,7 @@
 
         <!-- H2H History -->
         <div v-if="match.details && match.details.h2h_home_wins !== null"
-             class="px-6 py-4 bg-gray-50/50 dark:bg-gray-800/30 backdrop-blur-sm border-t border-gray-100 dark:border-gray-700">
+             class="px-6 py-4 bg-gray-50/50   :bg-gray-800/30 backdrop-blur-sm border-t border-gray-100   :border-gray-700">
             <div class="flex items-center justify-between mb-4">
                 <div class="flex items-center">
                     <div class="w-8 h-8 rounded-md bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center mr-2">
@@ -732,27 +745,27 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                         </svg>
                     </div>
-                    <h3 class="text-sm font-bold text-gray-800 dark:text-gray-200 uppercase tracking-wider">Head-to-Head</h3>
+                    <h3 class="text-sm font-bold text-gray-800   :text-gray-200 uppercase tracking-wider">Head-to-Head</h3>
                 </div>
                 <div class="flex items-center space-x-4">
                     <div class="text-center">
-                        <div class="text-xs text-gray-500 dark:text-gray-400">Home Wins</div>
-                        <div class="font-bold text-blue-600 dark:text-blue-400">{{ match.details.h2h_home_wins }}</div>
+                        <div class="text-xs text-gray-500   :text-gray-400">Home Wins</div>
+                        <div class="font-bold text-blue-600   :text-blue-400">{{ match.details.h2h_home_wins }}</div>
                     </div>
                     <div class="text-center">
-                        <div class="text-xs text-gray-500 dark:text-gray-400">Draws</div>
+                        <div class="text-xs text-gray-500   :text-gray-400">Draws</div>
                         <div class="font-bold">{{ match.details.h2h_draws }}</div>
                     </div>
                     <div class="text-center">
-                        <div class="text-xs text-gray-500 dark:text-gray-400">Away Wins</div>
-                        <div class="font-bold text-red-600 dark:text-red-400">{{ match.details.h2h_away_wins }}</div>
+                        <div class="text-xs text-gray-500   :text-gray-400">Away Wins</div>
+                        <div class="font-bold text-red-600   :text-red-400">{{ match.details.h2h_away_wins }}</div>
                     </div>
                 </div>
             </div>
 
             <!-- View Analysis Button -->
             <a :href="match.match_link" target="_blank" rel="noopener"
-               class="w-full flex items-center justify-center py-3 px-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 transition-colors group/button">
+               class="w-full flex items-center justify-center py-3 px-4 bg-white   :bg-gray-800 border border-gray-200   :border-gray-700 rounded-lg text-sm font-medium text-indigo-600   :text-indigo-400 hover:bg-indigo-50   :hover:bg-indigo-900/30 transition-colors group/button">
                 <span class="group-hover/button:translate-x-1 transition-transform duration-300">Deep Analysis</span>
                 <svg class="w-4 h-4 ml-2 group-hover/button:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M14 3h7m0 0v7m0-7L10 14"></path>
@@ -783,18 +796,18 @@
   <button
     @click="() => { currentPage--; scrollToTop(); }"
     :disabled="currentPage === 1"
-    class="px-3 py-1.5 rounded-md text-sm font-medium border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed">
+    class="px-3 py-1.5 rounded-md text-sm font-medium border border-gray-300   :border-gray-600 bg-white   :bg-gray-800 text-gray-700   :text-gray-300 hover:bg-gray-100   :hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed">
     Prev
   </button>
 
-  <span class="text-sm text-gray-600 dark:text-gray-300">
+  <span class="text-sm text-gray-600   :text-gray-300">
     Page {{ currentPage }} of {{ totalPages }}
   </span>
 
   <button
     @click="() => { currentPage++; scrollToTop(); }"
     :disabled="currentPage === totalPages"
-    class="px-3 py-1.5 rounded-md text-sm font-medium border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed">
+    class="px-3 py-1.5 rounded-md text-sm font-medium border border-gray-300   :border-gray-600 bg-white   :bg-gray-800 text-gray-700   :text-gray-300 hover:bg-gray-100   :hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed">
     Next
   </button>
 </div>
@@ -877,7 +890,7 @@ const filters = ref({
   startHour: 0,
   endHour: 23,
   strongWinOdds: false,  // ✅ Add this
-  hasComparison: true,
+  hasComparison: false,
   bigRankGap: false, // 👈 Add this line
   winDiffOver10: false, // 👈 Add this
   strongGG: false,
@@ -917,7 +930,7 @@ function resetFilters() {
     startHour: 0,
     endHour: 23,
     strongWinOdds: false,
-    hasComparison: true,
+    hasComparison: false,
     bigRankGap: false, // 👈 Add this line
     winDiffOver10: false, // 👈 Add here too
     strongGG: false,
@@ -1152,50 +1165,84 @@ function getPrediction(match) {
 
   const d = match.details;
 
-  // Parse H2H
-  const homeWins = d.h2h_home_wins || 0;
-  const awayWins = d.h2h_away_wins || 0;
-  const draws = d.h2h_draws || 0;
+  const parse = (val) => {
+    if (typeof val === 'number') return val;
+    return parseInt((val || '').toString().replace('+', '').trim()) || 0;
+  };
+
+  // Parse values
+  const homeWins = parse(d.h2h_home_wins);
+  const awayWins = parse(d.h2h_away_wins);
+  const draws = parse(d.h2h_draws);
   const totalH2H = homeWins + awayWins + draws;
 
-  // Team comparison
-  const homeRank = parseInt(d.home_rank);
-  const awayRank = parseInt(d.away_rank);
-  const homePts = parseInt(d.home_pts);
-  const awayPts = parseInt(d.away_pts);
-  const homeGD = parseInt(d.home_gd.replace("+", "")) || 0;
-  const awayGD = parseInt(d.away_gd.replace("+", "")) || 0;
+  const homeRank = parse(d.home_rank);
+  const awayRank = parse(d.away_rank);
+  const homePts = parse(d.home_pts);
+  const awayPts = parse(d.away_pts);
+  const homeGD = parse(d.home_gd);
+  const awayGD = parse(d.away_gd);
 
-  // Strong home win logic
+  const rankGap = awayRank - homeRank;
+  const ptsGap = homePts - awayPts;
+  const gdGap = homeGD - awayGD;
+
+  // 🚀 Super Home Win
+  if (
+    rankGap >= 5 &&
+    ptsGap >= 10 &&
+    gdGap >= 15 &&
+    homeWins >= 3 &&
+    awayWins === 0
+  ) {
+    return 'super home win';
+  }
+
+  // 🚀 Super Away Win
+  if (
+    rankGap <= -5 &&
+    ptsGap <= -10 &&
+    gdGap <= -15 &&
+    awayWins >= 3 &&
+    homeWins === 0
+  ) {
+    return 'super away win';
+  }
+
+  // ✅ Strong Home Win
   if (
     totalH2H >= 3 &&
     homeWins >= 2 &&
     homeWins > awayWins + 1 &&
-    homeRank < awayRank &&
-    homePts >= awayPts - 5 &&
-    homeGD >= awayGD - 5
+    rankGap >= 2 &&
+    ptsGap >= -5 &&
+    gdGap >= -5
   ) {
     return 'strong home win';
   }
 
-  // Likely away win logic
+  // ✅ Likely Away Win
   if (
     totalH2H >= 3 &&
     awayWins >= 2 &&
     awayWins > homeWins + 1 &&
-    awayRank < homeRank &&
-    awayPts >= homePts - 5 &&
-    awayGD >= homeGD - 5
+    rankGap <= -2 &&
+    ptsGap <= 5 &&
+    gdGap <= 5
   ) {
     return 'likely away win';
   }
+// 🟰 Strong Draw Likelihood
+const closeTeams = Math.abs(homeRank - awayRank) <= 2 && Math.abs(homePts - awayPts) <= 3;
+const balancedH2H = Math.abs(homeWins - awayWins) <= 1 && draws >= 2;
+const lowScoring = Math.abs(homeGD - awayGD) <= 3;
 
-  // Balanced H2H or draw tendency
-  if (Math.abs(homeWins - awayWins) <= 1 && draws >= 1) {
-    return 'potential draw';
-  }
+if (closeTeams && balancedH2H && lowScoring) {
+  return 'potential draw';
+}
 
-  // Fallback
+
+  // Default
   return 'closely contested match';
 }
 
@@ -1203,19 +1250,31 @@ function getConfidence(match) {
   if (!match.details) return 'Low';
 
   const d = match.details;
-  const total = d.h2h_home_wins + d.h2h_away_wins + d.h2h_draws;
+
+  const parse = (val) => {
+    if (typeof val === 'number') return val;
+    return parseInt((val || '').toString().replace('+', '').trim()) || 0;
+  };
+
+  const homeGD = parse(d.home_gd);
+  const awayGD = parse(d.away_gd);
+  const goalGap = Math.abs(homeGD - awayGD);
+
+  const homeWins = parse(d.h2h_home_wins);
+  const awayWins = parse(d.h2h_away_wins);
+  const draws = parse(d.h2h_draws);
+  const total = homeWins + awayWins + draws;
 
   if (!total || total < 3) return 'Low';
 
-  const top = Math.max(d.h2h_home_wins, d.h2h_away_wins);
+  const top = Math.max(homeWins, awayWins);
   const ratio = top / total;
 
-  const goalGap = Math.abs(parseInt(d.home_gd || 0) - parseInt(d.away_gd || 0));
-
-  if (ratio >= 0.7 && goalGap >= 10) return 'High';
-  if (ratio >= 0.5 || goalGap >= 5) return 'Medium';
+  if (ratio >= 0.7 && goalGap >= 15) return 'High';
+  if (ratio >= 0.5 || goalGap >= 7) return 'Medium';
   return 'Low';
 }
+
 const bestBets = computed(() => generateBestBets(filteredMatches.value));
 
 function generateBestBets(matches) {

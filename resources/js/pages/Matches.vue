@@ -23,11 +23,12 @@
 
     <div class="flex items-center space-x-4">
         <!-- Modern floating action button -->
-        <button
-             @click="showPremium = true"
-             class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition shadow-sm">
-             Premium Tips
-             </button>
+                        <button
+                @click="showPremiumTips  = !showPremiumTips"
+                class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition shadow-sm">
+                {{ showPremiumTips ? 'Hide' : 'Premium Tips' }}
+                </button>
+
 
         <!-- Animated hamburger menu -->
         <button class="p-2 group focus:outline-none">
@@ -281,59 +282,86 @@
       </div>
     </div>
 
-    <!-- Numeric Inputs in Modern Style -->
-    <div class="bg-white   :bg-gray-800 p-4 rounded-2xl shadow-sm">
-      <h3 class="text-sm font-semibold text-gray-700   :text-gray-300 mb-4 flex items-center">
-        <span class="bg-indigo-100   :bg-indigo-900 p-1.5 rounded-lg mr-2">🔢</span>
-        Numeric Filters
-      </h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div>
-          <label for="minGDDiff" class="block text-xs font-medium text-gray-500   :text-gray-400 mb-1">Min GD Difference</label>
-          <div class="relative">
-            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500   :text-gray-400">📈</span>
-            <input
-              type="number"
-              id="minGDDiff"
-              v-model.number="filters.minGDDiff"
-              min="0"
-              max="100"
-              class="w-full rounded-lg border border-gray-200   :border-gray-700 py-2 pl-9 pr-3 text-sm bg-gray-50   :bg-gray-900 text-gray-800   :text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-            />
-          </div>
-        </div>
+   <!-- Modern Numeric Inputs -->
+<div class="bg-white  :bg-gray-850 p-5 rounded-xl shadow-sm border border-gray-100  :border-gray-750">
+  <h3 class="text-sm font-semibold text-gray-700  :text-gray-200 mb-5 flex items-center">
+    <span class="bg-indigo-100/80  :bg-indigo-900/50 p-2 rounded-lg mr-3 text-indigo-600  :text-indigo-300">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+        <path d="M3.27 6.96 12 12.01l8.73-5.05"/>
+        <path d="M12 22.08V12"/>
+      </svg>
+    </span>
+    Numeric Filters
+  </h3>
 
-        <div>
-          <label for="minHomeH2HWins" class="block text-xs font-medium text-gray-500   :text-gray-400 mb-1">Min Home H2H Wins</label>
-          <div class="relative">
-            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500   :text-gray-400">🟦</span>
-            <input
-              type="number"
-              id="minHomeH2HWins"
-              v-model.number="filters.minHomeH2HWins"
-              min="0"
-              max="20"
-              class="w-full rounded-lg border border-gray-200   :border-gray-700 py-2 pl-9 pr-3 text-sm bg-gray-50   :bg-gray-900 text-gray-800   :text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-            />
-          </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <!-- Min GD Difference -->
+    <div class="space-y-1.5">
+      <label for="minGDDiff" class="block text-xs font-medium text-gray-500  :text-gray-400">Min GD Difference</label>
+      <div class="relative">
+        <div class="absolute inset-y-0 left-0 flex items-center pl-3 text-indigo-500  :text-indigo-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
         </div>
-
-        <div>
-          <label for="minAwayH2HWins" class="block text-xs font-medium text-gray-500   :text-gray-400 mb-1">Min Away H2H Wins</label>
-          <div class="relative">
-            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500   :text-gray-400">🟥</span>
-            <input
-              type="number"
-              id="minAwayH2HWins"
-              v-model.number="filters.minAwayH2HWins"
-              min="0"
-              max="20"
-              class="w-full rounded-lg border border-gray-200   :border-gray-700 py-2 pl-9 pr-3 text-sm bg-gray-50   :bg-gray-900 text-gray-800   :text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
-            />
-          </div>
-        </div>
+        <input
+          type="number"
+          id="minGDDiff"
+          v-model.number="filters.minGDDiff"
+          min="0"
+          max="100"
+          class="w-full rounded-lg border border-gray-200  :border-gray-700 py-2.5 pl-9 pr-3 text-sm bg-white  :bg-gray-800 text-gray-800  :text-gray-100 placeholder-gray-400  :placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-150"
+          placeholder="0-100"
+        />
       </div>
     </div>
+
+    <!-- Min Home H2H Wins -->
+    <div class="space-y-1.5">
+      <label for="minHomeH2HWins" class="block text-xs font-medium text-gray-500  :text-gray-400">Min Home H2H Wins</label>
+      <div class="relative">
+        <div class="absolute inset-y-0 left-0 flex items-center pl-3 text-blue-500  :text-blue-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </div>
+        <input
+          type="number"
+          id="minHomeH2HWins"
+          v-model.number="filters.minHomeH2HWins"
+          min="0"
+          max="20"
+          class="w-full rounded-lg border border-gray-200  :border-gray-700 py-2.5 pl-9 pr-3 text-sm bg-white  :bg-gray-800 text-gray-800  :text-gray-100 placeholder-gray-400  :placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-150"
+          placeholder="0-20"
+        />
+      </div>
+    </div>
+
+    <!-- Min Away H2H Wins -->
+    <div class="space-y-1.5">
+      <label for="minAwayH2HWins" class="block text-xs font-medium text-gray-500  :text-gray-400">Min Away H2H Wins</label>
+      <div class="relative">
+        <div class="absolute inset-y-0 left-0 flex items-center pl-3 text-rose-500  :text-rose-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </div>
+        <input
+          type="number"
+          id="minAwayH2HWins"
+          v-model.number="filters.minAwayH2HWins"
+          min="0"
+          max="20"
+          class="w-full rounded-lg border border-gray-200  :border-gray-700 py-2.5 pl-9 pr-3 text-sm bg-white  :bg-gray-800 text-gray-800  :text-gray-100 placeholder-gray-400  :placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-150"
+          placeholder="0-20"
+        />
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- Hot Picks Toggle -->
     <div class="flex justify-center">
@@ -364,86 +392,85 @@
 </div>
 
 
-<!-- Best Bets Section -->
-<section
-  v-if="showBestBets && Object.values(bestBets).some(b => b)"
-  class="my-12 px-4 sm:px-0"
->  <div class="bg-white shadow-lg rounded-2xl p-6 ring-1 ring-gray-100">
-    <h2 class="text-2xl font-bold text-indigo-700 mb-6">🔥 Top AI-Picked Bets</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-      <!-- GG -->
-      <div v-if="bestBets.bestGG" class="p-4 rounded-xl border border-indigo-200 bg-indigo-50 shadow flex flex-col justify-between">
-        <div>
-          <h3 class="text-sm font-semibold text-indigo-700 mb-1">Both Teams to Score (GG)</h3>
-          <p class="text-sm mb-2">{{ bestBets.bestGG.home_team }} vs {{ bestBets.bestGG.away_team }}</p>
-        </div>
-        <a :href="bestBets.bestGG.match_link" target="_blank" class="text-xs text-indigo-600 hover:underline font-semibold mt-auto">🔍 Deep Analysis</a>
+<section v-if="showPremiumTips && premiumTips.length" class="mt-12 px-4 sm:px-0">
+    <div class="flex items-center gap-3 mb-6">
+    <h2 class="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+      Premium AI Picks
+    </h2>
+    <span class="text-xs font-semibold px-2 py-1 rounded-full bg-indigo-100 text-indigo-800 animate-pulse">
+      LIVE
+    </span>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div
+      v-for="match in premiumTips"
+      :key="match.id"
+      class="relative p-5 bg-white  :bg-gray-850 border border-gray-200  :border-gray-700 rounded-2xl shadow hover:shadow-lg transition-all hover:-translate-y-1"
+    >
+      <!-- Pulse dot -->
+      <div class="absolute top-3 right-3 w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+
+      <!-- Teams -->
+      <h3 class="text-base font-bold text-gray-800  :text-white truncate">
+        {{ match.home_team }} <span class="text-gray-400 font-normal">vs</span> {{ match.away_team }}
+      </h3>
+
+      <!-- Prediction -->
+      <div class="mt-2 flex items-center gap-2 text-xs">
+        <span class="text-gray-500">Prediction:</span>
+        <span class="font-semibold bg-indigo-100  :bg-indigo-900 text-indigo-700  :text-indigo-300 px-2 py-0.5 rounded">
+          {{ getPrediction(match) }}
+        </span>
+        <span v-if="getConfidence(match) === 'High'" class="bg-yellow-100  :bg-yellow-900 text-yellow-700  :text-yellow-300 px-2 py-0.5 rounded font-bold">
+          ⭐ Premium
+        </span>
       </div>
 
-      <!-- Over 2.5 Goals -->
-      <div v-if="bestBets.bestOver25" class="p-4 rounded-xl border border-yellow-200 bg-yellow-50 shadow flex flex-col justify-between">
-        <div>
-          <h3 class="text-sm font-semibold text-yellow-700 mb-1">Over 2.5 Goals</h3>
-          <p class="text-sm mb-2">{{ bestBets.bestOver25.home_team }} vs {{ bestBets.bestOver25.away_team }}</p>
-        </div>
-        <a :href="bestBets.bestOver25.match_link" target="_blank" class="text-xs text-yellow-700 hover:underline font-semibold mt-auto">🔍 Deep Analysis</a>
+      <!-- Odds -->
+      <div class="mt-3 flex justify-between text-sm text-gray-600  :text-gray-300">
+        <div>Home: <span class="font-bold text-gray-800  :text-white">{{ match.odds_home }}</span></div>
+        <div>Away: <span class="font-bold text-gray-800  :text-white">{{ match.odds_away }}</span></div>
       </div>
 
-      <!-- Best 1 -->
-      <div v-if="bestBets.best1" class="p-4 rounded-xl border border-blue-200 bg-blue-50 shadow flex flex-col justify-between">
-        <div>
-          <h3 class="text-sm font-semibold text-blue-700 mb-1">Home Win (1)</h3>
-          <p class="text-sm mb-2">{{ bestBets.best1.home_team }} vs {{ bestBets.best1.away_team }}</p>
+      <!-- Stats -->
+      <div class="mt-4 grid grid-cols-2 gap-2 text-xs">
+        <div class="bg-gray-50  :bg-gray-800 p-3 rounded-lg space-y-1">
+          <div class="flex justify-between font-bold text-blue-600  :text-blue-400">
+            <span>{{ match.home_team }}</span>
+            <span>Rank #{{ match.details.home_rank }}</span>
+          </div>
+          <div class="flex justify-between text-gray-600  :text-gray-400">
+            <span>W: {{ match.details.home_w }}</span>
+            <span>D: {{ match.details.home_d }}</span>
+            <span>GD: {{ match.details.home_gd }}</span>
+          </div>
         </div>
-        <a :href="bestBets.best1.match_link" target="_blank" class="text-xs text-blue-700 hover:underline font-semibold mt-auto">🔍 Deep Analysis</a>
+        <div class="bg-gray-50  :bg-gray-800 p-3 rounded-lg space-y-1">
+          <div class="flex justify-between font-bold text-red-600  :text-red-400">
+            <span>{{ match.away_team }}</span>
+            <span>Rank #{{ match.details.away_rank }}</span>
+          </div>
+          <div class="flex justify-between text-gray-600  :text-gray-400">
+            <span>W: {{ match.details.away_w }}</span>
+            <span>D: {{ match.details.away_d }}</span>
+            <span>GD: {{ match.details.away_gd }}</span>
+          </div>
+        </div>
       </div>
 
-      <!-- Best 2 -->
-      <div v-if="bestBets.best2" class="p-4 rounded-xl border border-red-200 bg-red-50 shadow flex flex-col justify-between">
-        <div>
-          <h3 class="text-sm font-semibold text-red-700 mb-1">Away Win (2)</h3>
-          <p class="text-sm mb-2">{{ bestBets.best2.home_team }} vs {{ bestBets.best2.away_team }}</p>
-        </div>
-        <a :href="bestBets.best2.match_link" target="_blank" class="text-xs text-red-700 hover:underline font-semibold mt-auto">🔍 Deep Analysis</a>
-      </div>
-
-      <!-- 1 + Over 2.5 -->
-      <div v-if="bestBets.best1Over25" class="p-4 rounded-xl border border-cyan-200 bg-cyan-50 shadow flex flex-col justify-between">
-        <div>
-          <h3 class="text-sm font-semibold text-cyan-700 mb-1">Home Win + Over 2.5</h3>
-          <p class="text-sm mb-2">{{ bestBets.best1Over25.home_team }} vs {{ bestBets.best1Over25.away_team }}</p>
-        </div>
-        <a :href="bestBets.best1Over25.match_link" target="_blank" class="text-xs text-cyan-700 hover:underline font-semibold mt-auto">🔍 Deep Analysis</a>
-      </div>
-
-      <!-- 2 + Over 2.5 -->
-      <div v-if="bestBets.best2Over25" class="p-4 rounded-xl border border-pink-200 bg-pink-50 shadow flex flex-col justify-between">
-        <div>
-          <h3 class="text-sm font-semibold text-pink-700 mb-1">Away Win + Over 2.5</h3>
-          <p class="text-sm mb-2">{{ bestBets.best2Over25.home_team }} vs {{ bestBets.best2Over25.away_team }}</p>
-        </div>
-        <a :href="bestBets.best2Over25.match_link" target="_blank" class="text-xs text-pink-700 hover:underline font-semibold mt-auto">🔍 Deep Analysis</a>
-      </div>
-
-      <!-- Top Home Scorer -->
-      <div v-if="bestBets.bestHomeGoalTeam" class="p-4 rounded-xl border border-green-200 bg-green-50 shadow flex flex-col justify-between">
-        <div>
-          <h3 class="text-sm font-semibold text-green-700 mb-1">Best Scoring Home Team</h3>
-          <p class="text-sm mb-2">{{ bestBets.bestHomeGoalTeam.home_team }} vs {{ bestBets.bestHomeGoalTeam.away_team }}</p>
-        </div>
-        <a :href="bestBets.bestHomeGoalTeam.match_link" target="_blank" class="text-xs text-green-700 hover:underline font-semibold mt-auto">🔍 Deep Analysis</a>
-      </div>
-
-      <!-- Top Away Scorer -->
-      <div v-if="bestBets.bestAwayGoalTeam" class="p-4 rounded-xl border border-purple-200 bg-purple-50 shadow flex flex-col justify-between">
-        <div>
-          <h3 class="text-sm font-semibold text-purple-700 mb-1">Best Scoring Away Team</h3>
-          <p class="text-sm mb-2">{{ bestBets.bestAwayGoalTeam.home_team }} vs {{ bestBets.bestAwayGoalTeam.away_team }}</p>
-        </div>
-        <a :href="bestBets.bestAwayGoalTeam.match_link" target="_blank" class="text-xs text-purple-700 hover:underline font-semibold mt-auto">🔍 Deep Analysis</a>
-      </div>
-
+      <!-- View More -->
+      <a
+        :href="match.match_link"
+        target="_blank"
+        class="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-indigo-600  :text-indigo-400 hover:underline"
+      >
+        Detailed Analysis
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 3h7m0 0v7m0-7L10 14" />
+        </svg>
+      </a>
     </div>
   </div>
 </section>
@@ -597,143 +624,143 @@
       </div>
     </div>
 
-        <!-- Team Comparison Section -->
-        <div v-if="match.details" class="p-6 pt-4">
-            <!-- Section Header -->
-            <div class="flex items-center mb-4">
-                <div class="w-8 h-8 rounded-md bg-gradient-to-r from-indigo-500 to-blue-500 flex items-center justify-center mr-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                    </svg>
+            <!-- Team Comparison Section -->
+            <div v-if="match.details" class="p-6 pt-4">
+                <!-- Section Header -->
+                <div class="flex items-center mb-4">
+                    <div class="w-8 h-8 rounded-md bg-gradient-to-r from-indigo-500 to-blue-500 flex items-center justify-center mr-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                        </svg>
+                    </div>
+                    <h3 class="text-sm font-bold text-gray-800   :text-gray-200 uppercase tracking-wider">Team Analytics</h3>
                 </div>
-                <h3 class="text-sm font-bold text-gray-800   :text-gray-200 uppercase tracking-wider">Team Analytics</h3>
-            </div>
 
-            <!-- Comparison Grid -->
-            <div class="space-y-6">
-                <!-- Home Team -->
-                <div class="relative">
-                    <div class="absolute top-3 left-3 w-3 h-3 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 animate-pulse"></div>
-                    <div class="pl-8">
-                        <!-- Team Header -->
-                        <div class="flex items-center justify-between mb-3">
-                            <h4 class="font-bold text-gray-900   :text-gray-100 flex items-center">
-                                <span class="w-6 h-6 bg-blue-100   :bg-blue-900/50 rounded-full flex items-center justify-center mr-2">
-                                    <span class="text-blue-600   :text-blue-300 text-xs font-bold">H</span>
+                <!-- Comparison Grid -->
+                <div class="space-y-6">
+                    <!-- Home Team -->
+                    <div class="relative">
+                        <div class="absolute top-3 left-3 w-3 h-3 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 animate-pulse"></div>
+                        <div class="pl-8">
+                            <!-- Team Header -->
+                            <div class="flex items-center justify-between mb-3">
+                                <h4 class="font-bold text-gray-900   :text-gray-100 flex items-center">
+                                    <span class="w-6 h-6 bg-blue-100   :bg-blue-900/50 rounded-full flex items-center justify-center mr-2">
+                                        <span class="text-blue-600   :text-blue-300 text-xs font-bold">H</span>
+                                    </span>
+                                    {{ match.home_team }}
+                                </h4>
+                                <span class="text-xs font-medium bg-blue-100   :bg-blue-900/30 text-blue-600   :text-blue-300 px-2.5 py-1 rounded-full">
+                                    Rank #{{ match.details.home_rank }}
                                 </span>
-                                {{ match.home_team }}
-                            </h4>
-                            <span class="text-xs font-medium bg-blue-100   :bg-blue-900/30 text-blue-600   :text-blue-300 px-2.5 py-1 rounded-full">
-                                Rank #{{ match.details.home_rank }}
-                            </span>
-                        </div>
+                            </div>
 
-                        <!-- Stats Grid -->
-                        <div class="grid grid-cols-4 gap-3 text-xs mb-3">
-                            <div class="text-center bg-gray-50   :bg-gray-800/50 p-2 rounded-lg">
-                                <div class="font-bold">{{ match.details.home_mp }}</div>
-                                <div class="text-gray-500   :text-gray-400 text-[0.65rem]">Matches</div>
-                            </div>
-                            <div class="text-center bg-green-50/70   :bg-green-900/20 p-2 rounded-lg">
-                                <div class="font-bold text-green-600   :text-green-400">{{ match.details.home_w }}</div>
-                                <div class="text-gray-500   :text-gray-400 text-[0.65rem]">Wins</div>
-                            </div>
-                            <div class="text-center bg-gray-50   :bg-gray-800/50 p-2 rounded-lg">
-                                <div class="font-bold">{{ match.details.home_d }}</div>
-                                <div class="text-gray-500   :text-gray-400 text-[0.65rem]">Draws</div>
-                            </div>
-                            <div class="text-center bg-indigo-50/70   :bg-indigo-900/20 p-2 rounded-lg">
-                                <div class="font-bold text-indigo-600   :text-indigo-400">{{ match.details.home_pts }}</div>
-                                <div class="text-gray-500   :text-gray-400 text-[0.65rem]">Points</div>
-                            </div>
-                        </div>
-
-                        <!-- Enhanced Stats -->
-                        <div class="grid grid-cols-3 gap-2 bg-gray-50   :bg-gray-800/30 p-2 rounded-lg border border-gray-100   :border-gray-700">
-                            <div class="text-center">
-                                <div class="text-lg font-bold text-gray-900   :text-white">{{ match.details.home_g }}</div>
-                                <div class="text-xs text-gray-500   :text-gray-400">Goals</div>
-                            </div>
-                            <div class="text-center border-x border-gray-200   :border-gray-700">
-                                <div class="text-lg font-bold" :class="{
-                                    'text-green-500   :text-green-400': match.details.home_gd > 0,
-                                    'text-red-500   :text-red-400': match.details.home_gd < 0,
-                                    'text-gray-500   :text-gray-400': match.details.home_gd === 0
-                                }">
-                                    {{ match.details.home_gd > 0 ? '+' : '' }}{{ match.details.home_gd }}
+                            <!-- Stats Grid -->
+                            <div class="grid grid-cols-4 gap-3 text-xs mb-3">
+                                <div class="text-center bg-gray-50   :bg-gray-800/50 p-2 rounded-lg">
+                                    <div class="font-bold">{{ match.details.home_mp }}</div>
+                                    <div class="text-gray-500   :text-gray-400 text-[0.65rem]">Matches</div>
                                 </div>
-                                <div class="text-xs text-gray-500   :text-gray-400">GD</div>
+                                <div class="text-center bg-green-50/70   :bg-green-900/20 p-2 rounded-lg">
+                                    <div class="font-bold text-green-600   :text-green-400">{{ match.details.home_w }}</div>
+                                    <div class="text-gray-500   :text-gray-400 text-[0.65rem]">Wins</div>
+                                </div>
+                                <div class="text-center bg-gray-50   :bg-gray-800/50 p-2 rounded-lg">
+                                    <div class="font-bold">{{ match.details.home_d }}</div>
+                                    <div class="text-gray-500   :text-gray-400 text-[0.65rem]">Draws</div>
+                                </div>
+                                <div class="text-center bg-indigo-50/70   :bg-indigo-900/20 p-2 rounded-lg">
+                                    <div class="font-bold text-indigo-600   :text-indigo-400">{{ match.details.home_pts }}</div>
+                                    <div class="text-gray-500   :text-gray-400 text-[0.65rem]">Points</div>
+                                </div>
                             </div>
-                            <div class="text-center">
-                                <div class="text-lg font-bold text-indigo-600   :text-indigo-400">{{ match.details.home_pts }}</div>
-                                <div class="text-xs text-gray-500   :text-gray-400">Pts</div>
+
+                            <!-- Enhanced Stats -->
+                            <div class="grid grid-cols-3 gap-2 bg-gray-50   :bg-gray-800/30 p-2 rounded-lg border border-gray-100   :border-gray-700">
+                                <div class="text-center">
+                                    <div class="text-lg font-bold text-gray-900   :text-white">{{ match.details.home_g }}</div>
+                                    <div class="text-xs text-gray-500   :text-gray-400">Goals</div>
+                                </div>
+                                <div class="text-center border-x border-gray-200   :border-gray-700">
+                                    <div class="text-lg font-bold" :class="{
+                                        'text-green-500   :text-green-400': match.details.home_gd > 0,
+                                        'text-red-500   :text-red-400': match.details.home_gd < 0,
+                                        'text-gray-500   :text-gray-400': match.details.home_gd === 0
+                                    }">
+                                        {{ match.details.home_gd > 0 ? '+' : '' }}{{ match.details.home_gd }}
+                                    </div>
+                                    <div class="text-xs text-gray-500   :text-gray-400">GD</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-lg font-bold text-indigo-600   :text-indigo-400">{{ match.details.home_pts }}</div>
+                                    <div class="text-xs text-gray-500   :text-gray-400">Pts</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Away Team -->
+                    <div class="relative">
+                        <div class="absolute top-3 left-3 w-3 h-3 rounded-full bg-gradient-to-r from-red-400 to-red-600 animate-pulse"></div>
+                        <div class="pl-8">
+                            <!-- Team Header -->
+                            <div class="flex items-center justify-between mb-3">
+                                <h4 class="font-bold text-gray-900   :text-gray-100 flex items-center">
+                                    <span class="w-6 h-6 bg-red-100   :bg-red-900/50 rounded-full flex items-center justify-center mr-2">
+                                        <span class="text-red-600   :text-red-300 text-xs font-bold">A</span>
+                                    </span>
+                                    {{ match.away_team }}
+                                </h4>
+                                <span class="text-xs font-medium bg-red-100   :bg-red-900/30 text-red-600   :text-red-300 px-2.5 py-1 rounded-full">
+                                    Rank #{{ match.details.away_rank }}
+                                </span>
+                            </div>
+
+                            <!-- Stats Grid -->
+                            <div class="grid grid-cols-4 gap-3 text-xs mb-3">
+                                <div class="text-center bg-gray-50   :bg-gray-800/50 p-2 rounded-lg">
+                                    <div class="font-bold">{{ match.details.away_mp }}</div>
+                                    <div class="text-gray-500   :text-gray-400 text-[0.65rem]">Matches</div>
+                                </div>
+                                <div class="text-center bg-green-50/70   :bg-green-900/20 p-2 rounded-lg">
+                                    <div class="font-bold text-green-600   :text-green-400">{{ match.details.away_w }}</div>
+                                    <div class="text-gray-500   :text-gray-400 text-[0.65rem]">Wins</div>
+                                </div>
+                                <div class="text-center bg-gray-50   :bg-gray-800/50 p-2 rounded-lg">
+                                    <div class="font-bold">{{ match.details.away_d }}</div>
+                                    <div class="text-gray-500   :text-gray-400 text-[0.65rem]">Draws</div>
+                                </div>
+                                <div class="text-center bg-indigo-50/70   :bg-indigo-900/20 p-2 rounded-lg">
+                                    <div class="font-bold text-indigo-600   :text-indigo-400">{{ match.details.away_pts }}</div>
+                                    <div class="text-xs text-gray-500   :text-gray-400">Points</div>
+                                </div>
+                            </div>
+
+                            <!-- Enhanced Stats -->
+                            <div class="grid grid-cols-3 gap-2 bg-gray-50   :bg-gray-800/30 p-2 rounded-lg border border-gray-100   :border-gray-700">
+                                <div class="text-center">
+                                    <div class="text-lg font-bold text-gray-900   :text-white">{{ match.details.away_g }}</div>
+                                    <div class="text-xs text-gray-500   :text-gray-400">Goals</div>
+                                </div>
+                                <div class="text-center border-x border-gray-200   :border-gray-700">
+                                    <div class="text-lg font-bold" :class="{
+                                        'text-green-500   :text-green-400': match.details.away_gd > 0,
+                                        'text-red-500   :text-red-400': match.details.away_gd < 0,
+                                        'text-gray-500   :text-gray-400': match.details.away_gd === 0
+                                    }">
+                                        {{ match.details.away_gd > 0 ? '+' : '' }}{{ match.details.away_gd }}
+                                    </div>
+                                    <div class="text-xs text-gray-500   :text-gray-400">GD</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-lg font-bold text-indigo-600   :text-indigo-400">{{ match.details.away_pts }}</div>
+                                    <div class="text-xs text-gray-500   :text-gray-400">Pts</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Away Team -->
-                <div class="relative">
-                    <div class="absolute top-3 left-3 w-3 h-3 rounded-full bg-gradient-to-r from-red-400 to-red-600 animate-pulse"></div>
-                    <div class="pl-8">
-                        <!-- Team Header -->
-                        <div class="flex items-center justify-between mb-3">
-                            <h4 class="font-bold text-gray-900   :text-gray-100 flex items-center">
-                                <span class="w-6 h-6 bg-red-100   :bg-red-900/50 rounded-full flex items-center justify-center mr-2">
-                                    <span class="text-red-600   :text-red-300 text-xs font-bold">A</span>
-                                </span>
-                                {{ match.away_team }}
-                            </h4>
-                            <span class="text-xs font-medium bg-red-100   :bg-red-900/30 text-red-600   :text-red-300 px-2.5 py-1 rounded-full">
-                                Rank #{{ match.details.away_rank }}
-                            </span>
-                        </div>
-
-                        <!-- Stats Grid -->
-                        <div class="grid grid-cols-4 gap-3 text-xs mb-3">
-                            <div class="text-center bg-gray-50   :bg-gray-800/50 p-2 rounded-lg">
-                                <div class="font-bold">{{ match.details.away_mp }}</div>
-                                <div class="text-gray-500   :text-gray-400 text-[0.65rem]">Matches</div>
-                            </div>
-                            <div class="text-center bg-green-50/70   :bg-green-900/20 p-2 rounded-lg">
-                                <div class="font-bold text-green-600   :text-green-400">{{ match.details.away_w }}</div>
-                                <div class="text-gray-500   :text-gray-400 text-[0.65rem]">Wins</div>
-                            </div>
-                            <div class="text-center bg-gray-50   :bg-gray-800/50 p-2 rounded-lg">
-                                <div class="font-bold">{{ match.details.away_d }}</div>
-                                <div class="text-gray-500   :text-gray-400 text-[0.65rem]">Draws</div>
-                            </div>
-                            <div class="text-center bg-indigo-50/70   :bg-indigo-900/20 p-2 rounded-lg">
-                                <div class="font-bold text-indigo-600   :text-indigo-400">{{ match.details.away_pts }}</div>
-                                <div class="text-xs text-gray-500   :text-gray-400">Points</div>
-                            </div>
-                        </div>
-
-                        <!-- Enhanced Stats -->
-                        <div class="grid grid-cols-3 gap-2 bg-gray-50   :bg-gray-800/30 p-2 rounded-lg border border-gray-100   :border-gray-700">
-                            <div class="text-center">
-                                <div class="text-lg font-bold text-gray-900   :text-white">{{ match.details.away_g }}</div>
-                                <div class="text-xs text-gray-500   :text-gray-400">Goals</div>
-                            </div>
-                            <div class="text-center border-x border-gray-200   :border-gray-700">
-                                <div class="text-lg font-bold" :class="{
-                                    'text-green-500   :text-green-400': match.details.away_gd > 0,
-                                    'text-red-500   :text-red-400': match.details.away_gd < 0,
-                                    'text-gray-500   :text-gray-400': match.details.away_gd === 0
-                                }">
-                                    {{ match.details.away_gd > 0 ? '+' : '' }}{{ match.details.away_gd }}
-                                </div>
-                                <div class="text-xs text-gray-500   :text-gray-400">GD</div>
-                            </div>
-                            <div class="text-center">
-                                <div class="text-lg font-bold text-indigo-600   :text-indigo-400">{{ match.details.away_pts }}</div>
-                                <div class="text-xs text-gray-500   :text-gray-400">Pts</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
 
         <!-- H2H History -->
         <div v-if="match.details && match.details.h2h_home_wins !== null"
@@ -833,6 +860,8 @@
 <script setup>
 import { ref, computed } from 'vue';
 const currentPage = ref(1);
+const showPremiumTips = ref(false);
+
 const matchesPerPage = 50; // You can adjust this number as needed
 const totalPages = computed(() => {
   return Math.ceil(filteredMatches.value.length / matchesPerPage);
@@ -1159,6 +1188,52 @@ if (filters.value.strongGG && match.details) {
     return true;
   });
 });
+const premiumTips = computed(() => generatePremiumTips(filteredMatches.value));
+
+function generatePremiumTips(matches) {
+  const premiumTips = [];
+
+  for (const match of matches) {
+    if (!match.details) continue;
+
+    const d = match.details;
+    const prediction = getPrediction(match);
+    const confidence = getConfidence(match);
+    const oddsHome = parseFloat(match.odds_home);
+    const oddsAway = parseFloat(match.odds_away);
+
+    const homeWins = parseInt(d.home_w);
+    const awayWins = parseInt(d.away_w);
+    const homeGD = parseInt(d.home_gd);
+    const awayGD = parseInt(d.away_gd);
+    const gdGap = Math.abs(homeGD - awayGD);
+
+    const rankGap = Math.abs(parseInt(d.home_rank) - parseInt(d.away_rank));
+    const h2hGap = (parseInt(d.h2h_home_wins || 0) - parseInt(d.h2h_away_wins || 0));
+
+    const totalGoals = (parseInt(d.home_g?.split(':')[0]) || 0) + (parseInt(d.away_g?.split(':')[0]) || 0);
+
+    let indicators = 0;
+
+    if (['super home win', 'super away win', 'strong home win'].includes(prediction)) indicators++;
+    if ((oddsHome > 1.7 && oddsHome < 2.5) || (oddsAway > 1.7 && oddsAway < 2.5)) indicators++;
+    if (gdGap >= 15) indicators++;
+    if (Math.abs(homeWins - awayWins) >= 5) indicators++;
+    if (h2hGap >= 3) indicators++;
+    if (totalGoals > 100) indicators++;
+    if (rankGap >= 10) indicators++;
+    if (confidence === 'High') indicators++;
+
+    const formScore = (homeWins + awayWins + Math.abs(homeGD) + Math.abs(awayGD)) / 20;
+    if (formScore > 3.5) indicators++;
+
+    if (indicators >= 4  && ['super home win', 'super away win', 'strong home win', 'likely away win'].includes(prediction))  {
+      premiumTips.push(match);
+    }
+  }
+
+  return premiumTips;
+}
 
 function getPrediction(match) {
   if (!match.details) return 'closely contested match';

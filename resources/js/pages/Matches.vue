@@ -123,6 +123,16 @@
       </div>
     </div>
   </div>
+<!-- Match Date Range -->
+<div>
+  <label class="block mb-1 text-sm font-medium text-gray-700 :text-gray-300">📆 Date Range</label>
+  <div class="flex gap-2">
+    <input type="date" v-model="filters.startDate"
+           class="w-full rounded-lg border px-3 py-2 text-sm text-gray-800 :text-gray-100 bg-gray-50 :bg-gray-800 border-gray-300 :border-gray-600"/>
+    <input type="date" v-model="filters.endDate"
+           class="w-full rounded-lg border px-3 py-2 text-sm text-gray-800 :text-gray-100 bg-gray-50 :bg-gray-800 border-gray-300 :border-gray-600"/>
+  </div>
+</div>
 
   <!-- Time Range -->
   <div class="mt-6">
@@ -915,7 +925,7 @@ const filters = ref({
   teamSearch: '',
   over25: false,
   gg: false,
-  matchDate: 'today',  // ✅ Set default here
+  matchDate: '',  // ✅ Set default here
   startHour: 0,
   endHour: 23,
   strongWinOdds: false,  // ✅ Add this
@@ -928,6 +938,8 @@ const filters = ref({
   bigGDDiff: false,
   minAwayH2HWins: 0,
 minHomeH2HWins: 0,
+startDate: new Date().toISOString().split('T')[0],
+endDate: new Date().toISOString().split('T')[0],
 
 
 });
@@ -955,7 +967,7 @@ function resetFilters() {
     teamSearch: '',
     over25: false,
     gg: false,
-    matchDate: 'today',  // ✅ Set default here
+    matchDate: '',  // ✅ Set default here
     startHour: 0,
     endHour: 23,
     strongWinOdds: false,
@@ -968,7 +980,8 @@ function resetFilters() {
     bigGDDiff: false,
     minAwayH2HWins: 0,
     minHomeH2HWins: 0,
-
+    startDate: new Date().toISOString().split('T')[0],  // 👈 TODAY
+    endDate: new Date().toISOString().split('T')[0]     // 👈 TODAY
 
   };
 }
@@ -1067,6 +1080,12 @@ if (filters.value.showHotPicks) {
   if (prediction !== 'likely away win' && prediction !== 'strong home win') {
     return false;
   }
+}
+if (filters.value.startDate && filters.value.endDate && match.match_date) {
+  const matchDate = new Date(match.match_date);
+  const start = new Date(filters.value.startDate);
+  const end = new Date(filters.value.endDate);
+  if (matchDate < start || matchDate > end) return false;
 }
 
 // Win difference > 10

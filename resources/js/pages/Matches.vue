@@ -106,22 +106,7 @@
       </div>
     </div>
 
-    <!-- Match Date Buttons -->
-    <div>
-      <label class="block mb-1 text-sm font-medium text-gray-700   :text-gray-300">📅 Match Date</label>
-      <div class="flex gap-2">
-        <button v-for="option in ['yesterday', 'today', 'tomorrow']" :key="option"
-          @click="setDateFilter(option)"
-          :class="[
-            filters.matchDate === option
-              ? 'bg-indigo-100   :bg-indigo-900 text-indigo-700   :text-indigo-300 border-indigo-400'
-              : 'bg-white   :bg-gray-800 text-gray-700   :text-gray-300 border-gray-300   :border-gray-600',
-            'flex-1 text-xs rounded-full border text-center py-1.5 font-semibold transition hover:ring-1 hover:ring-indigo-400'
-          ]">
-          {{ option.charAt(0).toUpperCase() + option.slice(1) }}
-        </button>
-      </div>
-    </div>
+
   </div>
 <!-- Match Date Range -->
 <div>

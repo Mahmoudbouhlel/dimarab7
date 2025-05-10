@@ -1097,7 +1097,7 @@ if (filters.value.strongGG && match.details) {
   const [hGF, hGA] = match.details.home_g?.split(':').map(Number) || [];
   const [aGF, aGA] = match.details.away_g?.split(':').map(Number) || [];
 
-  const validGG = hGF > 50 && hGA > 50 && aGF > 50 && aGA > 50;
+  const validGG = hGF > 50 && hGA > 35 && aGF > 50 && aGA > 35;
   if (!validGG) return false;
 }
 
@@ -1125,15 +1125,17 @@ if (filters.value.strongGG && match.details) {
 
     // Odds range filter (at least one in range)
     const homeOdds = parseFloat(match.odds_home);
-    const drawOdds = parseFloat(match.odds_draw);
-    const awayOdds = parseFloat(match.odds_away);
-    const oddsInRange = odds =>
-      odds >= filters.value.minOdds && odds <= filters.value.maxOdds;
-    if (
-      !oddsInRange(homeOdds) &&
-      !oddsInRange(drawOdds) &&
-      !oddsInRange(awayOdds)
-    ) return false;
+const awayOdds = parseFloat(match.odds_away);
+
+const oddsInRange = odds =>
+  odds >= filters.value.minOdds && odds <= filters.value.maxOdds;
+
+// Require BOTH home and away odds to be in range
+if (
+  !oddsInRange(homeOdds) ||
+  !oddsInRange(awayOdds)
+) return false;
+
 
     // Ranking filter
     if (filters.value.rankingType !== 'all' && match.details) {

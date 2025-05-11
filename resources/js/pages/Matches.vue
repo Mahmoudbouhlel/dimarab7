@@ -277,10 +277,10 @@
       </div>
     </div>
 
-   <!-- Modern Numeric Inputs -->
-<div class="bg-white  :bg-gray-850 p-5 rounded-xl shadow-sm border border-gray-100  :border-gray-750">
-  <h3 class="text-sm font-semibold text-gray-700  :text-gray-200 mb-5 flex items-center">
-    <span class="bg-indigo-100/80  :bg-indigo-900/50 p-2 rounded-lg mr-3 text-indigo-600  :text-indigo-300">
+<!-- Modern Numeric Inputs -->
+<div class="bg-white :bg-gray-850 p-5 rounded-xl shadow-sm border border-gray-100 :border-gray-750">
+  <h3 class="text-sm font-semibold text-gray-700 :text-gray-200 mb-5 flex items-center">
+    <span class="bg-indigo-100/80 :bg-indigo-900/50 p-2 rounded-lg mr-3 text-indigo-600 :text-indigo-300">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
         <path d="M3.27 6.96 12 12.01l8.73-5.05"/>
@@ -291,72 +291,79 @@
   </h3>
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-    <!-- Min GD Difference -->
+
+    <!-- GD Difference Range -->
     <div class="space-y-1.5">
-      <label for="minGDDiff" class="block text-xs font-medium text-gray-500  :text-gray-400">Min GD Difference</label>
-      <div class="relative">
-        <div class="absolute inset-y-0 left-0 flex items-center pl-3 text-indigo-500  :text-indigo-400">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-          </svg>
-        </div>
+      <label class="block text-xs font-medium text-gray-500 :text-gray-400">GD Difference Range</label>
+      <div class="flex gap-2">
         <input
           type="number"
-          id="minGDDiff"
           v-model.number="filters.minGDDiff"
           min="0"
           max="100"
-          class="w-full rounded-lg border border-gray-200  :border-gray-700 py-2.5 pl-9 pr-3 text-sm bg-white  :bg-gray-800 text-gray-800  :text-gray-100 placeholder-gray-400  :placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-150"
-          placeholder="0-100"
+          placeholder="Min"
+          class="w-full rounded-lg border border-gray-200 :border-gray-700 py-2.5 px-3 text-sm bg-white :bg-gray-800 text-gray-800 :text-gray-100 placeholder-gray-400 :placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+        />
+        <input
+          type="number"
+          v-model.number="filters.maxGDDiff"
+          min="0"
+          max="100"
+          placeholder="Max"
+          class="w-full rounded-lg border border-gray-200 :border-gray-700 py-2.5 px-3 text-sm bg-white :bg-gray-800 text-gray-800 :text-gray-100 placeholder-gray-400 :placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
         />
       </div>
     </div>
 
-    <!-- Min Home H2H Wins -->
+    <!-- Home H2H Wins Range -->
     <div class="space-y-1.5">
-      <label for="minHomeH2HWins" class="block text-xs font-medium text-gray-500  :text-gray-400">Min Home H2H Wins</label>
-      <div class="relative">
-        <div class="absolute inset-y-0 left-0 flex items-center pl-3 text-blue-500  :text-blue-400">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
-        </div>
+      <label class="block text-xs font-medium text-gray-500 :text-gray-400">Home H2H Wins Range</label>
+      <div class="flex gap-2">
         <input
           type="number"
-          id="minHomeH2HWins"
           v-model.number="filters.minHomeH2HWins"
           min="0"
           max="20"
-          class="w-full rounded-lg border border-gray-200  :border-gray-700 py-2.5 pl-9 pr-3 text-sm bg-white  :bg-gray-800 text-gray-800  :text-gray-100 placeholder-gray-400  :placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-150"
-          placeholder="0-20"
+          placeholder="Min"
+          class="w-full rounded-lg border border-gray-200 :border-gray-700 py-2.5 px-3 text-sm bg-white :bg-gray-800 text-gray-800 :text-gray-100 placeholder-gray-400 :placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+        />
+        <input
+          type="number"
+          v-model.number="filters.maxHomeH2HWins"
+          min="0"
+          max="20"
+          placeholder="Max"
+          class="w-full rounded-lg border border-gray-200 :border-gray-700 py-2.5 px-3 text-sm bg-white :bg-gray-800 text-gray-800 :text-gray-100 placeholder-gray-400 :placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
         />
       </div>
     </div>
 
-    <!-- Min Away H2H Wins -->
+    <!-- Away H2H Wins Range -->
     <div class="space-y-1.5">
-      <label for="minAwayH2HWins" class="block text-xs font-medium text-gray-500  :text-gray-400">Min Away H2H Wins</label>
-      <div class="relative">
-        <div class="absolute inset-y-0 left-0 flex items-center pl-3 text-rose-500  :text-rose-400">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
-        </div>
+      <label class="block text-xs font-medium text-gray-500 :text-gray-400">Away H2H Wins Range</label>
+      <div class="flex gap-2">
         <input
           type="number"
-          id="minAwayH2HWins"
           v-model.number="filters.minAwayH2HWins"
           min="0"
           max="20"
-          class="w-full rounded-lg border border-gray-200  :border-gray-700 py-2.5 pl-9 pr-3 text-sm bg-white  :bg-gray-800 text-gray-800  :text-gray-100 placeholder-gray-400  :placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-150"
-          placeholder="0-20"
+          placeholder="Min"
+          class="w-full rounded-lg border border-gray-200 :border-gray-700 py-2.5 px-3 text-sm bg-white :bg-gray-800 text-gray-800 :text-gray-100 placeholder-gray-400 :placeholder-gray-500 focus:ring-2 focus:ring-rose-500 focus:border-transparent transition"
+        />
+        <input
+          type="number"
+          v-model.number="filters.maxAwayH2HWins"
+          min="0"
+          max="20"
+          placeholder="Max"
+          class="w-full rounded-lg border border-gray-200 :border-gray-700 py-2.5 px-3 text-sm bg-white :bg-gray-800 text-gray-800 :text-gray-100 placeholder-gray-400 :placeholder-gray-500 focus:ring-2 focus:ring-rose-500 focus:border-transparent transition"
         />
       </div>
     </div>
+
   </div>
 </div>
+
 
     <!-- Hot Picks Toggle -->
     <div class="flex justify-center">
@@ -922,11 +929,14 @@ const filters = ref({
   showHotPicks: false,
   bigGDDiff: false,
   minAwayH2HWins: 0,
-minHomeH2HWins: 0,
-startDate: new Date().toISOString().split('T')[0],
-endDate: new Date().toISOString().split('T')[0],
+    minHomeH2HWins: 0,
+    startDate: new Date().toISOString().split('T')[0],
+    endDate: new Date().toISOString().split('T')[0],
 
-
+ minGDDiff: 0,
+  maxGDDiff: 100,
+  maxHomeH2HWins: 20,
+  maxAwayH2HWins: 20,
 });
 
 // Utilities
@@ -963,8 +973,12 @@ function resetFilters() {
     winDiffOver5: false,
     showHotPicks: false,
     bigGDDiff: false,
-    minAwayH2HWins: 0,
+   minGDDiff: 0,
+    maxGDDiff: 100,
     minHomeH2HWins: 0,
+    maxHomeH2HWins: 20,
+    minAwayH2HWins: 0,
+    maxAwayH2HWins: 20,
     startDate: new Date().toISOString().split('T')[0],  // 👈 TODAY
     endDate: new Date().toISOString().split('T')[0]     // 👈 TODAY
 
@@ -1041,23 +1055,26 @@ if (filters.value.bigRankGap && match.details) {
     return false;
   }
 }
-if (filters.value.minAwayH2HWins > 0 && match.details) {
+if (match.details) {
   const awayWins = parseInt(match.details.h2h_away_wins || 0);
-  if (awayWins < filters.value.minAwayH2HWins) return false;
+  if (awayWins < filters.value.minAwayH2HWins || awayWins > filters.value.maxAwayH2HWins) return false;
 }
 
-if (filters.value.minHomeH2HWins > 0 && match.details) {
+
+if (match.details) {
   const homeWins = parseInt(match.details.h2h_home_wins || 0);
-  if (homeWins < filters.value.minHomeH2HWins) return false;
+  if (homeWins < filters.value.minHomeH2HWins || homeWins > filters.value.maxHomeH2HWins) return false;
 }
 
-if (filters.value.minGDDiff > 0 && match.details) {
+
+
+if (match.details) {
   const homeGD = parseInt(match.details.home_gd?.replace('+', '')) || 0;
   const awayGD = parseInt(match.details.away_gd?.replace('+', '')) || 0;
   const gdDiff = Math.abs(homeGD - awayGD);
-
-  if (gdDiff < filters.value.minGDDiff) return false;
+  if (gdDiff < filters.value.minGDDiff || gdDiff > filters.value.maxGDDiff) return false;
 }
+
 
 
 if (filters.value.showHotPicks) {

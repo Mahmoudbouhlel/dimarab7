@@ -360,6 +360,28 @@
         />
       </div>
     </div>
+<!-- H2H Draws Range -->
+<div class="space-y-1.5">
+  <label class="block text-xs font-medium text-gray-500 :text-gray-400">H2H Draws Range</label>
+  <div class="flex gap-2">
+    <input
+      type="number"
+      v-model.number="filters.minH2HDraws"
+      min="0"
+      max="20"
+      placeholder="Min"
+      class="w-full rounded-lg border border-gray-200 :border-gray-700 py-2.5 px-3 text-sm bg-white :bg-gray-800 text-gray-800 :text-gray-100 placeholder-gray-400 :placeholder-gray-500 focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition"
+    />
+    <input
+      type="number"
+      v-model.number="filters.maxH2HDraws"
+      min="0"
+      max="20"
+      placeholder="Max"
+      class="w-full rounded-lg border border-gray-200 :border-gray-700 py-2.5 px-3 text-sm bg-white :bg-gray-800 text-gray-800 :text-gray-100 placeholder-gray-400 :placeholder-gray-500 focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition"
+    />
+  </div>
+</div>
 
   </div>
 </div>
@@ -932,6 +954,8 @@ const filters = ref({
     minHomeH2HWins: 0,
     startDate: new Date().toISOString().split('T')[0],
     endDate: new Date().toISOString().split('T')[0],
+minH2HDraws: 0,
+maxH2HDraws: 20,
 
  minGDDiff: 0,
   maxGDDiff: 100,
@@ -980,7 +1004,9 @@ function resetFilters() {
     minAwayH2HWins: 0,
     maxAwayH2HWins: 20,
     startDate: new Date().toISOString().split('T')[0],  // 👈 TODAY
-    endDate: new Date().toISOString().split('T')[0]     // 👈 TODAY
+    endDate: new Date().toISOString().split('T')[0]  ,   // 👈 TODAY
+minH2HDraws: 0,
+maxH2HDraws: 20,
 
   };
 }
@@ -1064,6 +1090,13 @@ if (match.details) {
 if (match.details) {
   const homeWins = parseInt(match.details.h2h_home_wins || 0);
   if (homeWins < filters.value.minHomeH2HWins || homeWins > filters.value.maxHomeH2HWins) return false;
+}
+if (match.details) {
+  const h2hDraws = parseInt(match.details.h2h_draws || 0);
+  if (
+    h2hDraws < filters.value.minH2HDraws ||
+    h2hDraws > filters.value.maxH2HDraws
+  ) return false;
 }
 
 
